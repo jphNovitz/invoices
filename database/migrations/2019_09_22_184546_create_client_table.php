@@ -25,6 +25,7 @@ class CreateClientTable extends Migration
             $table->string('email')->unique();
 
             $table->timestamps();
+            $table->softDeletes();
 
             $table->unsignedBigInteger('city_id');
             $table->foreign('city_id')

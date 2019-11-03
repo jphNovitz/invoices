@@ -28,7 +28,11 @@ class client extends Model
         return $this->hasOne('App\City', 'id', 'city_id');
     }
 
-    public function Invoice(){
+    public function Invoices(){
         return $this->hasMany('App\Invoice');
+    }
+
+    public function Users(){
+        return $this->belongsToMany('App\User', 'user_client');
     }
 }

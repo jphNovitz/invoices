@@ -21,8 +21,9 @@ class CreateInvoiceTable extends Migration
 
 
             $table->unsignedBigInteger( 'client_id');
+
             $table->foreign('client_id')
-                ->references('id')->on('client')
+                ->references('id')->on('clients')
                 ->onDelete('cascade')
             ;
             $table->unsignedBigInteger( 'user_id');
