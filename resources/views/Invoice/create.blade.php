@@ -45,9 +45,7 @@ $date = Carbon::now('Europe/Zurich')
                             TVA N°: {{$user->tva}}
                         </strong></p>
                 </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-md-4">
+                <div class="col-md-4" style="padding-top: 50px;">
                     <?php
                     echo Form::open(['route' => 'home', 'method' => 'POST']);?>
                     <div class="form-group">
@@ -62,11 +60,38 @@ $date = Carbon::now('Europe/Zurich')
 
                         </div>
                     </div>
-                    <?php
-                    echo Form::close();
-                    ?>
+
+                </div>
+
+            </div>
+            <div id="items">
+                <div class="row item-row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="description[]">Description</label>
+                            <input type="text" id="description[]" name="description" class="form-control"/>
+                        </div>
+                    </div>
+                    <div class="col-md-1">
+                        <div class="form-group">
+                            <label for="qty[]">Qty</label>
+                            <input type="text" name="qty[]" class="form-control"/>
+                        </div>
+                    </div>
+                    <div class="col-md-1">
+                        <div class="form-group">
+                            <label for="discount[]" class="control-label">Reduc</label>
+                            <input name="discount[]" type="text" value="" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <button type="button" class="btn btn-primary add-item"> +</button>
+                    </div>
                 </div>
             </div>
+            <?php
+            echo Form::close();
+            ?>
         </div>
     </div>
 @endsection
