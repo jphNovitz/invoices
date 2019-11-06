@@ -16,16 +16,17 @@ class CreateItemsTable extends Migration
         Schema::create('items', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('description');
+            $table->string('price');
             $table->integer('qty');
             $table->integer('discount');
 
             $table->timestamps();
 
-            $table->unsignedBigInteger('rate_id');
-            $table->foreign('rate_id')->references('id')->on('rates');
+            $table->unsignedBigInteger('vat_id');
+            $table->foreign('vat_id')->references('id')->on('vat');
 
-            $table->unsignedBigInteger('invoice_id');
-            $table->foreign('invoice_id')->references('id')->on('invoice');
+//            $table->unsignedBigInteger('invoice_id');
+//            $table->foreign('invoice_id')->references('id')->on('invoice');
         });
     }
 

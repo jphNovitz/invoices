@@ -24,7 +24,6 @@ $factory->define(User::class, function (Faker $faker) {
         'street' => $faker->streetAddress,
         'nr' => $faker->numberBetween(1, 100),
         'phone' => $faker->phoneNumber,
-        'email' => $faker->email,
         'name' => $faker->userName,
         'tva' => $faker->vat,
         'city_id' => $faker->numberBetween(1, 1000),

@@ -1,7 +1,7 @@
 <?php
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-use App\Client;
+use App\Item;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
 
@@ -16,16 +16,12 @@ use Illuminate\Support\Str;
 |
 */
 
-$factory->define(Client::class, function (Faker $faker) {
+$factory->define(Item::class, function (Faker $faker) {
     return [
-        'company' => $faker->company,
-        'firstname' => $faker->firstName,
-        'lastname' => $faker->lastName,
-        'street' => $faker->streetAddress,
-        'nr' => $faker->numberBetween(1, 100),
-        'phone' => $faker->phoneNumber,
-        'email' => $faker->unique()->safeEmail,
-        'vat' => $faker->vat,
-        'city_id' => $faker->numberBetween(1, 1000)
+        'description' => $faker->text(200),
+        'price' => $faker->numberBetween(1,100),
+        'qty' => $faker->numberBetween(1,10),
+        'discount' => $faker->numberBetween(0,5),
+        'vat_id' => $faker->numberBetween(1,3)
     ];
 });

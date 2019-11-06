@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class invoice extends Model
 {
+    protected $table = 'invoice';
+
     public function Client(){
         return $this->belongsTo('App\Client');
     }
@@ -16,7 +18,8 @@ class invoice extends Model
 
     public function items()
     {
-        return $this->hasMany('App\Item');
+        return $this->belongsToMany('App\Item');
     }
+
 
 }

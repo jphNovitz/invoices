@@ -1,7 +1,7 @@
 <?php
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-use App\Client;
+use App\Invoice;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
 
@@ -16,16 +16,12 @@ use Illuminate\Support\Str;
 |
 */
 
-$factory->define(Client::class, function (Faker $faker) {
+$factory->define(Invoice::class, function (Faker $faker) {
+
+
     return [
-        'company' => $faker->company,
-        'firstname' => $faker->firstName,
-        'lastname' => $faker->lastName,
-        'street' => $faker->streetAddress,
-        'nr' => $faker->numberBetween(1, 100),
-        'phone' => $faker->phoneNumber,
-        'email' => $faker->unique()->safeEmail,
-        'vat' => $faker->vat,
-        'city_id' => $faker->numberBetween(1, 1000)
+        'reference' => $faker->text(15),
+        'user_id' => $faker->numberBetween(1, 10),
+        'client_id' => $faker->numberBetween(1, 500),
     ];
 });
