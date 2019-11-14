@@ -24,33 +24,35 @@
                             <div class="row">
                                 <div class="col-md-12 grid">
                                     <div class="invoice-list-group">
-                                        <div class="row">
+                                        <div class="row trigger-part">
                                             {{--<div class="col sm-6  d-none d-md-block d-xl-none">a</div>--}}
                                             <div class="col-12 col-md-4">{{$client->company}}</div>
                                             <div class="col-12 col-md-4">{{$client->vat}}</div>
                                             <div class="col-12 col-md-4">{{$client->email}}</div>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-12 col-md-4">{{$client->firstname}}</div>
-                                            <div class="col-12 col-md-4">{{$client->lastname}}</div>
-                                            <div class="col-12 col-md-4">{{$client->phone}}</div>
-                                        </div>
-                                        <div class="row invoice-actions">
-                                            <a href="{{route('client_card', ['client'=>$client->id])}}"
-                                               class="btn btn-sm btn-primary">
-                                                <i class="fas fa-info"></i>
-                                                Détail
-                                            </a>
-                                            <a href="{{route('client_update', ['client' => $client->id])}}"
-                                               class="btn btn-sm btn-success">
-                                                <i class="fas fa-edit"></i>
-                                                Modifier
-                                            </a>
-                                            <a href="{{route('client_delete', ['client' => $client->id])}}"
-                                               class="btn btn-sm btn-danger">
-                                                <i class="fas fa-trash"></i>
-                                                Supprimer
-                                            </a>
+                                        <div class="hidden-part">
+                                            <div class="row">
+                                                <div class="col-12 col-md-4">{{$client->firstname}}</div>
+                                                <div class="col-12 col-md-4">{{$client->lastname}}</div>
+                                                <div class="col-12 col-md-4">{{$client->phone}}</div>
+                                            </div>
+                                            <div class="row invoice-actions">
+                                                <a href="{{route('client_card', ['client'=>$client->id])}}"
+                                                   class="btn btn-sm btn-primary">
+                                                    <i class="fas fa-info"></i>
+                                                    Détail
+                                                </a>
+                                                <a href="{{route('client_update', ['client' => $client->id])}}"
+                                                   class="btn btn-sm btn-success">
+                                                    <i class="fas fa-edit"></i>
+                                                    Modifier
+                                                </a>
+                                                <a href="{{route('client_delete', ['client' => $client->id])}}"
+                                                   class="btn btn-sm btn-danger">
+                                                    <i class="fas fa-trash"></i>
+                                                    Supprimer
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -112,3 +114,10 @@
         </div>
     </div>
 @endsection
+
+@push('script')
+<script type="javascript">
+        alert();
+
+</script>
+@endpush

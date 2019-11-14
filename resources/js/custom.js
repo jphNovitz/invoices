@@ -1,4 +1,34 @@
 document.addEventListener("DOMContentLoaded", function() {
+    const triggers = document.getElementsByClassName('trigger-part');
+    if (triggers){
+        for (trigger of triggers){
+            trigger.addEventListener('click', function (e) {
+                var next = e.target.parentNode.nextElementSibling;
+                // console.log(e.target);
+                // console.log(next);
+                // console.log(next.style.height);
+                if (next.style.maxHeight ) {
+                    next.style.maxHeight = '0'
+                    e.target.parentNode.style.backgroundColor = 'rgba(255, 255, 255, 1)';
+                }
+
+                    else {
+                        e.target.parentNode.style.backgroundColor = 'rgba(206, 206, 206, .3)';
+                        next.style.maxHeight = '5rem';
+                }
+                // next.style.height = '100px';
+                // console.log(trigger.nextElementSibling.classList);
+                // console.log(trigger.nextSibling);
+            //     var elem = e.target;
+            //     do {
+            //         elem = elem.nextSibling;
+            //     } while (elem && elem.nodeType !== 1);
+            //
+            //     console.log(elem.nodeType);
+            //     if (elem) elem.nextSibling.style.height= '100px';
+            })
+        }
+    }
 
     /**
      *
@@ -80,4 +110,7 @@ document.addEventListener("DOMContentLoaded", function() {
             row_container.append(new_row);
       })
     }
+
+
+
 });

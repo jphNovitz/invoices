@@ -10,3 +10,17 @@
   justify-content: space-around;
   padding: .8rem 0;
 }
+
+.trigger-part{
+  cursor: pointer;
+}
+
+.hidden-part{
+  max-height: 0;
+  overflow: hidden;
+  transition: all .75s ease;
+}
+
+.hidden-part .show-hidden{
+  height: 100px !important; ;
+}
