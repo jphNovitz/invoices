@@ -29,77 +29,80 @@
                                     <div class="row">
                                         <div class="col-md-12 grid">
                                             <div class="invoice-list-group">
-                                                <div class="row">
+                                                <div class="row trigger-part">
                                                     {{--<div class="col sm-6  d-none d-md-block d-xl-none">a</div>--}}
                                                     <div class="col-12 col-md-4">{{$invoice->created_at->format('d/m/Y')}}</div>
-                                                    <div class="col-12 col-md-4">Référence: {{$invoice->reference}}</div>
+                                                    <div class="col-12 col-md-4">
+                                                        Référence: {{$invoice->reference}}</div>
                                                     {{--<div class="col-12 col-md-4">{{$invoice->email}}</div>--}}
                                                 </div>
-                                                {{--<div class="row">--}}
-                                                    {{--<div class="col-12 col-md-4">{{$invoice->firstname}}</div>--}}
-                                                    {{--<div class="col-12 col-md-4">{{$invoice->lastname}}</div>--}}
-                                                    {{--<div class="col-12 col-md-4">{{$invoice->phone}}</div>--}}
-                                                {{--</div>--}}
-                                                <div class="row invoice-actions">
-                                                    <a href="{{route('client_invoices_card', [
+                                                <div class="hidden-part">
+                                                    <div class="row">
+                                                        <div class="col-12 col-md-4">{{$invoice->firstname}}</div>
+                                                        <div class="col-12 col-md-4">{{$invoice->lastname}}</div>
+                                                        <div class="col-12 col-md-4">{{$invoice->phone}}</div>
+                                                    </div>
+                                                    <div class="row invoice-actions">
+                                                        <a href="{{route('client_invoices_card', [
                                                     'client'=>$client,
                                                     'invoice' => $invoice->id
                                                     ])}}"
-                                                       class="btn btn-sm btn-primary">
-                                                        <i class="fas fa-info"></i>
-                                                        Détails
-                                                    </a>
+                                                           class="btn btn-sm btn-primary">
+                                                            <i class="fas fa-info"></i>
+                                                            Détails
+                                                        </a>
 
-                                                    <a href="{{route('client_invoices_card', [
+                                                        <a href="{{route('client_invoices_card', [
                                                     'client'=>$client,
                                                     'invoice' => $invoice->id
                                                     ])}}"
-                                                       class="btn btn-sm btn-danger">
-                                                        <i class="fas fa-trash"></i>
-                                                        Supprimer
-                                                    </a>
+                                                           class="btn btn-sm btn-danger">
+                                                            <i class="fas fa-trash"></i>
+                                                            Supprimer
+                                                        </a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 @endforeach
                                 {{--<table class="table">--}}
-                                    {{--<thead>--}}
-                                    {{--<tr>--}}
-                                        {{--<th scope="col">#</th>--}}
-                                        {{--<th scope="col">Référence</th>--}}
-                                        {{--<th scope="col"></th>--}}
-                                    {{--</tr>--}}
-                                    {{--</thead>--}}
-                                    {{--<tbody>--}}
-                                    {{--@foreach($invoices as $invoice)--}}
-                                        {{--<tr>--}}
-                                            {{--<th scope="row">{{$invoice->id}}</th>--}}
-                                            {{--<td>{{$invoice->reference}}</td>--}}
-                                            {{--<td>--}}
-                                                {{--<a href="{{route('client_invoices_card', [--}}
-                                                        {{--'client'=>$client,--}}
-                                                        {{--'invoice'=>$invoice->id--}}
-                                                    {{--])}}" class="btn btn-sm btn-primary">--}}
-                                                    {{--<i class="fas fa-info"></i>--}}
-                                                    {{--Détail--}}
-                                                {{--</a>--}}
-                                                {{--<a href="{{route('client_update', ['client' => $client->id])}}" class="btn btn-sm btn-success">--}}
-                                                {{--<i class="fas fa-edit"></i>--}}
-                                                {{--Modifier--}}
-                                                {{--</a>--}}
-                                                {{--<a href="{{route('client_invoices_card', [--}}
-                                                        {{--'client'=>$client,--}}
-                                                        {{--'invoice' => $invoice->id--}}
-                                                    {{--])}}"--}}
-                                                   {{--class="btn btn-sm btn-danger">--}}
-                                                    {{--<i class="fas fa-trash"></i>--}}
-                                                    {{--Supprimer--}}
-                                                {{--</a>--}}
-                                            {{--</td>--}}
-                                        {{--</tr>--}}
-                                    {{--@endforeach--}}
-                                    {{--</tbody>--}}
+                                {{--<thead>--}}
+                                {{--<tr>--}}
+                                {{--<th scope="col">#</th>--}}
+                                {{--<th scope="col">Référence</th>--}}
+                                {{--<th scope="col"></th>--}}
+                                {{--</tr>--}}
+                                {{--</thead>--}}
+                                {{--<tbody>--}}
+                                {{--@foreach($invoices as $invoice)--}}
+                                {{--<tr>--}}
+                                {{--<th scope="row">{{$invoice->id}}</th>--}}
+                                {{--<td>{{$invoice->reference}}</td>--}}
+                                {{--<td>--}}
+                                {{--<a href="{{route('client_invoices_card', [--}}
+                                {{--'client'=>$client,--}}
+                                {{--'invoice'=>$invoice->id--}}
+                                {{--])}}" class="btn btn-sm btn-primary">--}}
+                                {{--<i class="fas fa-info"></i>--}}
+                                {{--Détail--}}
+                                {{--</a>--}}
+                                {{--<a href="{{route('client_update', ['client' => $client->id])}}" class="btn btn-sm btn-success">--}}
+                                {{--<i class="fas fa-edit"></i>--}}
+                                {{--Modifier--}}
+                                {{--</a>--}}
+                                {{--<a href="{{route('client_invoices_card', [--}}
+                                {{--'client'=>$client,--}}
+                                {{--'invoice' => $invoice->id--}}
+                                {{--])}}"--}}
+                                {{--class="btn btn-sm btn-danger">--}}
+                                {{--<i class="fas fa-trash"></i>--}}
+                                {{--Supprimer--}}
+                                {{--</a>--}}
+                                {{--</td>--}}
+                                {{--</tr>--}}
+                                {{--@endforeach--}}
+                                {{--</tbody>--}}
                                 {{--</table>--}}
                             </div>
                         </div>
