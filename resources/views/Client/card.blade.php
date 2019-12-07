@@ -50,7 +50,7 @@
                             </div>
                         </div>
                         <div class="row justify-content-center">
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <a href="{{route('client_update', ['client' => $client->id])}}" class="btn btn-primary">
                                     <i class="fas fa-edit"></i> Modifier</a>
                                 <a href="{{route('client_delete', ['client' => $client->id])}}" class="btn btn-danger">
@@ -78,9 +78,9 @@
                                 <td>{{$invoice->created_at}}</td>
                                 <td>{{$invoice->updated_at}}</td>
                                 <td>
-                                    <a href="{{route('invoice_show', ['invoice'=>$invoice->id])}}" class="btn btn-primary btn-success btn-xs"><i class="fas fa-edit"></i></a>
-                                    <a href="" class="btn btn-primary btn-primary btn-xs"><i class="fas fa-search-plus"></i></a>
-                                    <a href="" class="btn btn-primary btn-danger btn-xs"><i class="fas fa-trash"></i></a>
+                                    <a href="{{route('invoice_edit', ['invoice'=>$invoice->id])}}" class="btn btn-primary btn-success btn-xs"><i class="fas fa-edit"></i></a>
+                                    <a href="{{route('invoice_show', ['invoice'=>$invoice->id])}}" class="btn btn-primary btn-primary btn-xs"><i class="fas fa-search-plus"></i></a>
+                                    <a href="{{route('invoice_show', ['invoice'=>$invoice->id])}}" class="btn btn-primary btn-danger btn-xs"><i class="fas fa-trash"></i></a>
                                 </td>
                             </tr>
                             {{$invoice->id}}

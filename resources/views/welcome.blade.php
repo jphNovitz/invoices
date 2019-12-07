@@ -9,10 +9,16 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
+        <!-- Scripts -->
+        <script src="{{ asset('js/app.js') }}" defer></script>
+
+        <!-- Styles -->
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <!-- Styles -->
         <style>
             html, body {
                 background-color: #fff;
+                /*color: #000;*/
                 color: #636b6f;
                 font-family: 'Nunito', sans-serif;
                 font-weight: 200;
@@ -49,13 +55,15 @@
             }
 
             .links > a {
-                color: #636b6f;
+                /*color: #;*/
+                /*color: #636b6f;*/
                 padding: 0 25px;
                 font-size: 13px;
                 font-weight: 600;
                 letter-spacing: .1rem;
                 text-decoration: none;
                 text-transform: uppercase;
+                line-height: 2.8rem;
             }
 
             .m-b-md {
@@ -83,18 +91,32 @@
                 <div class="title m-b-md">
                     Invoices
                 </div>
+                <div class="">
+                    <p>Tu es un petit indépendant et tu vends au comptoir.
+                    <br /> Tu ne fais pas des factures tous les jours !</p>
 
+                    <p>Quand un client te demande une facture tu ne veux pas jouer avec un tableur
+                     ou un traitement de texte.
+                        <br />Tu sais que ces factures 'à la main' tu vas les perdres.</p>
+                </div>
                 <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a class="btn btn-secondary rounded"
+                       href="https://laravel.com/docs">
+                        <i class="fas fa-home fa-lg"></i> Accueil
+                    </a>
+                    <a class="btn btn-secondary rounded"
+                       href="https://laravel.com/docs">
+                        <i class="fas fa-info-circle fa-lg"></i> A propos
+                    </a>
+                    <a class="btn btn-secondary rounded"
+                       href="https://laravel.com/docs">
+                        <i class="fas fa-pen-square fa-lg"></i> Inscription
+                    </a>
+
                 </div>
             </div>
+
+
         </div>
     </body>
 </html>
