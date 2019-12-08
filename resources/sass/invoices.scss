@@ -24,3 +24,10 @@
 .hidden-part .show-hidden{
   max-height: 5rem !important ;
 }
+
+#items .item-row .add-item{
+  visibility: hidden;
+}
+#items .item-row:last-child .add-item{
+  visibility: visible;
+}

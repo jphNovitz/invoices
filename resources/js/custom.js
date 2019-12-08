@@ -25,9 +25,9 @@ document.addEventListener("DOMContentLoaded", function () {
      *
      * Managing the display of the client details from de selected choice
      */
-         var select = document.getElementById('select-client');
+    var select = document.getElementById('select-client');
     var infos = document.getElementById('show-client-infos');
-    if (select){
+    if (select) {
         select.addEventListener('change', function () {
             if (this.value > -1) {
                 fetch('/api/client/' + this.value)
@@ -65,45 +65,140 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
 
-}
+    }
 
-/**
- * Add an Item row in my form
- */
+    /**
+     * Add an Item row in my form
+     */
 
-const row_container = document.getElementById('items');
-const row = document.getElementsByClassName('item-row')[0];
-const add_buttons = document.getElementsByClassName('add-item');
+    const row_container = document.getElementById('items');
+    const row = document.getElementsByClassName('item-row')[0];
+    const add_buttons = document.getElementsByClassName('add-item');
+    const remove_buttons = document.getElementsByClassName('remove-item');
 // console.log(add_buttons)
 
-for (let btn of add_buttons) {
+    document.getElementById('items').addEventListener('click', function (e) {
 
-    btn.addEventListener('click', function (e) {
-
-        let new_row = document.createElement('div');
-        new_row.classList.add('row');
-        new_row.classList.add('item-row');
-        new_row.innerHTML += ` <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="description[]">Description</label>
-                            <input type="text" id="description[]" name="description" class="form-control"/>
+        if (e.target.classList.contains('remove-item')) {
+            let parent = document.getElementById('items');
+            parent.removeChild(e.target.parentNode.parentNode)
+        }
+        if (e.target.classList.contains('add-item')) {
+            let new_row = document.createElement('div');
+            new_row.classList.add('row');
+            new_row.classList.add('item-row');
+            new_row.innerHTML += `<div class="row item-row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <input type="text" id="description[]"
+                                       name="description"
+                                       class="form-control"
+                                       value=""
+                                />
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <input type="text"
+                                       name="price[]"
+                                       class="form-control"
+                                       value=""
+                                />
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <select class="custom-select" 
+                                        name="vat[]">
+                                        <option value="0.06" >6 % </option>
+                                        <option value="0.12" >12 % </option>
+                                        <option value="0.21" >21 % </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-1">
+                            <div class="form-group">
+                                <input type="text"
+                                       name="qty[]"
+                                       class="form-control"
+                                       value=""
+                                />
+                            </div>
+                        </div>
+                        <div class="col-md-1">
+                            <div class="form-group">
+                                <input name="discount[]"
+                                       type="text"
+                                       value=""
+                                       class="form-control"
+                                />
+                            </div>
+                        </div>
+                        <div class="col-md-2" style="align-items: center">
+                            <button type="button"
+                                    class="btn btn-danger remove-item">
+                                <i class="fa fa-minus" style="pointer-events:none"></i>
+                            </button>
+                            <button type="button"
+                                    class="btn btn-primary add-item">
+                                <i class="fa fa-plus" style="pointer-events:none"></i>
+                            </button>
                         </div>
                     </div>
-                    <div class="col-md-1">
-                        <div class="form-group">
-                            <label for="qty[]">Qty</label>
-                            <input type="text" name="qty[]" class="form-control"/>
-                        </div>
-                    </div>
-                    <div class="col-md-1">
-                        <div class="form-group">
-                            <label for="discount[]" class="control-label">Reduc</label>
-                            <input name="discount[]" type="text" value="" class="form-control">
-                        </div>
-                    </div>`
-        row_container.append(new_row);
+`
+            row_container.append(new_row);
+        }
     })
-}
+
+// for (let btn of remove_buttons) {
+//     btn.addEventListener('click', function (e) {
+//         console.log(e)
+//         if(e.target != 'svg') {
+//             console.log(e)
+//             console.log(e.target.parentNode.parentNode)
+//             let parent = document.getElementById('items');
+//             console.log(this);
+//             parent.removeChild(e.target.parentNode.parentNode)
+//         }
+//     })
+// }
+// for (let btn of add_buttons) {
+//     btn.addEventListener('click', function (e) {
+//         let new_row = document.createElement('div');
+//         new_row.classList.add('row');
+//         new_row.classList.add('item-row');
+//         new_row.innerHTML += ` <div class="col-md-6">
+//                         <div class="form-group">
+//                             <label for="description[]">Description</label>
+//                             <input type="text" id="description[]" name="description" class="form-control"/>
+//                         </div>
+//                     </div>
+//                     <div class="col-md-1">
+//                         <div class="form-group">
+//                             <label for="qty[]">Qty</label>
+//                             <input type="text" name="qty[]" class="form-control"/>
+//                         </div>
+//                     </div>
+//                     <div class="col-md-1">
+//                         <div class="form-group">
+//                             <label for="discount[]" class="control-label">Reduc</label>
+//                             <input name="discount[]" type="text" value="" class="form-control">
+//                         </div>
+//                     </div>
+//                     <div class="col-md-2" style="align-items: center">
+//                         <button type="button"
+//                                 class="btn btn-danger remove-item">
+//                             <i class="fa fa-minus" style="pointer-events:none"></i>
+//                         </button>
+//                         <button type="button"
+//                                 class="btn btn-primary add-item">
+//                             <i class="fa fa-plus"></i>
+//                         </button>
+//                      </div>
+// `
+//         row_container.append(new_row);
+//     })
+// }
 
 
 })

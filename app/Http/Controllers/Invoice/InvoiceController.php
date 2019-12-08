@@ -33,6 +33,14 @@ class InvoiceController extends Controller
         return view('Invoice.show', ['invoice'=> $invoice, 'total' => $total]);
     }
 
+    public function edit($id){
+        $invoice = invoice::with('Client')->where('id', $id)->first();
+        return view('Invoice.update', ['invoice'=>$invoice]);
+    }
+    public function update(){
+        die('ok');
+    }
+
     public function delete(client $client, invoice $invoice){
         dump($client);
         dump($invoice);
