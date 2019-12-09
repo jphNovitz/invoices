@@ -41,7 +41,8 @@ Route::get('/api/client/{client}', 'Client\ApiClientController@show')->name('api
 /* Invoices */
 Route::get('/invoices/add', 'Invoice\InvoiceController@create')->name('client_invoice_create');
 Route::get('/invoices/{invoice}', 'Invoice\InvoiceController@show')->name('invoice_show');
-Route::get('/invoices/{invoice}/update', 'Invoice\InvoiceController@edit')->name('invoice_edit');
+Route::get('/invoices/{invoice}/edit', 'Invoice\InvoiceController@edit')->name('invoice_edit');
+Route::put('/invoices/update', 'Invoice\InvoiceController@update')->name('invoice_update');
 
 /* Users's invoices */
 Route::get('client/{client}/invoices', 'Invoice\InvoiceController@index')->name('client_invoices_list');

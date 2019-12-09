@@ -14,6 +14,8 @@ $date = Carbon::now('Europe/Zurich')
 @extends('layouts.app')
 
 @section('content')
+    <?php
+    echo Form::open(['route' => 'invoice_update', 'method' => 'PUT']);?>
     <div class="container bg-white p-3">
         <div class="grid">
             <div class="row">
@@ -47,8 +49,7 @@ $date = Carbon::now('Europe/Zurich')
                         </strong></p>
                 </div>
                 <div class="col-md-4" style="padding-top: 50px;">
-                    <?php
-                    echo Form::open(['route' => 'home', 'method' => 'POST']);?>
+
                     <div class="form-group">
                         {{--{!! Form::label('client', 'Client', ['class' => 'control-label']) !!}--}}
                         {{--<select class="form-control" id="select-client">--}}
@@ -159,6 +160,10 @@ $date = Carbon::now('Europe/Zurich')
                         </div>
                     </div>
                 @endforeach
+            </div>
+            <div>
+                {!! csrf_field() !!}
+                <input type="submit" class="btn btn-primary" />
             </div>
             <?php
             echo Form::close();
