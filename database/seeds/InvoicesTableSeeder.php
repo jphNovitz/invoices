@@ -16,7 +16,6 @@ class InvoicesTableSeeder extends Seeder
             ->each(function ($invoice) {
                 $faker = Faker::create();
                 $n = $faker->numberBetween(1, 15);
-                echo $n.' ';
               $items = factory(App\Item::class, $n )->create();
                 $invoice->items()->saveMany($items);
         })
