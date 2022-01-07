@@ -2,21 +2,35 @@
 
 namespace App\Http\Controllers\Invoice;
 
-use App\client;
+use App\Client;
 use App\Http\Controllers\Client\ClientController;
-use App\invoice;
+use App\Invoice;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class InvoiceController extends Controller
 {
-    public function index(client $client){
-        $invoices = invoice::where('client_id', $client->id)->orderBy('created_at', 'DESC')->get();
+    private $user_id;
+
+    public function __construct()
+    {
+//       $this->user_id =   \Auth::user()->id;
+    }
+
+    public function index(){
+        $invoices = invoice::where('user_id', \Auth::user()->id)->orderBy('created_at', 'DESC')->get();
+        dd($invoices);
         return view('Invoice.list', [
-            'client'=>$client,
             'invoices' => $invoices
         ]);
     }
+//    public function index(client $client){
+//        $invoices = invoice::where('client_id', $client->id)->orderBy('created_at', 'DESC')->get();
+//        return view('Invoice.list', [
+//            'client'=>$client,
+//            'invoices' => $invoices
+//        ]);
+//    }
 
     public function card(client $client, invoice $invoice){
 
@@ -50,6 +64,9 @@ class InvoiceController extends Controller
 
 
     public function create(){
-        return view('Invoice.create');
+//        dd(Client::with(['user_id', \Auth::user()->id]));
+        return view('Invoice.create', [
+            'clients' => Client::with(['user_id', \Auth::user()->id])
+        ]);
     }
 }

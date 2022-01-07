@@ -2,10 +2,11 @@
 
 namespace App;
 
+use Illuminate\Auth\AuthManager;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class client extends Model
+class Client extends Model
 {
     use SoftDeletes;
 
@@ -23,13 +24,13 @@ class client extends Model
         'password',
     ];
 
-
     public function City(){
         return $this->hasOne('App\City', 'id', 'city_id');
     }
 
     public function Invoices(){
-        return $this->hasMany('App\Invoice');
+        $id = \Auth::user()->id;
+        return $this->hasMany('App\Invoice')->where('user_id','==', $id);
     }
 
     public function Users(){

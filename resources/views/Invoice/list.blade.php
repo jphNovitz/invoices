@@ -3,6 +3,8 @@
  * list of invoices of a Client
  */
 ?>
+
+
 @extends('layouts.app')
 
 @section('content')

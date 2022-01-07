@@ -45,6 +45,7 @@ Route::get('/invoices/{invoice}/edit', 'Invoice\InvoiceController@edit')->name('
 Route::put('/invoices/update', 'Invoice\InvoiceController@update')->name('invoice_update');
 
 /* Users's invoices */
-Route::get('client/{client}/invoices', 'Invoice\InvoiceController@index')->name('client_invoices_list');
-Route::get('client/{client}/invoice/{invoice}/card', 'Invoice\InvoiceController@card')->name('client_invoices_card');
-Route::get('client/{client}/invoice/{invoice}/delete', 'Invoice\InvoiceController@delete')->name('client_invoices_delete');
+Route::get('/invoices', 'Invoice\InvoiceController@index')->name('all_clients_invoices_list');
+//Route::get('client/{client}/invoices', 'Invoice\InvoiceController@index')->name('client_invoices_list');
+//Route::get('client/{client}/invoice/{invoice}/card', 'Invoice\InvoiceController@card')->name('client_invoices_card');
+//Route::get('client/{client}/invoice/{invoice}/delete', 'Invoice\InvoiceController@delete')->name('client_invoices_delete');

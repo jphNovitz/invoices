@@ -59,7 +59,7 @@
                                     <i class="fas fa-arrow-left"></i> Retour</a>
                             </div>
                         </div>
-{{--{{dump($client->invoices)}}--}}
+
                         <h2>Liste des factures</h2>
                         <table class="table table-striped">
                             <thead>
