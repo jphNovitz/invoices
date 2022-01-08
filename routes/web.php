@@ -39,7 +39,7 @@ Route::put(null, 'Client\ClientController@save')->name('client_save');
 Route::get('/api/client/{client}', 'Client\ApiClientController@show')->name('api_client_infos');
 
 /* Invoices */
-Route::get('/invoices/add', 'Invoice\InvoiceController@create')->name('client_invoice_create');
+Route::get('/invoices/add/{new_client?}', 'Invoice\InvoiceController@create')->name('client_invoice_create');
 Route::get('/invoices/{invoice}', 'Invoice\InvoiceController@show')->name('invoice_show');
 Route::get('/invoices/{invoice}/edit', 'Invoice\InvoiceController@edit')->name('invoice_edit');
 Route::put('/invoices/update', 'Invoice\InvoiceController@update')->name('invoice_update');
