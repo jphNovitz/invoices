@@ -42,16 +42,24 @@
                                                     <i class="fas fa-info"></i>
                                                     Détail
                                                 </a>
-                                                <a href="{{route('client_update', ['client' => $client->id])}}"
-                                                   class="btn btn-sm btn-success">
-                                                    <i class="fas fa-edit"></i>
-                                                    Modifier
+                                                <a href="{{ route('client_invoice_create', ['new_client' => $client->id]) }}"
+                                                   class="btn btn-sm btn-primary">
+                                                    <i class="fas fa-info"></i>
+                                                    Créer une facture
                                                 </a>
-                                                <a href="{{route('client_delete', ['client' => $client->id])}}"
-                                                   class="btn btn-sm btn-danger">
-                                                    <i class="fas fa-trash"></i>
-                                                    Supprimer
-                                                </a>
+                                                @if(Auth::user() && Auth::user()->role == 'admin')
+                                                    <a href="{{route('client_update', ['client' => $client->id])}}"
+                                                       class="btn btn-sm btn-success">
+                                                        <i class="fas fa-edit"></i>
+                                                        Modifier
+                                                    </a>
+                                                    <a href="{{route('client_delete', ['client' => $client->id])}}"
+                                                       class="btn btn-sm btn-danger">
+                                                        <i class="fas fa-trash"></i>
+                                                        Supprimer
+                                                    </a>
+                                                @endif
+
                                             </div>
                                         </div>
                                     </div>
@@ -100,6 +108,8 @@
                                                     <i class="fas fa-trash"></i>
                                                     Supprimer
                                                 </a>
+
+
                                             </td>
                                         </tr>
                                     @endforeach
@@ -116,8 +126,8 @@
 @endsection
 
 @push('script')
-<script type="javascript">
+    <script type="javascript">
         alert();
 
-</script>
+    </script>
 @endpush
