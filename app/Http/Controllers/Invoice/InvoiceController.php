@@ -63,10 +63,11 @@ class InvoiceController extends Controller
 
 
 
-    public function create(){
-//        dd(Client::with(['user_id', \Auth::user()->id]));
+    public function create($new_client = null){
+
         return view('Invoice.create', [
-            'clients' => Client::with(['user_id', \Auth::user()->id])
+            'clients' => \Auth::user()->clients,
+            'client_id' => $new_client
         ]);
     }
 }

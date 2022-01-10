@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", function () {
     /*
     * Managing show / hide list items details
@@ -5,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     * wrap the trigger part in a .trigger-part class and the part to hide / show in .hidden-part
     *
      */
+
     const triggers = document.getElementsByClassName('trigger-part');
     if (triggers) {
         for (trigger of triggers) {
@@ -87,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
             let new_row = document.createElement('div');
             new_row.classList.add('row');
             new_row.classList.add('item-row');
-            new_row.innerHTML += `<div class="row item-row">
+            new_row.innerHTML += `
                         <div class="col-md-4">
                             <div class="form-group">
                                 <input type="text" id="description[]"
@@ -143,7 +145,6 @@ document.addEventListener("DOMContentLoaded", function () {
                                     class="btn btn-primary add-item">
                                 <i class="fa fa-plus" style="pointer-events:none"></i>
                             </button>
-                        </div>
                     </div>
 `
             row_container.append(new_row);

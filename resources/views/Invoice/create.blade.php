@@ -6,8 +6,8 @@
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
+$new_client = \App\Client::where('id', $client_id)->first();
 $user = auth()->user();
-$clients = $user->clients;
 $date = Carbon::now('Europe/Zurich')
 ?>
 @extends('layouts.app')
@@ -31,68 +31,111 @@ $date = Carbon::now('Europe/Zurich')
                 </div>
             </div>
             <div class="row justify-content-start">
-                <div class="col-md-4">
+                <div class="col-md-12 ">
+                    <form action="{{route('home')}}" method="POST">
+                        <div class="row">
+                            <div class="col-md-4">
 
-                    <h3 class="company">{{$user->company}}</h3>
-                    <p>
-                        {{$user->firstname}} {{$user->lastname}} <br/>
-                        {{$user->street}} {{$user->nr}} <br/>
-                        {{$user->city}} <br/>
-                        Email: {{$user->email}} <br/>
-                        Téléphone: {{$user->phone}}
-                    </p>
-                    <p><strong>
-                            TVA N°: {{$user->tva}}
-                        </strong></p>
-                </div>
-                <div class="col-md-4" style="padding-top: 50px;">
-                    <?php
-                    echo Form::open(['route' => 'home', 'method' => 'POST']);?>
-                    <div class="form-group">
-                        {!! Form::label('client', 'Client', ['class' => 'control-label']) !!}
-                        <select class="form-control" id="select-client">
-                            @foreach($clients as $client)
-                                <option value="-1">------</option>
-                                <option value="{{$client->id}}">{{$client->vat}} - {{$client->company}}</option>
-                            @endforeach
-                        </select>
-                        <div id="show-client-infos">
+                                <h3 class="company">{{$user->company}}</h3>
+                                <p>
+                                    {{$user->firstname}} {{$user->lastname}} <br/>
+                                    {{$user->street}} {{$user->nr}} <br/>
+                                    {{$user->city}} <br/>
+                                    Email: {{$user->email}} <br/>
+                                    Téléphone: {{$user->phone}}
+                                </p>
+                                <p><strong>
+                                        TVA N°: {{$user->tva}}
+                                    </strong></p>
+                            </div>
+                            <div class="col-md-4" style="padding-top: 50px;">
 
+                                <div class="form-group">
+                                    <label for="select-client">Client</label>
+                                    <select class="form-control" id="select-client">
+                                        @if($new_client)
+                                            <option value="{{$new_client->id}}" selected="selected">{{$new_client->vat}}
+                                                - {{$new_client->company}}</option>
+                                        @endif
+                                        @foreach($clients as $client)
+                                            <option value="{{$client->id}}">{{$client->vat}}
+                                                - {{$client->company}}</option>
+                                        @endforeach
+                                    </select>
+                                    <a href="{{Route('clients_home')}}"> Rechercher un client</a>
+                                    <div id="show-client-infos">
+
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
-                    </div>
-
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div id="items">
+                                    <div class="row item-row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <input type="text" id="description[]"
+                                                       name="description"
+                                                       class="form-control"
+                                                       value=""
+                                                />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <input type="text"
+                                                       name="price[]"
+                                                       class="form-control"
+                                                       value=""
+                                                />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <select class="custom-select"
+                                                        name="vat[]">
+                                                    <option value="0.06">6 %</option>
+                                                    <option value="0.12">12 %</option>
+                                                    <option value="0.21">21 %</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <div class="form-group">
+                                                <input type="text"
+                                                       name="qty[]"
+                                                       class="form-control"
+                                                       value=""
+                                                />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <div class="form-group">
+                                                <input name="discount[]"
+                                                       type="text"
+                                                       value=""
+                                                       class="form-control"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2" style="align-items: center">
+                                            <button type="button"
+                                                    class="btn btn-primary add-item">
+                                                <i class="fa fa-plus" style="pointer-events:none"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit"> envoi</button>
+                        </div>
+                    </form>
                 </div>
-
             </div>
-            <div id="items">
-                <div class="row item-row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="description[]">Description</label>
-                            <input type="text" id="description[]" name="description" class="form-control"/>
-                        </div>
-                    </div>
-                    <div class="col-md-1">
-                        <div class="form-group">
-                            <label for="qty[]">Qty</label>
-                            <input type="text" name="qty[]" class="form-control"/>
-                        </div>
-                    </div>
-                    <div class="col-md-1">
-                        <div class="form-group">
-                            <label for="discount[]" class="control-label">Reduc</label>
-                            <input name="discount[]" type="text" value="" class="form-control">
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <button type="button" class="btn btn-primary add-item"> +</button>
-                    </div>
-                </div>
-            </div>
-            <?php
-            echo Form::close();
-            ?>
         </div>
+    </div>
     </div>
 @endsection
 
