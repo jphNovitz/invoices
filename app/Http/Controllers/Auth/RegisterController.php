@@ -73,6 +73,7 @@ class RegisterController extends Controller
     {
 
 //        dump($data); die();
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],

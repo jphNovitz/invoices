@@ -32,7 +32,8 @@ $date = Carbon::now('Europe/Zurich')
             </div>
             <div class="row justify-content-start">
                 <div class="col-md-12 ">
-                    <form action="{{route('home')}}" method="POST">
+                    <form action="{{route('client_invoice_store')}}" method="POST">
+                        @csrf
                         <div class="row">
                             <div class="col-md-4">
 
@@ -52,7 +53,7 @@ $date = Carbon::now('Europe/Zurich')
 
                                 <div class="form-group">
                                     <label for="select-client">Client</label>
-                                    <select class="form-control" id="select-client">
+                                    <select class="form-control" id="select-client" name="client_id">
                                         @if($new_client)
                                             <option value="{{$new_client->id}}" selected="selected">{{$new_client->vat}}
                                                 - {{$new_client->company}}</option>
@@ -77,7 +78,7 @@ $date = Carbon::now('Europe/Zurich')
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <input type="text" id="description[]"
-                                                       name="description"
+                                                       name="items[0]['description']"
                                                        class="form-control"
                                                        value=""
                                                 />
@@ -86,7 +87,7 @@ $date = Carbon::now('Europe/Zurich')
                                         <div class="col-md-2">
                                             <div class="form-group">
                                                 <input type="text"
-                                                       name="price[]"
+                                                       name="items[0]['price']"
                                                        class="form-control"
                                                        value=""
                                                 />
@@ -95,7 +96,7 @@ $date = Carbon::now('Europe/Zurich')
                                         <div class="col-md-2">
                                             <div class="form-group">
                                                 <select class="custom-select"
-                                                        name="vat[]">
+                                                        name="item[]['vat']">
                                                     <option value="0.06">6 %</option>
                                                     <option value="0.12">12 %</option>
                                                     <option value="0.21">21 %</option>
@@ -105,7 +106,7 @@ $date = Carbon::now('Europe/Zurich')
                                         <div class="col-md-1">
                                             <div class="form-group">
                                                 <input type="text"
-                                                       name="qty[]"
+                                                       name="item[]['qty']"
                                                        class="form-control"
                                                        value=""
                                                 />
@@ -113,7 +114,7 @@ $date = Carbon::now('Europe/Zurich')
                                         </div>
                                         <div class="col-md-1">
                                             <div class="form-group">
-                                                <input name="discount[]"
+                                                <input name="item[]['discount']"
                                                        type="text"
                                                        value=""
                                                        class="form-control"

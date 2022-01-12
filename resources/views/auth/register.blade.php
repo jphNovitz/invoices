@@ -125,6 +125,7 @@
                                     <select id="city_id"
                                             name="city_id"
                                             class="form-control @error('city_id') is-invalid @enderror">
+                                        <option value="null">---</option>
                                         @foreach($cities as $city)
                                         <option value="{{$city->id}}">{{$city->city}}</option>
                                         @endforeach
