@@ -78,7 +78,7 @@ $date = Carbon::now('Europe/Zurich')
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <input type="text" id="description[]"
-                                                       name="items[0]['description']"
+                                                       name='items[0][description]'
                                                        class="form-control"
                                                        value=""
                                                 />
@@ -87,7 +87,7 @@ $date = Carbon::now('Europe/Zurich')
                                         <div class="col-md-2">
                                             <div class="form-group">
                                                 <input type="text"
-                                                       name="items[0]['price']"
+                                                       name="items[0][price]"
                                                        class="form-control"
                                                        value=""
                                                 />
@@ -96,7 +96,7 @@ $date = Carbon::now('Europe/Zurich')
                                         <div class="col-md-2">
                                             <div class="form-group">
                                                 <select class="custom-select"
-                                                        name="item[]['vat']">
+                                                        name="items[0][vat]">
                                                     <option value="0.06">6 %</option>
                                                     <option value="0.12">12 %</option>
                                                     <option value="0.21">21 %</option>
@@ -106,7 +106,7 @@ $date = Carbon::now('Europe/Zurich')
                                         <div class="col-md-1">
                                             <div class="form-group">
                                                 <input type="text"
-                                                       name="item[]['qty']"
+                                                       name="items[0][qty]"
                                                        class="form-control"
                                                        value=""
                                                 />
@@ -114,7 +114,7 @@ $date = Carbon::now('Europe/Zurich')
                                         </div>
                                         <div class="col-md-1">
                                             <div class="form-group">
-                                                <input name="item[]['discount']"
+                                                <input name="items[0][discount]"
                                                        type="text"
                                                        value=""
                                                        class="form-control"

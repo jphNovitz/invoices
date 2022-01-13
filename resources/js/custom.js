@@ -77,15 +77,18 @@ document.addEventListener("DOMContentLoaded", function () {
     const row = document.getElementsByClassName('item-row')[0];
     const add_buttons = document.getElementsByClassName('add-item');
     const remove_buttons = document.getElementsByClassName('remove-item');
-// console.log(add_buttons)
+    var i = 0;
+    // console.log(add_buttons)
 
     document.getElementById('items').addEventListener('click', function (e) {
 
         if (e.target.classList.contains('remove-item')) {
             let parent = document.getElementById('items');
             parent.removeChild(e.target.parentNode.parentNode)
+            // i--;
         }
         if (e.target.classList.contains('add-item')) {
+            i++;
             let new_row = document.createElement('div');
             new_row.classList.add('row');
             new_row.classList.add('item-row');
@@ -93,7 +96,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         <div class="col-md-4">
                             <div class="form-group">
                                 <input type="text" id="description[]"
-                                       name="description"
+                                       name="items[${i}]['description']"
                                        class="form-control"
                                        value=""
                                 />
@@ -102,7 +105,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         <div class="col-md-2">
                             <div class="form-group">
                                 <input type="text"
-                                       name="price[]"
+                                       name="items[${i}]['price']"
                                        class="form-control"
                                        value=""
                                 />
@@ -111,7 +114,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         <div class="col-md-2">
                             <div class="form-group">
                                 <select class="custom-select" 
-                                        name="vat[]">
+                                        name="items[${i}]['vat']">
                                         <option value="0.06" >6 % </option>
                                         <option value="0.12" >12 % </option>
                                         <option value="0.21" >21 % </option>
@@ -121,7 +124,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         <div class="col-md-1">
                             <div class="form-group">
                                 <input type="text"
-                                       name="qty[]"
+                                       name="items[${i}]['qty']"
                                        class="form-control"
                                        value=""
                                 />
@@ -129,7 +132,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         </div>
                         <div class="col-md-1">
                             <div class="form-group">
-                                <input name="discount[]"
+                                <input name="items[${i}]['discount']"
                                        type="text"
                                        value=""
                                        class="form-control"
