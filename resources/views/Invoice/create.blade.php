@@ -96,10 +96,10 @@ $date = Carbon::now('Europe/Zurich')
                                         <div class="col-md-2">
                                             <div class="form-group">
                                                 <select class="custom-select"
-                                                        name="items[0][vat]">
-                                                    <option value="0.06">6 %</option>
-                                                    <option value="0.12">12 %</option>
-                                                    <option value="0.21">21 %</option>
+                                                        name="items[0][vat_id]">
+                                                    <option value="1">6 %</option>
+                                                    <option value="2">12 %</option>
+                                                    <option value="3">21 %</option>
                                                 </select>
                                             </div>
                                         </div>
