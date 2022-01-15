@@ -8,7 +8,7 @@ class invoice extends Model
 {
     protected $table = 'invoice';
 
-    protected $fillable = ['reference'];
+    protected $fillable = ['reference', 'client_id', 'user_id'];
 
     public function Client(){
         return $this->belongsTo('App\Client');
