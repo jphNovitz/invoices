@@ -22,8 +22,8 @@ class InvoiceController extends Controller
     public function index()
     {
         $invoices = invoice::where('user_id', \Auth::user()->id)->orderBy('created_at', 'DESC')->get();
-        
-        return view('Invoice.list', [
+
+        return view('Invoice.index', [
             'invoices' => $invoices
         ]);
     }
@@ -74,9 +74,8 @@ class InvoiceController extends Controller
 
     public function create($new_client = null)
     {
-
         return view('Invoice.create', [
-            'clients' => \Auth::user()->clients,
+            'clients' => \Auth::user()->clients->unique(),
             'client_id' => $new_client
         ]);
     }
