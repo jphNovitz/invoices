@@ -115,9 +115,9 @@ document.addEventListener("DOMContentLoaded", function () {
                             <div class="form-group">
                                 <select class="custom-select" 
                                         name="items[${i}]['vat']">
-                                        <option value="0.06" >6 % </option>
-                                        <option value="0.12" >12 % </option>
-                                        <option value="0.21" >21 % </option>
+                                        <option value="1" >6 % </option>
+                                        <option value="2" >12 % </option>
+                                        <option value="3" >21 % </option>
                                 </select>
                             </div>
                         </div>
