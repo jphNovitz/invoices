@@ -100,9 +100,18 @@ class InvoiceController extends Controller
         $last_id = $last_added->id;
 
         // The items
+        $htva = 0 ;
+        $tva = 0 ;
+        $total = 0;
         foreach ($request->all()['items'] as $item) {
             $items_to_add[] = $item;
+            $htva_temp = $item->price * $item->qty - $item->discount;
+            $tva_temp = $item->tva;
+            $htva += $htva_temp;
+            $tva += $tva_temp;
+            $total = $htva_temp  + $tva_temp;
         }
+
         $last_added->items()->createMany($items_to_add);
 
         return redirect(route('all_users_invoices_list'))->with('success', 'invoice created');
