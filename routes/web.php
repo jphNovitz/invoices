@@ -41,7 +41,7 @@ Route::get('/api/client/{client}', 'Client\ApiClientController@show')->name('api
 /* Invoices */
 Route::get('/invoices/add/{new_client?}', 'Invoice\InvoiceController@create')->name('client_invoice_create');
 Route::post('/invoices/add', 'Invoice\InvoiceController@store')->name('client_invoice_store');
-Route::get('/invoices/{id}', 'Invoice\InvoiceController@show')->name('invoice_show');
+Route::get('/invoices/{id}', 'Invoice\InvoiceController@show')->name('invoice_show')->middleware('owned_invoice');
 Route::get('/invoices/{id}/delete', 'Invoice\InvoiceController@delete')->name('invoice_delete');
 Route::get('/invoices/{id}/edit', 'Invoice\InvoiceController@edit')->name('invoice_edit');
 Route::put('/invoices/update', 'Invoice\InvoiceController@update')->name('invoice_update');

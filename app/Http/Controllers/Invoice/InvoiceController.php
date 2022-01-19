@@ -16,7 +16,7 @@ class InvoiceController extends Controller
 
     public function __construct()
     {
-//       $this->user_id =   \Auth::user()->id;
+        $this->middleware('auth');
     }
 
     public function index()
@@ -27,13 +27,6 @@ class InvoiceController extends Controller
             'invoices' => $invoices
         ]);
     }
-//    public function index(client $client){
-//        $invoices = invoice::where('client_id', $client->id)->orderBy('created_at', 'DESC')->get();
-//        return view('Invoice.list', [
-//            'client'=>$client,
-//            'invoices' => $invoices
-//        ]);
-//    }
 
     public function card(client $client, invoice $invoice)
     {
@@ -44,13 +37,13 @@ class InvoiceController extends Controller
     /* idem au dessus choisir un ou voir differences */
     public function show($id)
     {
-
         $invoice = invoice::with('Client')->where('id', $id)->first();
-        $total = 0;
-        foreach ($invoice->items as $item):
-            $total += ((int)$item->price * (float)$item->vat['rate'] + (int)$item->price) * (int)$item->qty - (int)$item->discount;
-        endforeach;
-        return view('Invoice.show', ['invoice' => $invoice, 'total' => $total]);
+
+//        if ($invoice->user->id !==   auth()->user()->id) {
+//            return redirect()->route('user_invoices_list')->with("error", "Cette facture n'existe pas ou vous n'y avez pas accès");
+//        }
+
+        return view('Invoice.show', ['invoice' => $invoice]);
     }
 
     public function edit($id)
@@ -64,11 +57,13 @@ class InvoiceController extends Controller
         die('ok');
     }
 
-    public function delete(client $client, invoice $invoice)
+    public function delete($id = null)
     {
-        dump($client);
-        dump($invoice);
-        die();
+        if (!$id) return;
+
+        return view('Invoice.delete', [
+           'invoice' => invoice::where('id', $id)->first()
+        ]);
     }
 
 
