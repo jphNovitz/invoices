@@ -10,11 +10,11 @@ class invoice extends Model
 
     protected $fillable = ['reference', 'client_id', 'user_id'];
 
-    public function Client(){
+    public function client(){
         return $this->belongsTo('App\Client');
     }
 
-    public function User(){
+    public function user(){
         return $this->belongsTo('App\User');
     }
 

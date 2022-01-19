@@ -21,7 +21,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12">
-                                <a href="{{route('client_invoice_create')}}" class="btn btn-primary">Créer une
+                                <a href="{{route('invoice_create')}}" class="btn btn-primary">Créer une
                                     facture</a>
                             </div>
                         </div>

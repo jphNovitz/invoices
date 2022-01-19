@@ -12,7 +12,6 @@ use App\Http\Controllers\Controller;
 
 class InvoiceController extends Controller
 {
-    private $user_id;
 
     public function __construct()
     {
@@ -21,34 +20,30 @@ class InvoiceController extends Controller
 
     public function index()
     {
-        $invoices = invoice::where('user_id', \Auth::user()->id)->orderBy('created_at', 'DESC')->get();
+        $invoices = invoice::where('user_id', \Auth::user()->id)
+            ->orderBy('created_at', 'DESC')
+            ->get();
 
         return view('Invoice.index', [
             'invoices' => $invoices
         ]);
     }
 
-    public function card(client $client, invoice $invoice)
-    {
-
-        return view('Invoice.card', ['client' => $client, 'invoice' => $invoice]);
-    }
-
-    /* idem au dessus choisir un ou voir differences */
     public function show($id)
     {
-        $invoice = invoice::with('Client')->where('id', $id)->first();
-
-//        if ($invoice->user->id !==   auth()->user()->id) {
-//            return redirect()->route('user_invoices_list')->with("error", "Cette facture n'existe pas ou vous n'y avez pas accès");
-//        }
+        $invoice = invoice::with('Client')
+            ->where('id', $id)
+            ->first();
 
         return view('Invoice.show', ['invoice' => $invoice]);
     }
 
     public function edit($id)
     {
-        $invoice = invoice::with('Client')->where('id', $id)->first();
+        $invoice = invoice::with('Client')
+            ->where('id', $id)
+            ->first();
+
         return view('Invoice.update', ['invoice' => $invoice]);
     }
 
@@ -62,7 +57,7 @@ class InvoiceController extends Controller
         if (!$id) return;
 
         return view('Invoice.delete', [
-           'invoice' => invoice::where('id', $id)->first()
+            'invoice' => invoice::where('id', $id)->first()
         ]);
     }
 
@@ -83,7 +78,7 @@ class InvoiceController extends Controller
         $clients = Client::all();
         $client = $clients->find($request->client_id);
 
-          if(null === $user->clients()->find($client->id) ) $user->clients()->attach($client);
+        if (null === $user->clients()->find($client->id)) $user->clients()->attach($client);
 
         // The invoice
         $invoice_datas['reference'] = 'toto';
@@ -95,8 +90,8 @@ class InvoiceController extends Controller
         $last_id = $last_added->id;
 
         // The items
-        $htva = 0 ;
-        $tva = 0 ;
+        $htva = 0;
+        $tva = 0;
         $total = 0;
         foreach ($request->all()['items'] as $item) {
             $items_to_add[] = $item;
@@ -104,7 +99,7 @@ class InvoiceController extends Controller
             $tva_temp = $item->tva;
             $htva += $htva_temp;
             $tva += $tva_temp;
-            $total = $htva_temp  + $tva_temp;
+            $total = $htva_temp + $tva_temp;
         }
 
         $last_added->items()->createMany($items_to_add);
