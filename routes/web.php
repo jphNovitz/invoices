@@ -48,3 +48,4 @@ Route::get('/invoices/{id}', 'Invoice\InvoiceController@show')->name('invoice_sh
 Route::get('/invoices/add/{new_client?}', 'Invoice\InvoiceController@create')->name('invoice_create');
 Route::post('/invoices/add', 'Invoice\InvoiceController@store')->name('invoice_store');
 Route::get('/invoices/{id}/delete', 'Invoice\InvoiceController@delete')->name('invoice_delete')->middleware('owned_invoice');
+Route::post('/invoices/remove', 'Invoice\InvoiceController@remove')->name('invoice_remove');

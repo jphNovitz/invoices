@@ -52,15 +52,6 @@ class InvoiceController extends Controller
         die('ok');
     }
 
-    public function delete($id = null)
-    {
-        if (!$id) return;
-
-        return view('Invoice.delete', [
-            'invoice' => invoice::where('id', $id)->first()
-        ]);
-    }
-
 
     public function create($new_client = null)
     {
@@ -104,6 +95,23 @@ class InvoiceController extends Controller
 
         $last_added->items()->createMany($items_to_add);
 
-        return redirect(route('all_users_invoices_list'))->with('success', 'invoice created');
+        return redirect(route('invoices_list'))->with('success', 'invoice created');
+    }
+
+
+    public function delete($id = null)
+    {
+//        if (!$id) return;
+
+        return view('Invoice.delete', [
+            'invoice' => invoice::where('id', $id)->first()
+        ]);
+    }
+
+    public function remove(Request $request)
+    {
+        if ($request->_decline)  return redirect(route('invoices_list'))->with('message', 'invoice created');
+        $invoice = invoice::where('id', $request->_id)->first();
+        dd($invoice->id);
     }
 }
