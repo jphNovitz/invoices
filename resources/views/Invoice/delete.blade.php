@@ -40,8 +40,8 @@ $user = auth()->user();
                 <form action="{{route('invoice_remove')}}" method="post">
                     @csrf
                     <input type="hidden" name="_id" value="{{$invoice->id}}"/>
-                    <input type="submit" name="_accept" value="true" class="btn btn-success mr-5"/>
-                    <input type="submit" name="_decline" value="true" class="btn btn-danger mr-5"/>
+                    <input type="submit" name="_accept" value="Oui" class="btn btn-success mr-5"/>
+                    <input type="submit" name="_decline" value="Non" class="btn btn-danger mr-5"/>
                 </form>
             </div>
         </section>

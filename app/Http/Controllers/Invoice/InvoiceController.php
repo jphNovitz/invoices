@@ -22,7 +22,7 @@ class InvoiceController extends Controller
     {
         $invoices = invoice::where('user_id', \Auth::user()->id)
             ->orderBy('created_at', 'DESC')
-            ->get();
+            ->paginate(25);
 
         return view('Invoice.index', [
             'invoices' => $invoices
@@ -110,8 +110,14 @@ class InvoiceController extends Controller
 
     public function remove(Request $request)
     {
-        if ($request->_decline)  return redirect(route('invoices_list'))->with('message', 'invoice created');
+        if ($request->_decline )  return redirect(route('invoices_list'))->with('message', 'invoice created');
         $invoice = invoice::where('id', $request->_id)->first();
-        dd($invoice->id);
+        try{
+            $invoice->delete();
+            $message = 'Facture supprimée';
+        } catch (\Exception $e){
+            $message = 'Erreur dans la suppression';
+        }
+        return redirect()->route('invoices_list')->with('message', 'facture supprimée');
     }
 }
