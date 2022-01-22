@@ -96,6 +96,9 @@
                                 @endforeach
 
                             </div>
+                            <div class="col-md-12  pt-5">
+                            {{$invoices->links()}}
+                            </div>
                         </div>
 
                     </div>
