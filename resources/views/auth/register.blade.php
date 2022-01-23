@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Register') }}</div>
+                    <div class="card-header">{{ __('auth.Register') }}</div>
 
                     <div class="card-body">
                         <form method="POST" action="{{ route('register') }}">
@@ -13,7 +13,7 @@
 
                             <div class="form-group row">
                                 <label for="firstname"
-                                       class="col-md-4 col-form-label text-md-right">{{ __('Firstname') }}</label>
+                                       class="col-md-4 col-form-label text-md-right">{{ __('auth.Firstname') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="firstname" type="text"
@@ -31,7 +31,7 @@
 
                             <div class="form-group row">
                                 <label for="lastname"
-                                       class="col-md-4 col-form-label text-md-right">{{ __('Lastname') }}</label>
+                                       class="col-md-4 col-form-label text-md-right">{{ __('auth.Lastname') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="lastname" type="text"
@@ -48,7 +48,7 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('auth.Name') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="name" type="text"
@@ -66,7 +66,7 @@
 
                             <div class="form-group row">
                                 <label for="company"
-                                       class="col-md-4 col-form-label text-md-right">{{ __('Company') }}</label>
+                                       class="col-md-4 col-form-label text-md-right">{{ __('auth.Company') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="company" type="text"
@@ -84,7 +84,7 @@
 
                             <div class="form-group row">
                                 <label for="street"
-                                       class="col-md-4 col-form-label text-md-right">{{ __('Street') }}</label>
+                                       class="col-md-4 col-form-label text-md-right">{{ __('auth.Street') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="street" type="text"
@@ -102,7 +102,7 @@
 
                             <div class="form-group row">
                                 <label for="nr"
-                                       class="col-md-4 col-form-label text-md-right">{{ __('Nr') }}</label>
+                                       class="col-md-4 col-form-label text-md-right">{{ __('auth.Nr') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="nr" type="text"
@@ -119,7 +119,7 @@
                             </div>
                             <div class="form-group row">
                                 <label for="city_id"
-                                       class="col-md-4 col-form-label text-md-right">{{ __('City') }}</label>
+                                       class="col-md-4 col-form-label text-md-right">{{ __('auth.City') }}</label>
 
                                 <div class="col-md-6">
                                     <select id="city_id"
@@ -141,7 +141,7 @@
 
                             <div class="form-group row">
                                 <label for="tva"
-                                       class="col-md-4 col-form-label text-md-right">{{ __('Vat') }}</label>
+                                       class="col-md-4 col-form-label text-md-right">{{ __('auth.Vat') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="tva" type="text"
@@ -159,7 +159,7 @@
 
                             <div class="form-group row">
                                 <label for="phone"
-                                       class="col-md-4 col-form-label text-md-right">{{ __('Phone') }}</label>
+                                       class="col-md-4 col-form-label text-md-right">{{ __('auth.Phone') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="phone" type="text"
@@ -177,7 +177,7 @@
 
                             <div class="form-group row">
                                 <label for="email"
-                                       class="col-md-4 col-form-label text-md-right">{{ __('Email') }}</label>
+                                       class="col-md-4 col-form-label text-md-right">{{ __('auth.Email') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="email" type="text"
@@ -225,7 +225,7 @@
 
                             <div class="form-group row">
                                 <label for="prefix"
-                                       class="col-md-4 col-form-label text-md-right">{{ __('First Id') }}</label>
+                                       class="col-md-4 col-form-label text-md-right">{{ __('auth.First Id') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="prefix"  type="number"
@@ -236,7 +236,7 @@
 
                             <div class="form-group row">
                                 <label for="password"
-                                       class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                                       class="col-md-4 col-form-label text-md-right">{{ __('auth.Password') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="password" type="password"
@@ -253,7 +253,7 @@
 
                             <div class="form-group row">
                                 <label for="password-confirm"
-                                       class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+                                       class="col-md-4 col-form-label text-md-right">{{ __('auth.Confirm Password') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="password-confirm" type="password" class="form-control"
@@ -264,7 +264,7 @@
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
-                                        {{ __('Register') }}
+                                        {{ __('btn.Register') }}
                                     </button>
                                 </div>
                             </div>
