@@ -42,7 +42,7 @@
                                                     <i class="fas fa-info"></i>
                                                     Détail
                                                 </a>
-                                                <a href="{{ route('client_invoice_create', ['new_client' => $client->id]) }}"
+                                                <a href="{{ route('invoice_create', ['new_client' => $client->id]) }}"
                                                    class="btn btn-sm btn-primary">
                                                     <i class="fas fa-info"></i>
                                                     Créer une facture

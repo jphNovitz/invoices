@@ -14,9 +14,9 @@ class AddTotalAmounts extends Migration
     public function up()
     {
         Schema::table('invoice', function (Blueprint $table) {
-            $table->integer('exvat');
-            $table->integer('vat');
-            $table->integer('total');
+            $table->float('exvat')->default(0.0);
+            $table->float('vat')->default(0.0);
+            $table->float('total')->default(0.0);
         });
     }
 

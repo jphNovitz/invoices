@@ -20,7 +20,7 @@ class UserOwnInvoice
             (null === $id = filter_var($request->getRequestUri(), FILTER_SANITIZE_NUMBER_INT)) ||
             (null === $invoice = Invoice::where('id', $id)->first()) ||
             ($invoice->user->id !== auth()->user()->id)
-        ) return redirect()->route('invoices_list')->with("message", "error |Cette facture n'existe pas ou vous n'y avez pas accès");
+        ) return redirect()->route('invoice_create')->with("message", "Création d'une facture");
 
         return $next($request);
     }

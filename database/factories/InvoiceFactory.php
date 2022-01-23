@@ -20,7 +20,7 @@ $factory->define(Invoice::class, function (Faker $faker) {
 
     $count_clients = App\Client::count();
     return [
-        'reference' => $faker->text(15),
+        'reference' => $faker->text(5).'-'.$faker->numberBetween(1, 5),
         'user_id' => $faker->numberBetween(1, 10),
         'client_id' => $faker->numberBetween(1, $count_clients),
     ];

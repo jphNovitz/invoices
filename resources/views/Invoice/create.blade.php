@@ -32,7 +32,7 @@ $date = Carbon::now('Europe/Zurich')
             </div>
             <div class="row justify-content-start">
                 <div class="col-md-12 ">
-                    <form action="{{route('client_invoice_store')}}" method="POST">
+                    <form action="{{route('invoice_store')}}" method="POST">
                         @csrf
                         <div class="row">
                             <div class="col-md-4">

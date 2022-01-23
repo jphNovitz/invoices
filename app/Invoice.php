@@ -11,13 +11,21 @@ class Invoice extends Model
 
     protected $table = 'invoice';
 
-    protected $fillable = ['reference', 'client_id', 'user_id'];
+    protected $fillable = [
+        'reference',
+        'client_id',
+        'user_id',
+        'exvat',
+        'vat',
+        'total'];
 
-    public function client(){
+    public function client()
+    {
         return $this->belongsTo('App\Client');
     }
 
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo('App\User');
     }
 

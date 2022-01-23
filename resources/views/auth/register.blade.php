@@ -212,6 +212,29 @@
                             </div>
 
                             <div class="form-group row">
+                                <label for="prefix"
+                                       class="col-md-4 col-form-label text-md-right">{{ __('Prefix') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="prefix"  type="text"
+                                           class="form-control @error('prefix') is-invalid @enderror"
+                                           name="prefix" value="{{ old('prefix') }}"
+                                           autofocus />
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="prefix"
+                                       class="col-md-4 col-form-label text-md-right">{{ __('First Id') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="prefix"  type="number"
+                                           class="form-control @error('first_id') is-invalid @enderror"
+                                           name="prefix" value="1" min="1"   autofocus />
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
                                 <label for="password"
                                        class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 

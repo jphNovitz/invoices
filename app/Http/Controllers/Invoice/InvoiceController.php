@@ -71,27 +71,42 @@ class InvoiceController extends Controller
 
         if (null === $user->clients()->find($client->id)) $user->clients()->attach($client);
 
-        // The invoice
-        $invoice_datas['reference'] = 'toto';
-        $invoice_datas['client_id'] = $client->id;
-        $invoice_datas['user_id'] = $user->id;
-
-        $invoice = new invoice();
-        $last_added = $invoice->create($invoice_datas);
-        $last_id = $last_added->id;
-
         // The items
         $htva = 0;
         $tva = 0;
         $total = 0;
         foreach ($request->all()['items'] as $item) {
+
             $items_to_add[] = $item;
-            $htva_temp = $item->price * $item->qty - $item->discount;
-            $tva_temp = $item->tva;
+            $htva_temp = $item['price'] * $item['qty'] - $item['discount'];
+            $vat_rate = Vat::where('id', $item['vat_id'])->first()->rate;
+            $tva_temp = $item['price'] * $vat_rate;
             $htva += $htva_temp;
             $tva += $tva_temp;
             $total = $htva_temp + $tva_temp;
         }
+
+        // The invoice
+        $last_reference = Invoice::where('user_id', $user->id)
+            ->orderBy('id', 'desc')->first()->reference;
+
+        if (!$last_reference){
+            $reference_parts[0] = $user->prefix;
+            $reference_parts[1] = --$user->first_id;
+        } else $reference_parts = explode('-', $last_reference);
+
+        $invoice_datas['reference'] = $reference_parts[0].'-'.++$reference_parts[1];
+        $invoice_datas['client_id'] = $client->id;
+        $invoice_datas['user_id'] = $user->id;
+        $invoice_datas['vat'] = $tva;
+        $invoice_datas['exvat'] = $htva;
+        $invoice_datas['total'] = $total;
+
+        $invoice = new invoice();
+        $last_added = $invoice->create($invoice_datas);
+        $last_id = $last_added->id;
+
+
 
         $last_added->items()->createMany($items_to_add);
 
