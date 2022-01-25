@@ -15,6 +15,7 @@ class InvoiceController extends Controller
 
     public function __construct()
     {
+
         $this->middleware('auth');
     }
 
@@ -53,11 +54,11 @@ class InvoiceController extends Controller
     }
 
 
-    public function create($new_client = null)
+    public function create($id = null)
     {
         return view('Invoice.create', [
             'clients' => \Auth::user()->clients->unique(),
-            'client_id' => $new_client
+            'client_id' => $id
         ]);
     }
 
