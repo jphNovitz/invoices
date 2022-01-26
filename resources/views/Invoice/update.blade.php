@@ -16,6 +16,7 @@ $date = Carbon::now('Europe/Zurich')
 @section('content')
     <?php
     echo Form::open(['route' => 'invoice_update', 'method' => 'PUT']);?>
+    <input type="hidden" name="id" value="{{$invoice->id}}"/>
     <div class="container bg-white p-3">
         <div class="grid">
             <div class="row">
@@ -90,13 +91,18 @@ $date = Carbon::now('Europe/Zurich')
                 </div>
             </div>
             <div id="items">
+                <?php $id_loop = 0 ?>
                 @foreach ($invoice->items as $item)
+                    <input type="hidden"
+                           name="items[{{ $id_loop }}][id]"
+                           value="{{$item->id}}" >
+
                     <div class="row item-row">
                         <div class="col-md-4">
                             <div class="form-group">
                                 {{--<label for="description[]">Description</label>--}}
                                 <input type="text" id="description[]"
-                                       name="description"
+                                       name='items[{{ $id_loop }}][description]'
                                        class="form-control"
                                        value="{{$item->description}}"
                                 />
@@ -106,7 +112,7 @@ $date = Carbon::now('Europe/Zurich')
                             <div class="form-group">
                                 {{--<label for="qty[]">Qty</label>--}}
                                 <input type="text"
-                                       name="price[]"
+                                       name="items[{{ $id_loop }}][price]"
                                        class="form-control"
                                        value="{{$item->price}}"
                                 />
@@ -115,9 +121,9 @@ $date = Carbon::now('Europe/Zurich')
                         <div class="col-md-2">
                             <div class="form-group">
                                 <select class="custom-select"
-                                        name="vat[]">
+                                        name="items[{{ $id_loop }}][vat_id]">
                                     @foreach($vat_all as $vat_one)
-                                        <option value="{{$vat_one->rate}}"
+                                        <option value="{{$vat_one->id}}"
                                                 @if ($vat_one->id == $item->vat->id)
                                                 selected=selected
                                                 @endif
@@ -131,8 +137,8 @@ $date = Carbon::now('Europe/Zurich')
                         <div class="col-md-1">
                             <div class="form-group">
                                 {{--<label for="qty[]">Qty</label>--}}
-                                <input type="text"
-                                       name="qty[]"
+                                <input type="number"
+                                       name="items[{{ $id_loop }}][qty]"
                                        class="form-control"
                                        value="{{$item->qty}}"
                                 />
@@ -141,9 +147,9 @@ $date = Carbon::now('Europe/Zurich')
                         <div class="col-md-1">
                             <div class="form-group">
                                 {{--<label for="discount[]" class="control-label">Reduc</label>--}}
-                                <input name="discount[]"
+                                <input name="items[{{ $id_loop }}][discount]"
                                        type="text"
-                                       value="{{$item->qty}}"
+                                       value="{{$item->discount}}"
                                        class="form-control"
                                 />
                             </div>
@@ -159,7 +165,9 @@ $date = Carbon::now('Europe/Zurich')
                             </button>
                         </div>
                     </div>
+                        <?php $id_loop++ ?>
                 @endforeach
+
             </div>
             <div>
                 {!! csrf_field() !!}

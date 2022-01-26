@@ -48,9 +48,48 @@ class InvoiceController extends Controller
         return view('Invoice.update', ['invoice' => $invoice]);
     }
 
-    public function update()
+    public function update(Request $request)
     {
-        die('ok');
+        // The items
+        $htva = 0;
+        $tva = 0;
+        $total = 0;
+        dd($request->all()['items']);
+        foreach ($request->all()['items'] as $item) {
+//dd($item['price']);
+            $datas_to_add[] = $item;
+            $htva_temp = $item['price'] * $item['qty'] - $item['discount'];
+            $vat_rate = Vat::where('id', $item['vat_id'])->first()->rate;
+            $tva_temp = $item['price'] * $vat_rate;
+            $htva += $htva_temp;
+            $tva += $tva_temp;
+            $total = $htva_temp + $tva_temp;
+        }
+
+        // The invoice
+
+        $invoice_datas['vat'] = $tva;
+        $invoice_datas['exvat'] = $htva;
+        $invoice_datas['total'] = $total;
+//dd($items_to_add);
+        $invoice = Invoice::where('id', $request->id)->first();
+        if ($invoice->save($invoice_datas)) {
+
+            foreach ($datas_to_add as $data) {
+                $item_tmp = Item::where('id', $data['id'])->first();
+                $item_tmp->description = $data['description'] ;
+                $item_tmp->price = $data['price'] ;
+                $item_tmp->qty = $data['qty'];
+                $item_tmp->discount = $data['discount'];
+                $item_tmp->vat_id = $data['vat_id'];
+                $item_tmp->update();
+//                dd($item_tmp);
+//                $items_to_add[] = $item_tmp;
+            }
+//           dd($datas_to_add);
+//            $invoice->items()->saveMany($items_to_add);
+        }
+        return redirect(route('invoices_list'))->with('success', 'invoice updated');
     }
 
 
@@ -91,12 +130,12 @@ class InvoiceController extends Controller
         $last_reference = Invoice::where('user_id', $user->id)
             ->orderBy('id', 'desc')->first()->reference;
 
-        if (!$last_reference){
+        if (!$last_reference) {
             $reference_parts[0] = $user->prefix;
             $reference_parts[1] = --$user->first_id;
         } else $reference_parts = explode('-', $last_reference);
 
-        $invoice_datas['reference'] = $reference_parts[0].'-'.++$reference_parts[1];
+        $invoice_datas['reference'] = $reference_parts[0] . '-' . ++$reference_parts[1];
         $invoice_datas['client_id'] = $client->id;
         $invoice_datas['user_id'] = $user->id;
         $invoice_datas['vat'] = $tva;
@@ -106,7 +145,6 @@ class InvoiceController extends Controller
         $invoice = new invoice();
         $last_added = $invoice->create($invoice_datas);
         $last_id = $last_added->id;
-
 
 
         $last_added->items()->createMany($items_to_add);
@@ -126,12 +164,12 @@ class InvoiceController extends Controller
 
     public function remove(Request $request)
     {
-        if ($request->_decline )  return redirect(route('invoices_list'))->with('message', 'invoice created');
+        if ($request->_decline) return redirect(route('invoices_list'))->with('message', 'invoice created');
         $invoice = invoice::where('id', $request->_id)->first();
-        try{
+        try {
             $invoice->delete();
             $message = 'Facture supprimée';
-        } catch (\Exception $e){
+        } catch (\Exception $e) {
             $message = 'Erreur dans la suppression';
         }
         return redirect()->route('invoices_list')->with('message', 'facture supprimée');

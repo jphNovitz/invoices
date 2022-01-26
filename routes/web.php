@@ -38,14 +38,14 @@ Route::put(null, 'Client\ClientController@save')->name('client_save');
 
 Route::get('/api/client/{client}', 'Client\ApiClientController@show')->name('api_client_infos');
 
-/* Invoices */
-Route::get('/invoices/{id}/edit', 'Invoice\InvoiceController@edit')->name('invoice_edit');
-Route::put('/invoices/update', 'Invoice\InvoiceController@update')->name('invoice_update');
+/* Invoices */;
 
 /* Users's invoices */
 Route::get('/invoices', 'Invoice\InvoiceController@index')->name('invoices_list');
 Route::get('/invoice/show/{id}', 'Invoice\InvoiceController@show')->name('invoice_show')->middleware('owned_invoice');
 Route::get('/invoice/add/{id?}', 'Invoice\InvoiceController@create')->name('invoice_create');
 Route::post('/invoice/store', 'Invoice\InvoiceController@store')->name('invoice_store');
+Route::get('/invoice/edit/{id}', 'Invoice\InvoiceController@edit')->name('invoice_edit')->middleware('owned_invoice');
+Route::put('/invoices/update', 'Invoice\InvoiceController@update')->name('invoice_update');
 Route::get('/invoice/delete/{id}', 'Invoice\InvoiceController@delete')->name('invoice_delete')->middleware('owned_invoice');
 Route::post('/invoice/remove', 'Invoice\InvoiceController@remove')->name('invoice_remove');
