@@ -93,12 +93,11 @@ $date = Carbon::now('Europe/Zurich')
             <div id="items">
                 <?php $id_loop = 0 ?>
                 @foreach ($invoice->items as $item)
-                    <input type="hidden"
-                           name="items[{{ $id_loop }}][id]"
-                           value="{{$item->id}}" >
-
                     <div class="row item-row">
                         <div class="col-md-4">
+                            <input type="hidden"
+                                   name="items[{{ $id_loop }}][id]"
+                                   value="{{$item->id}}" >
                             <div class="form-group">
                                 {{--<label for="description[]">Description</label>--}}
                                 <input type="text" id="description[]"

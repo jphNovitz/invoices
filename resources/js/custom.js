@@ -96,7 +96,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         <div class="col-md-4">
                             <div class="form-group">
                                 <input type="text" id="description[]"
-                                       name="items[${i}]['description']"
+                                       name="items[${i}][description]"
                                        class="form-control"
                                        value=""
                                 />
@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         <div class="col-md-2">
                             <div class="form-group">
                                 <input type="text"
-                                       name="items[${i}]['price']"
+                                       name="items[${i}][price]"
                                        class="form-control"
                                        value=""
                                 />
@@ -114,7 +114,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         <div class="col-md-2">
                             <div class="form-group">
                                 <select class="custom-select" 
-                                        name="items[${i}]['vat']">
+                                        name="items[${i}][vat_id]">
                                         <option value="1" >6 % </option>
                                         <option value="2" >12 % </option>
                                         <option value="3" >21 % </option>
@@ -124,7 +124,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         <div class="col-md-1">
                             <div class="form-group">
                                 <input type="text"
-                                       name="items[${i}]['qty']"
+                                       name="items[${i}][qty]"
                                        class="form-control"
                                        value=""
                                 />
@@ -132,7 +132,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         </div>
                         <div class="col-md-1">
                             <div class="form-group">
-                                <input name="items[${i}]['discount']"
+                                <input name="items[${i}][discount]"
                                        type="text"
                                        value=""
                                        class="form-control"

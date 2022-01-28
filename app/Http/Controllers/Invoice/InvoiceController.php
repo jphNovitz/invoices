@@ -9,6 +9,7 @@ use App\Item;
 use App\Vat;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 class InvoiceController extends Controller
 {
@@ -50,14 +51,44 @@ class InvoiceController extends Controller
 
     public function update(Request $request)
     {
+        $invoice = Invoice::where('id', $request->id)->first();
+
         // The items
         $htva = 0;
         $tva = 0;
         $total = 0;
-        dd($request->all()['items']);
+//        dd($request->all()['items']);
+//dd($request->all()['items']);
+        $items_ids = $invoice->items()->pluck('item_id')->toArray();
+        $form_items_ids = array_map(function ($item) {
+            if (isset($item['id']))
+                return $item['id'];
+        }, $request->all()['items']);
+//dd($form_items_ids);
+        $to_remove = array_diff($items_ids, $form_items_ids);
+//        dd($to_remove);
+        foreach ($to_remove as $remove) {
+            $invoice->items()->detach($remove);
+        }
+
+//dd($request->all()['items']);
         foreach ($request->all()['items'] as $item) {
-//dd($item['price']);
-            $datas_to_add[] = $item;
+
+            // update the related item
+            if (isset($item['id']))
+            {
+                $item_tmp = Item::where('id', $item['id'])->first();
+                $item_tmp->fill($item);
+                $item_tmp->update();
+            }
+                else
+                {
+                    $item_tmp = Item::create($item);
+                    $invoice->items()->save($item_tmp);
+                }
+
+
+            // update the invoice totals
             $htva_temp = $item['price'] * $item['qty'] - $item['discount'];
             $vat_rate = Vat::where('id', $item['vat_id'])->first()->rate;
             $tva_temp = $item['price'] * $vat_rate;
@@ -71,24 +102,9 @@ class InvoiceController extends Controller
         $invoice_datas['vat'] = $tva;
         $invoice_datas['exvat'] = $htva;
         $invoice_datas['total'] = $total;
-//dd($items_to_add);
-        $invoice = Invoice::where('id', $request->id)->first();
-        if ($invoice->save($invoice_datas)) {
 
-            foreach ($datas_to_add as $data) {
-                $item_tmp = Item::where('id', $data['id'])->first();
-                $item_tmp->description = $data['description'] ;
-                $item_tmp->price = $data['price'] ;
-                $item_tmp->qty = $data['qty'];
-                $item_tmp->discount = $data['discount'];
-                $item_tmp->vat_id = $data['vat_id'];
-                $item_tmp->update();
-//                dd($item_tmp);
-//                $items_to_add[] = $item_tmp;
-            }
-//           dd($datas_to_add);
-//            $invoice->items()->saveMany($items_to_add);
-        }
+        $invoice->save($invoice_datas);
+
         return redirect(route('invoices_list'))->with('success', 'invoice updated');
     }
 
