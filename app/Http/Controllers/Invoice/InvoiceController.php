@@ -7,6 +7,7 @@ use App\Http\Controllers\Client\ClientController;
 use App\Invoice;
 use App\Item;
 use App\Vat;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
@@ -57,36 +58,29 @@ class InvoiceController extends Controller
         $htva = 0;
         $tva = 0;
         $total = 0;
-//        dd($request->all()['items']);
-//dd($request->all()['items']);
+
         $items_ids = $invoice->items()->pluck('item_id')->toArray();
         $form_items_ids = array_map(function ($item) {
-            if (isset($item['id']))
-                return $item['id'];
+            if (isset($item['id'])) return $item['id'];
         }, $request->all()['items']);
-//dd($form_items_ids);
+
         $to_remove = array_diff($items_ids, $form_items_ids);
-//        dd($to_remove);
+
         foreach ($to_remove as $remove) {
             $invoice->items()->detach($remove);
         }
 
-//dd($request->all()['items']);
         foreach ($request->all()['items'] as $item) {
 
             // update the related item
-            if (isset($item['id']))
-            {
+            if (isset($item['id'])) {
                 $item_tmp = Item::where('id', $item['id'])->first();
                 $item_tmp->fill($item);
                 $item_tmp->update();
+            } else {
+                $item_tmp = Item::create($item);
+                $invoice->items()->save($item_tmp);
             }
-                else
-                {
-                    $item_tmp = Item::create($item);
-                    $invoice->items()->save($item_tmp);
-                }
-
 
             // update the invoice totals
             $htva_temp = $item['price'] * $item['qty'] - $item['discount'];
@@ -103,9 +97,12 @@ class InvoiceController extends Controller
         $invoice_datas['exvat'] = $htva;
         $invoice_datas['total'] = $total;
 
-        $invoice->save($invoice_datas);
-
-        return redirect(route('invoices_list'))->with('success', 'invoice updated');
+        try {
+            $invoice->save($invoice_datas);
+            return redirect(route('invoices_list'))->with('message', 'invoice updated');
+        } catch (QueryException $queryException) {
+            return redirect()->back()->with('message', 'Erreur');
+        }
     }
 
 
