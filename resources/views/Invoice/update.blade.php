@@ -170,7 +170,7 @@ $date = Carbon::now('Europe/Zurich')
             </div>
             <div>
                 {!! csrf_field() !!}
-                <input type="submit" class="btn btn-primary" />
+                <input type="submit" class="btn btn-primary" value="{{__('btn.Mpdate')}}" />
             </div>
             <?php
             echo Form::close();

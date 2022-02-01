@@ -21,8 +21,9 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12">
-                                <a href="{{route('invoice_create')}}" class="btn btn-primary">Créer une
-                                    facture</a>
+                                <a href="{{route('invoice_create')}}" class="btn btn-primary">
+                                    {{__('btn.New_invoice')}}
+                                </a>
                             </div>
                         </div>
 
@@ -74,19 +75,19 @@
                                                         <a href="{{route('invoice_show', ['id'=>$invoice->id])}}"
                                                            class="btn btn-sm btn-primary">
                                                             <i class="fas fa-info"></i>
-                                                            Détails
+                                                            {{__('btn.Details')}}
                                                         </a>
 
                                                         <a href="{{route('invoice_edit', ['id'=>$invoice->id])}}"
                                                            class="btn btn-sm btn-primary">
                                                             <i class="fas fa-info"></i>
-                                                            Modifier
+                                                            {{__('btn.Update')}}
                                                         </a>
 
                                                         <a href="{{route('invoice_delete', ['id'=>$invoice->id])}}"
                                                            class="btn btn-sm btn-danger">
                                                             <i class="fas fa-trash"></i>
-                                                            Supprimer
+                                                            {{__('btn.Remove')}}
                                                         </a>
                                                     </div>
                                                 </div>
