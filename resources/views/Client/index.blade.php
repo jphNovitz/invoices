@@ -11,7 +11,9 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12">
-                                <a href="{{route('clients_create')}}" class="btn btn-primary">Ajouter un client</a>
+                                <a href="{{route('clients_create')}}" class="btn btn-primary">
+                                    {{__('btn.New_client')}}
+                                </a>
                             </div>
                         </div>
 
@@ -45,7 +47,7 @@
                                                 <a href="{{ route('invoice_create', ['new_client' => $client->id]) }}"
                                                    class="btn btn-sm btn-primary">
                                                     <i class="fas fa-info"></i>
-                                                    {{__('New Invoice')}}Créer une facture
+                                                    {{__('btn.New_invoice')}}
                                                 </a>
                                                 @if(Auth::user() && Auth::user()->role == 'admin')
                                                     <a href="{{route('client_update', ['client' => $client->id])}}"
