@@ -30,7 +30,8 @@ class Client extends Model
 
     public function Invoices(){
         $id = \Auth::user()->id;
-        return $this->hasMany('App\Invoice')->where('user_id','==', $id);
+        return $this->hasMany('App\Invoice')->where('user_id', $id);
+//        return $this->hasMany('App\Invoice')->where('user_id','==', $id);
     }
 
     public function Users(){

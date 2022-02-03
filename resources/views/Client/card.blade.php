@@ -66,7 +66,7 @@
                             <tr>
                                 <th>Référence</th>
                                 <th>Créé</th>
-                                <th>Modifier</th>
+                                <th>Montant</th>
                                 <th></th>
                             </tr>
                             </thead>
@@ -76,11 +76,28 @@
                             <tr>
                                 <td>{{$invoice->reference}}</td>
                                 <td>{{$invoice->created_at}}</td>
-                                <td>{{$invoice->updated_at}}</td>
+                                <td>{{$invoice->total}}</td>
                                 <td>
-                                    <a href="{{route('invoice_edit', ['invoice'=>$invoice->id])}}" class="btn btn-primary btn-success btn-xs"><i class="fas fa-edit"></i></a>
-                                    <a href="{{route('invoice_show', ['invoice'=>$invoice->id])}}" class="btn btn-primary btn-primary btn-xs"><i class="fas fa-search-plus"></i></a>
-                                    <a href="{{route('invoice_show', ['invoice'=>$invoice->id])}}" class="btn btn-primary btn-danger btn-xs"><i class="fas fa-trash"></i></a>
+                                    <a href="{{route('invoice_show', ['id'=>$invoice->id])}}"
+                                       class="btn btn-sm btn-primary">
+                                        <i class="fas fa-info"></i>
+                                        {{__('btn.Details')}}
+                                    </a>
+
+                                    <a href="{{route('invoice_edit', ['id'=>$invoice->id])}}"
+                                       class="btn btn-sm btn-primary">
+                                        <i class="fas fa-info"></i>
+                                        {{__('btn.Update')}}
+                                    </a>
+
+                                    <a href="{{route('invoice_delete', ['id'=>$invoice->id])}}"
+                                       class="btn btn-sm btn-danger">
+                                        <i class="fas fa-trash"></i>
+                                        {{__('btn.Remove')}}
+                                    </a>
+{{--                                    <a href="{{route('invoice_edit', ['invoice'=>$invoice->id])}}" class="btn btn-primary btn-success btn-xs"><i class="fas fa-edit"></i></a>--}}
+{{--                                    <a href="{{route('invoice_show', ['invoice'=>$invoice->id])}}" class="btn btn-primary btn-primary btn-xs"><i class="fas fa-search-plus"></i></a>--}}
+{{--                                    <a href="{{route('invoice_show', ['invoice'=>$invoice->id])}}" class="btn btn-primary btn-danger btn-xs"><i class="fas fa-trash"></i></a>--}}
                                 </td>
                             </tr>
                             {{$invoice->id}}

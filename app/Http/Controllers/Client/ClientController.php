@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Client;
 
-use App\client;
+use App\Client;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
@@ -26,18 +26,22 @@ class ClientController extends Controller
      */
     public function index()
     {
-        $clients = \App\Client::all();
-        return view('Client.index', ['clients' => $clients]);
+
+        return view('Client.index', ['clients' => \Auth::user()->clients]);
     }
 
     public function show(client $client)
     {
+
+//        foreach ($client->invoices as $invoice){
+//        dd($invoice);
+//    }
         return view('Client.card', ['client' => $client]);
     }
 
     public function create()
     {
-        $client = new \App\client();
+        $client = new \App\Client();
         return view('Client.create', ['client' => $client]);
     }
 
@@ -114,4 +118,5 @@ class ClientController extends Controller
 
         }
     }
+
 }
