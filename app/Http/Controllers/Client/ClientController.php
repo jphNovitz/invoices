@@ -26,23 +26,43 @@ class ClientController extends Controller
      */
     public function index()
     {
-
-        return view('Client.index', ['clients' => \Auth::user()->clients]);
+        $clients = \Auth::user()->clients()
+            ->orderBy('created_at', 'DESC')
+            ->paginate(25);
+        return view('Client.index', ['clients' => $clients]);
     }
 
     public function show(client $client)
     {
 
-//        foreach ($client->invoices as $invoice){
-//        dd($invoice);
-//    }
         return view('Client.card', ['client' => $client]);
     }
 
-    public function create()
+    public function findClientToAdd()
     {
-        $client = new \App\Client();
-        return view('Client.create', ['client' => $client]);
+        $clients = Client::whereNotIn('id', \Auth::user()->clients->modelKeys())->paginate(25);;
+
+        return view('Client.search-add', ['clients' => $clients]);
+    }
+
+    public function add($id = null)
+    {
+        if (!$id) return;
+
+        $client = Client::find($id);
+        try {
+            \Auth::user()->clients()->attach($client);
+            $message = 'Client_Added';
+        } catch (\Exception $e) {
+            $message = 'Error';
+        }
+
+        return redirect(route('clients_home'))->with('message', $message);
+    }
+
+    public function create($id = null)
+    {
+        return view('Client.create', ['client' => new \App\Client()]);
     }
 
     public function store(Request $request)
@@ -68,10 +88,10 @@ class ClientController extends Controller
 
     public function update(Client $client)
     {
-        if (!$client){
+        if (!$client) {
             return redirect()->route('client_home')->with('error', 'Client inconnu !');
         }
-        return view('Client.client-update', ['client'=>$client]);
+        return view('Client.client-update', ['client' => $client]);
     }
 
     public function save(Request $request)
@@ -103,7 +123,7 @@ class ClientController extends Controller
 
     public function delete(Request $request, Client $client)
     {
-        if (!$client){
+        if (!$client) {
             return redirect()->route('clients_home')->with('error', 'Client inconnu !');
         }
 
@@ -113,7 +133,7 @@ class ClientController extends Controller
             $request->session()->flash('alert-success', 'Client supprimé ! ');
             return redirect()->route('clients_home');
 
-        } catch (\Exception $e){
+        } catch (\Exception $e) {
             return redirect()->route('clients_home')->with('error', 'Client inconnu !');
 
         }

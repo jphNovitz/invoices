@@ -11,6 +11,8 @@ return [
     |
     */
 
+    'Not_found_create' => 'Pas trouvé ?  Créer en un',
+    'Create_this_client' => 'Ajouter ce client à ma liste',
     "Register" => "S'engeristrer",
     "register" => "s'engeristrer",
     'New_client'=> 'Nouveau Client',

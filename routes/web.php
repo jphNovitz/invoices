@@ -25,18 +25,22 @@ Route::get('/user/update', 'User\UserController@update')->name('user_update');
 Route::post('/user/store', 'User\UserController@store')->name('user_store');
 
 /* Client */
-Route::get('/clients', 'Client\ClientController@index')->name('clients_home');
+Route::get('/client', 'Client\ClientController@index')->name('clients_home');
+Route::get('/client/findadd', 'Client\ClientController@findClientToAdd')->name('clients_search_create');
+Route::get('/client/add/{id}', 'Client\ClientController@add')->name('client_add');
+Route::get('/client/create/', 'Client\ClientController@create')->name('client_create');
 Route::get('/client/{client}', 'Client\ClientController@show')->name('client_card');
 Route::get('/client/{client}/update', 'Client\ClientController@update')->name('client_update');
 Route::get('/client/{client}/delete', function (App\Client $client) {
     return view('Client.client-delete', ['client' => $client]);
 })->name('client_delete');
 Route::delete('/client/{client}/delete', 'Client\ClientController@delete')->name('client_remove');
-Route::get('/clients/new', 'Client\ClientController@create')->name('clients_create');
 Route::post(null, 'Client\ClientController@store')->name('client_store');
 Route::put(null, 'Client\ClientController@save')->name('client_save');
 
 Route::get('/api/client/{client}', 'Client\ApiClientController@show')->name('api_client_infos');/* Invoices */;
+
+
 
 /* Users's invoices */
 Route::prefix('invoice')->group(function () {

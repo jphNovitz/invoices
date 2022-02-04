@@ -11,6 +11,9 @@ return [
     |
     */
 
+
+    'Not_found_create' => 'Not found ?  Create it !',
+    'Create_this_client' => 'Add this client to my list',
     "Register" => "Register",
     "register" => "register",
     'New_client'=> 'New Client',
