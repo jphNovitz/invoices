@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+    @if(Session::has('message'))
+        <p class="alert alert-info">{{ Session::get('message') }}</p>
+    @endif
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
@@ -11,7 +14,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12">
-                                <a href="{{route('clients_create')}}" class="btn btn-primary">
+                                <a href="{{route('client_create')}}" class="btn btn-primary">
                                     {{__('btn.New_client')}}
                                 </a>
                             </div>
@@ -120,6 +123,9 @@
 {{--                            </div>--}}
 {{--                        </div>--}}
 
+                    </div>
+                    <div class="col-md-12  pt-5">
+                        {{$clients->links()}}
                     </div>
                 </div>
             </div>
