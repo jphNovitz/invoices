@@ -9,6 +9,9 @@ $cities = \App\City::all();
                 <div class="card">
                     <div class="card-header">
                         <h2>{{$form_title}}</h2>
+                        <a href="{{route('clients_search_create')}}">
+                            {{__('btn.Find_client_to_add')}}
+                        </a>
                     </div>
                     <div class="card-body">
                         <div class="row">
@@ -122,7 +125,7 @@ $cities = \App\City::all();
                                         echo Form::text('nr', $client->nr, ['class' => 'form-control']);
                                         ?>
                                         @error('nr')
-                                            <span class="alert-danger" role="alert">
+                                        <span class="alert-danger" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
@@ -131,7 +134,7 @@ $cities = \App\City::all();
 
                                 <div class="form-group row">
                                     <?php
-                                    echo Form::label('city', __('city'), ['class' => 'col-md-4 col-form-label text-md-right']) ;
+                                    echo Form::label('city', __('city'), ['class' => 'col-md-4 col-form-label text-md-right']);
                                     ?>
 
                                     <div class="col-md-6">
@@ -152,12 +155,12 @@ $cities = \App\City::all();
 
                                 <div class="form-group row">
                                     <?php
-                                    echo Form::label('phone', __('phone'), ['class' => 'col-md-4 col-form-label text-md-right']) ;
+                                    echo Form::label('phone', __('phone'), ['class' => 'col-md-4 col-form-label text-md-right']);
                                     ?>
 
                                     <div class="col-md-6">
                                         <?php
-                                        echo Form::text('phone', $client->phone, ['class' => 'form-control']) ;
+                                        echo Form::text('phone', $client->phone, ['class' => 'form-control']);
                                         ?>
                                         @error('phone')
                                         <span class="alert-danger" role="alert">
@@ -169,12 +172,12 @@ $cities = \App\City::all();
 
                                 <div class="form-group row">
                                     <?php
-                                    echo Form::label('email', __('email'), ['class' => 'col-md-4 col-form-label text-md-right']) ;
+                                    echo Form::label('email', __('email'), ['class' => 'col-md-4 col-form-label text-md-right']);
                                     ?>
 
                                     <div class="col-md-6">
                                         <?php
-                                        echo Form::text('email', $client->email, ['class' => 'form-control']) ;
+                                        echo Form::text('email', $client->email, ['class' => 'form-control']);
                                         ?>
                                         @error('email')
                                         <span class="alert-danger" role="alert">
