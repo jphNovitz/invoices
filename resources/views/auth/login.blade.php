@@ -3,7 +3,7 @@
 @section('content')
     <section class="card rounded-lg bg-slate-50 ">
         <div class="card-header bg-slate-500 text-gray-50 p-2 text-xl font-black font-header ">
-            {{ __('Login') }}
+            {{ __('auth.Login') }}
         </div>
         <div class="card-body  text-slate-900 py-6 px-12">
             <form method="POST" action="{{ route('login') }}">
@@ -11,7 +11,7 @@
                 <div class="form-row my-6 ">
                     <label for="email"
                            class="font-bold">
-                        {{ __('E-Mail_Address') }}
+                        {{ __('auth.Email_address') }}
                     </label>
 
                     <div class="form-row my-6 ">
@@ -36,7 +36,7 @@
                 <div class="form-row my-6 ">
                     <label for="password"
                            class="form-row my-6 font-bold">
-                        {{ __('Password') }}
+                        {{ __('auth.Password') }}
                     </label>
 
                     <input id="password" type="password"
@@ -60,21 +60,21 @@
                            id="remember" {{ old('remember') ? 'checked' : '' }}>
 
                     <label class="form-check-label" for="remember">
-                        {{ __('Remember Me') }}
+                        {{ __('auth.Remember_me') }}
                     </label>
                 </div>
 
                 <div class="form-row my-6 ">
                     <button type="submit"
                             class="bg-slate-800 text-slate-50  p-3 rounded">
-                        {{ __('Login') }}
+                        {{ __('auth.Login') }}
                     </button>
 
                     @if (Route::has('password.request'))
                         <div class="w-full mt-5">
                         <a class="font-thin text-sm hover:font-bold"
                            href="{{ route('password.request') }}">
-                            {{ __('Forgot Your Password?') }}
+                            {{ __('auth.Forgot_your_password?') }}
                         </a>
                         </div>
                     @endif

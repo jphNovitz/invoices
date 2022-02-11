@@ -15,6 +15,13 @@ return [
 
     'Register' => 'Register',
     'register' => 'register',
+    'Login' => 'Login',
+    'login' => 'login',
+    'E-Mail_Address ' => 'Email Address',
+    'Email_address ' => 'Email address',
+    'email_address ' => 'Email address',
+    'Remember_me' => 'Remember me',
+    'Forgot_your_password? ' => 'Forgot your password?',
     'failed' => 'These credentials do not match our records.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
     'Firstname' => 'First Name',
