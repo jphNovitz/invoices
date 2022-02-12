@@ -1,46 +1,43 @@
 @extends('layouts.auth')
 
 @section('content')
-    <section class="card rounded-lg bg-slate-50 ">
-        <div class="card-header bg-slate-500 text-gray-50 p-2 text-xl font-black font-header ">
+    <section class="card bg-slate-50 ">
+        <div class="card-header bg-slate-500 text-gray-50">
             {{ __('auth.Login') }}
         </div>
-        <div class="card-body  text-slate-900 py-6 px-12">
+        <div class="card-body text-slate-900">
             <form method="POST" action="{{ route('login') }}">
                 @csrf
-                <div class="form-row my-6 ">
+                <div class="form-row">
                     <label for="email"
                            class="font-bold">
                         {{ __('auth.Email_address') }}
                     </label>
 
-                    <div class="form-row my-6 ">
-                        <input id="email" type="email"
-                               class="bg-transparent border-b-2  border-slate-200 focus:outline-none focus-within:border-slate-600
+                    <input id="email" type="email"
+                           class="bg-transparent border-slate-200 focus-within:border-slate-600
                                         @error('email')
-                                       is-invalid @enderror"
-                               name="email"
-                               value="{{ old('email') }}"
-                               required autocomplete="email"
-                               autofocus>
+                                   is-invalid @enderror"
+                           name="email"
+                           value="{{ old('email') }}"
+                           required autocomplete="email"
+                           autofocus>
 
-                        @error('email')
-                        <span class="invalid-feedback"
-                              role="alert">
+                    @error('email')
+                    <span class="invalid-feedback"
+                          role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
-                        @enderror
-                    </div>
+                    @enderror
                 </div>
-
-                <div class="form-row my-6 ">
+                <div class="form-row">
                     <label for="password"
-                           class="form-row my-6 font-bold">
+                           class="font-bold">
                         {{ __('auth.Password') }}
                     </label>
 
                     <input id="password" type="password"
-                           class="bg-transparent border-b-2  border-slate-200 focus:outline-none focus-within:border-slate-600
+                           class="bg-transparent border-slate-200 focus-within:border-slate-600
                                    @error('password') is-invalid @enderror"
                            name="password" required
                            autocomplete="current-password">
@@ -53,7 +50,7 @@
                     @enderror
                 </div>
 
-                <div class="form-row my-6 ">
+                <div class="form-row">
                     <input class="form-check-input"
                            type="checkbox"
                            name="remember"
@@ -64,7 +61,7 @@
                     </label>
                 </div>
 
-                <div class="form-row my-6 ">
+                <div class="form-row">
                     <button type="submit"
                             class="bg-slate-800 text-slate-50  p-3 rounded">
                         {{ __('auth.Login') }}
@@ -72,10 +69,10 @@
 
                     @if (Route::has('password.request'))
                         <div class="w-full mt-5">
-                        <a class="font-thin text-sm hover:font-bold"
-                           href="{{ route('password.request') }}">
-                            {{ __('auth.Forgot_your_password?') }}
-                        </a>
+                            <a class="font-thin text-sm hover:font-bold"
+                               href="{{ route('password.request') }}">
+                                {{ __('auth.Forgot_your_password?') }}
+                            </a>
                         </div>
                     @endif
                 </div>

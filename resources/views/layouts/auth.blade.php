@@ -20,19 +20,24 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     {{--    <link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
 </head>
-<body class="bg-auth bg-cover flex flex-col h-screen">
-<header class="text-slate-50 ml-12 mt-12 ">
-    <h1 class="text-4xl font-black uppercase">
-        Factures
-    </h1>
+<body id="auth-page">
+<header>
+    <h1>Factures</h1>
+    <nav>
+        @if(Request::segment(1) === 'register')
+            <a href="{{route('login')}}" class="font-black" >{{__('auth.Login')}} </a>
+        @else <a href="{{route('register')}}" class="font-black" >{{__('auth.Register')}} </a>
+        @endif
+    </nav>
 </header>
-<main class="w-full h-screen flex  justify-center  items-center md:justify-end md:items-end font-body">
-    <div id="app" class="flex md:mr-12 md:mb-12 p-0 w-min bg-transparent">
 
+<main>
+    <div id="app">
         @yield('content')
     </div>
 </main>
-<footer class="text-center text-slate-50">
+
+<footer>
     (2022) <a href="https://jphnovitz.be"> Novitz Jean-Philippe, Développeur Web à Liège </a>
 </footer>
 </body>

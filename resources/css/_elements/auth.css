@@ -1,0 +1,23 @@
+
+#auth-page{
+    @apply bg-auth bg-cover bg-no-repeat flex flex-col h-screen;
+}
+
+#auth-page header{
+    @apply text-slate-50 ml-12 mr-12 mt-12  flex items-center justify-between;
+}
+
+#auth-page header h1{
+    @apply text-4xl font-black uppercase;
+}
+
+#auth-page main{
+    @apply w-full h-screen flex  justify-center  items-center md:justify-end md:items-end font-body;
+}
+#auth-page main #app{
+    @apply flex md:mr-12 md:mb-12 p-0 w-min bg-transparent;
+}
+
+#auth-page footer{
+    @apply text-center text-slate-50;
+}
