@@ -42,7 +42,7 @@
                                                 <div class="col-12 col-md-4">{{$client->phone}}</div>
                                             </div>
                                             <div class="row invoice-actions">
-                                                <a href="{{route('client_card', ['client'=>$client->id])}}"
+                                                <a href="{{route('client_show', ['client'=>$client->id])}}"
                                                    class="btn btn-sm btn-primary">
                                                     <i class="fas fa-info"></i>
                                                     {{__('Detail')}}
