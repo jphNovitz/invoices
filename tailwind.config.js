@@ -12,6 +12,12 @@ module.exports = {
             },
             backgroundImage: {
                 'auth': "url('/img/invoice-bg.webp')",
+            },
+            transitionProperty: {
+                'height': 'height',
+                'width': 'width',
+                'hover': 'hover',
+                ':after': ':after'
             }
         },
     },

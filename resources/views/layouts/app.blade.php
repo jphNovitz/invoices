@@ -18,80 +18,44 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-{{--    <link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
+    {{--    <link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
 </head>
 <body>
 <div id="app">
-    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-        <div class="container">
-            <a class="navbar-brand" href="{{ url('/') }}">
-                {{ config('app.name', 'Laravel') }}
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="{{ __('Toggle navigation') }}">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <!-- Left Side Of Navbar -->
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{{route('home')}}">Home </a>
-                    </li>
-
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{{route('user_home')}}">Profil <span class="sr-only">(current)</span></a>
-                    </li>
-
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{{route('clients_home')}}">Clients </a>
-                    </li>
-                </ul>
-
-                <!-- Right Side Of Navbar -->
-                <ul class="navbar-nav ml-auto">
-                    <!-- Authentication Links -->
-                    @guest
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                        </li>
-                        @if (Route::has('register'))
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                            </li>
-                        @endif
-                    @else
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }} <span class="caret"></span>
-                            </a>
-
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                   onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                </a>
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                      style="display: none;">
-                                    @csrf
-                                </form>
-                            </div>
-                        </li>
-                    @endguest
-                </ul>
-            </div>
-        </div>
+    <nav class="w-full flex flex-col md:flex-row justify-between p-6 bg-slate-700 text-slate-50">
+        <ul class="flex flex-row items-center">
+            <li id="toggle"
+                class="mx-3 md:hidden bg-slate-500 p-2 cursor-pointer">
+                <i class="fas fa-bars fa-2x"></i>
+            </li>
+            <li class="mx-3 text-2xl font-black">Mes factures</li>
+        </ul>
+        <ul class="menu-group">
+            <li class="mx-3 pt-6 md:pt-0 nav-link">
+                <a href="{{route('home')}}">{{__('app.Home')}}</a>
+            </li>
+            <li class="px-3 nav-link"><a href="{{route('invoices_list')}}">{{__('app.My_invoices')}}</a></li>
+            <li class="px-3 nav-link"><a href="{{route('clients_list')}}">{{__('app.My_clients')}}</a></li>
+            <li><a href=""></a></li>
+        </ul>
+        @auth
+            <ul class="md:mt-0 h-0  menu-group">
+                <li class=" mx-3 ">
+                    <a href="{{route('user_home')}}"
+                       class="">
+                        {{\auth()->getUser()->firstname}}
+                    </a>
+                </li>
+                <li class="mx-3">(<a href="{{route('home')}}">{{__('auth.logout')}}</a>)</li>
+            </ul>
+        @endauth
     </nav>
 
     <main class="py-4">
         <?php
-            /**
-             * @todo externaliser vers un fichier séparé et faire un include
-             */
+        /**
+         * @todo externaliser vers un fichier séparé et faire un include
+         */
         ?>
         @if(session()->has('alert-success'))
             <div class="alert alert-success">

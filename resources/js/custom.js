@@ -1,5 +1,20 @@
 
 document.addEventListener("DOMContentLoaded", function () {
+
+
+    // Toggle menu on mobile
+
+    const menu_groups = document.getElementsByClassName('menu-group')
+    const toggle_button = document.getElementById('toggle')
+    if(toggle_button !== null){
+        toggle_button.addEventListener('click', ()=>{
+            for(let group of menu_groups){
+                group.classList.toggle('menu-open')
+            }
+        })
+    }
+
+
     /*
     * Managing show / hide list items details
     * the code bellow is linked to .trigger-part .hidden-part  classes
@@ -153,6 +168,10 @@ document.addEventListener("DOMContentLoaded", function () {
             row_container.append(new_row);
         }
     })
+
+
+
+
 
 // for (let btn of remove_buttons) {
 //     btn.addEventListener('click', function (e) {

@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;600&family=Montserrat:wght@400;500&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -7,26 +8,27 @@
 /* Authentication pages container */
 /*********************************/
 
-#auth-page{
+#auth-page {
     @apply bg-auth bg-cover bg-no-repeat flex flex-col min-h-screen;
 }
 
-#auth-page header{
+#auth-page header {
     @apply text-slate-50 ml-12 mr-12 mt-12  flex items-center justify-between;
 }
 
-#auth-page header h1{
+#auth-page header h1 {
     @apply text-4xl font-black uppercase;
 }
 
-#auth-page main{
+#auth-page main {
     @apply w-full min-h-screen flex  justify-center  items-center md:justify-end md:items-end font-body;
 }
-#auth-page main #app{
+
+#auth-page main #app {
     @apply flex md:mr-12 md:mb-12 my-12 p-0 w-min bg-transparent;
 }
 
-#auth-page footer{
+#auth-page footer {
     @apply text-center text-slate-50;
 }
 
@@ -35,25 +37,46 @@
 Login page
  */
 
-.card{
+.card {
     @apply rounded-lg;
 }
 
-.card .card-header{
-    @apply  p-2 text-xl font-black font-header;
+.card .card-header {
+    @apply p-2 text-xl font-black font-header;
 }
 
-.card .card-body{
-    @apply  py-6 px-12;
+.card .card-body {
+    @apply py-6 px-12;
 }
 
-form .form-row{
-    @apply  my-6 flex flex-col;
-}
-form .form-row input{
-    @apply  border-b-2 focus:outline-none;
+form .form-row {
+    @apply my-6 flex flex-col;
 }
 
-form .form-row input.form-control{
+form .form-row input {
+    @apply border-b-2 focus:outline-none;
+}
+
+form .form-row input.form-control {
     @apply bg-transparent border-slate-200 focus-within:border-slate-600 ;
+}
+
+nav .nav-link {
+    @apply relative after:absolute
+    md:after:transition-all ease-in-out duration-1000
+    md:after:h-px after:bg-slate-50 after:bottom-0 after:left-0
+    md:after:w-0 hover:after:w-full
+}
+
+nav .nav-link.active {
+    @apply font-black after:w-full
+}
+
+.menu-group {
+    @apply flex flex-col md:flex-row overflow-hidden
+    h-0  md:h-auto transition-height duration-1000 ease-in-out
+}
+
+.menu-group.menu-open {
+    @apply h-40
 }
