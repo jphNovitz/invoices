@@ -23,12 +23,12 @@
 <body>
 <div id="app">
     <nav class="w-full flex flex-col md:flex-row justify-between p-6 bg-slate-700 text-slate-50">
-        <ul class="flex flex-row items-center">
+        <ul class="flex flex-row items-center justify-between">
+            <li class="mx-3 text-2xl font-black">Mes factures</li>
             <li id="toggle"
                 class="mx-3 md:hidden bg-slate-500 p-2 cursor-pointer">
                 <i class="fas fa-bars fa-2x"></i>
             </li>
-            <li class="mx-3 text-2xl font-black">Mes factures</li>
         </ul>
         <ul class="menu-group">
             <li class="mx-3 pt-6 md:pt-0 nav-link">
