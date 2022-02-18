@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", function () {
 
 
@@ -6,14 +5,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const menu_groups = document.getElementsByClassName('menu-group')
     const toggle_button = document.getElementById('toggle')
-    if(toggle_button !== null){
-        toggle_button.addEventListener('click', ()=>{
-            for(let group of menu_groups){
+    if (toggle_button !== null) {
+        toggle_button.addEventListener('click', () => {
+            for (let group of menu_groups) {
                 group.classList.toggle('menu-open')
             }
         })
     }
 
+    // toggle card infos
+    const toggle_infos = document.getElementsByClassName('action-toggle')
+    if (toggle_infos !== null) {
+        for ( let btn of toggle_infos) {
+            btn.addEventListener('click', () => {
+                btn.classList.toggle('rotate-180')
+                btn.parentNode.parentNode.parentNode.getElementsByClassName('infos')[0].classList.toggle('expand')
+            })
+        }
+
+    }
 
     /*
     * Managing show / hide list items details
@@ -168,9 +178,6 @@ document.addEventListener("DOMContentLoaded", function () {
             row_container.append(new_row);
         }
     })
-
-
-
 
 
 // for (let btn of remove_buttons) {

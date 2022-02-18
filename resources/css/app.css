@@ -46,8 +46,13 @@ Login page
 }
 
 .card .card-body {
-    @apply py-6 px-12;
+    @apply py-4 px-4 md:py-6 md:px-12;
 }
+
+.card .card-body .infos.expand{
+    @apply h-32;
+}
+
 
 form .form-row {
     @apply my-6 flex flex-col;

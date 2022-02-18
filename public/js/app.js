@@ -6753,6 +6753,32 @@ document.addEventListener("DOMContentLoaded", function () {
         _iterator.f();
       }
     });
+  } // toggle card infos
+
+
+  var toggle_infos = document.getElementsByClassName('action-toggle');
+
+  if (toggle_infos !== null) {
+    var _iterator2 = _createForOfIteratorHelper(toggle_infos),
+        _step2;
+
+    try {
+      var _loop = function _loop() {
+        var btn = _step2.value;
+        btn.addEventListener('click', function () {
+          btn.classList.toggle('rotate-180');
+          btn.parentNode.parentNode.parentNode.getElementsByClassName('infos')[0].classList.toggle('expand');
+        });
+      };
+
+      for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+        _loop();
+      }
+    } catch (err) {
+      _iterator2.e(err);
+    } finally {
+      _iterator2.f();
+    }
   }
   /*
   * Managing show / hide list items details
@@ -6765,12 +6791,12 @@ document.addEventListener("DOMContentLoaded", function () {
   var triggers = document.getElementsByClassName('trigger-part');
 
   if (triggers) {
-    var _iterator2 = _createForOfIteratorHelper(triggers),
-        _step2;
+    var _iterator3 = _createForOfIteratorHelper(triggers),
+        _step3;
 
     try {
-      for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-        trigger = _step2.value;
+      for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
+        trigger = _step3.value;
         trigger.addEventListener('click', function (e) {
           var next = e.target.parentNode.nextElementSibling;
 
@@ -6784,9 +6810,9 @@ document.addEventListener("DOMContentLoaded", function () {
         });
       }
     } catch (err) {
-      _iterator2.e(err);
+      _iterator3.e(err);
     } finally {
-      _iterator2.f();
+      _iterator3.f();
     }
   }
   /**

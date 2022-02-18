@@ -51,7 +51,7 @@
         @endauth
     </nav>
 
-    <main class="py-4">
+    <main class="m-6">
         <?php
         /**
          * @todo externaliser vers un fichier séparé et faire un include
