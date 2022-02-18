@@ -17,6 +17,8 @@ return [
     'register' => 'register',
     'Login' => 'Login',
     'login' => 'login',
+    'Logout' => 'Logout',
+    'logout' => 'logout',
     'E-Mail_Address ' => 'Email Address',
     'Email_address ' => 'Email address',
     'email_address ' => 'Email address',

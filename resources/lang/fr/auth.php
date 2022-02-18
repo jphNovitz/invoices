@@ -17,6 +17,8 @@ return [
     'register' => 'inscription',
     'Login' => 'Conexion',
     'login' => 'conexion',
+    'Logout' => 'Déonexion',
+    'logout' => 'déconexion',
     'E-Mail_Address' => 'Adresse Email',
     'Email_address' => 'Adresse Email',
     'email_address' => 'adresse Email',
