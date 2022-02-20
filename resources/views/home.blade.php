@@ -21,15 +21,15 @@
                                 {{$client->company}}
                                 <span>TVA N° {{$client->vat}}</span></div>
                             <div class="actions flex flex-row justify-end">
-                               <span class="action-toggle bg-slate-300 transition-transform ease-in duration-400 p-3 mr-1 w-5 h-5 md:w-7 md:h-7 flex justify-center items-center rounded-full md:cursor-pointer">
+                               <span class="button primary action-toggle transition-transform ease-in duration-400 p-3 mr-1 w-5 ">
                                 <i class="fas fa-chevron-down"></i>
                                </span>
-                                <span class="bg-blue-300 p-3 mx-1 w-5 h-5 md:w-7 md:h-7 flex justify-center items-center rounded-full  md:cursor-pointer">
+                                <span class="button info p-3 mx-1 ">
                                     <a href="{{route('client_show', ["client"=>$client->id])}}">
                                         <i class="fas fa-search-plus"></i>
                                     </a>
                                 </span>
-                                <span class="bg-slate-800 text-slate-50 p-3 ml-1 w-5 h-5 md:w-7 md:h-7 flex justify-center content-center items-center rounded-full  md:cursor-pointer">
+                                <span class="button success text-slate-50 p-3 ml-1 ">
                                     <a href="{{route('invoice_create', ["client"=>$client->id])}}">
                                         <i class="fas fa-plus"></i>
                                     </a>
