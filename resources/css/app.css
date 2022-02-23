@@ -95,6 +95,7 @@ nav .nav-link.active {
     h-5 w-7 md:w-7 md:h-7
     flex justify-center items-center rounded-full
     md:cursor-pointer
+    active:drop-shadow-lg
 }
 
 .button-text{
@@ -102,21 +103,17 @@ nav .nav-link.active {
     p-1 md:p-3 mx-0
     content-center items-center
 }
-.button-text:first-child{
-    @apply p-3 mr-1
-}
-/*.button-text:last-child{*/
-/*    @apply p-3 ml-1*/
-/*}*/
+
 .button-text .icon{
     @apply flex
     m-auto w-7 h-7
     items-center justify-center
     rounded-full
+    active:drop-shadow-lg
 }
 .button-text .label{
     @apply hidden md:flex flex-col
-    text-sm
+    text-xs
 }
 
 .primary{

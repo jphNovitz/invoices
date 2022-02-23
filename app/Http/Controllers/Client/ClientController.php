@@ -29,6 +29,7 @@ class ClientController extends Controller
         $clients = \Auth::user()->clients()
             ->orderBy('created_at', 'DESC')
             ->paginate(25);
+
         return view('Client.index', ['clients' => $clients]);
     }
 
@@ -86,7 +87,7 @@ class ClientController extends Controller
         return redirect(route('clients_home'));
     }
 
-    public function update(Client $client)
+    public function edit(Client $client)
     {
         if (!$client) {
             return redirect()->route('client_home')->with('error', 'Client inconnu !');
@@ -94,7 +95,8 @@ class ClientController extends Controller
         return view('Client.client-update', ['client' => $client]);
     }
 
-    public function save(Request $request)
+
+    public function update(Request $request)
     {
         $client = client::find($request->input('id'));
         $validatedData = $request->validate([
