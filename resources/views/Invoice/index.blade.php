@@ -36,10 +36,10 @@
                                </span>
                                 <div class="button-text">
                                     <a href="{{route('invoice_show', ["id"=>$invoice->id])}}">
-                                        <span class="flex m-auto w-7 h-7 items-center justify-center rounded-full info ">
+                                        <span class="icon info ">
                                             <i class="fas fa-search-plus"></i>
                                         </span>
-                                        <span class="hidden flex md:flex flex-col text-sm">{{__('btn.Details')}}</span>
+                                        <span class="label">{{__('btn.Details')}}</span>
                                     </a>
                                 </div>
                                 <span class="button-text p-3">
