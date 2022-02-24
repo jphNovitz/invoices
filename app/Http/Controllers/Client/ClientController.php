@@ -33,9 +33,8 @@ class ClientController extends Controller
         return view('Client.index', ['clients' => $clients]);
     }
 
-    public function show(client $client)
+    public function show(client $client = null)
     {
-
         return view('Client.card', ['client' => $client]);
     }
 
@@ -87,7 +86,7 @@ class ClientController extends Controller
         return redirect(route('clients_home'));
     }
 
-    public function edit(Client $client)
+    public function edit(Client $client )
     {
         if (!$client) {
             return redirect()->route('client_home')->with('error', 'Client inconnu !');
