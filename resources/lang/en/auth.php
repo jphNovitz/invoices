@@ -44,6 +44,8 @@ return [
     'nr' => 'nr',
     'City' => 'City',
     'city' => 'city',
+    'Post_code' => 'Post Code',
+    'post_code' => 'post code',
     'Vat' => 'Vat',
     'vat' => 'vat',
     'Email' => 'Email',

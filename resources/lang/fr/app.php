@@ -20,6 +20,22 @@ return [
     'my_invoices' => 'mes factures',
     'My_clients' => 'Mes Clients',
     'my_clients' => 'mes clients',
+    'Client_details' => 'Détails du client',
+    'client_details' => 'détails du client',
+    'Invoice_details' => 'Détails de la facture',
+    'invoice_details' => 'détails de la facture',
+    'Description' => 'Description',
+    'description' => 'description',
+    'Price' => 'Prix',
+    'price' => 'prix',
+    'Vat' => 'Tva',
+    'vat' => 'tva',
+    'Quantity' => 'Quantité',
+    'quantity' => 'quantité',
+    'Total' => 'Total',
+    'total' => 'total',
+    'Discount' => 'Remise',
+    'discount' => 'remise',
 
 
 ];
