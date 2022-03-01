@@ -16,7 +16,7 @@
                             <li>{{__('auth.Vat')}}: <strong>{{$client->vat}}</strong></li>
                             <li>{{__('auth.Lastname')}}: <strong>{{$client->lastname}}</strong></li>
                             <li>{{__('auth.Firstname')}} : <strong>{{$client->firstname}}</strong></li>
-                            <li>{{__('auth.Rue')}}: <strong>{{$client->street}} {{$client->nr}}</strong></li>
+                            <li>{{__('auth.Street')}}: <strong>{{$client->street}} {{$client->nr}}</strong></li>
                             <li>{{__('auth.Post_code')}}: <strong>{{$client->city->code}}</strong></li>
                             <li>{{__('auth.City')}}: <strong>{{$client->city->city}}</strong></li>
                             <li>{{__('auth.Email')}}: <strong>{{$client->email}}</strong></li>
@@ -72,9 +72,9 @@
                     <thead class=" hidden md:table-header-group  bg-slate-300 p-6">
                     <tr class="justify-between">
                         <th class="text-left">Référence</th>
-                        <th class="text-left">Créé</th>
-                        <th class="text-left">Montant</th>
-                        <th class="text-left"></th>
+                        <th class="text-left  w-full md:w-32">Créé</th>
+                        <th class="text-left  w-full md:w-32">Montant</th>
+                        <th class="text-right  w-full md:w-32"></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -88,8 +88,10 @@
                                 {{ date("d M 'y", strtotime($invoice->created_at)) }}
 
                             </td>
-                            <td class=" text-left before:font-bold before:block before:content-['Montant'] md:before:content-['']">{{$invoice->total}}</td>
-                            <td class="flex flex-row justify-between w-24">
+                            <td class=" text-left w-full md:w-30 before:font-bold before:block before:content-['Montant'] md:before:content-['']">
+                                {{$invoice->total}}
+                            </td>
+                            <td class="flex flex-row justify-around  w-32">
                                 <a href="{{route('invoice_show', ['id'=>$invoice->id])}}"
                                    class="button info">
                                     <i class="fas fa-search-plus"></i>
