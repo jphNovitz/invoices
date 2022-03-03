@@ -1,42 +1,54 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{$user->name}} ({{$user->company}}) - TVA: {{$user->tva}}</div>
-
-                <div class="card-body">
-                    @if (session('success'))
-                        <div class="alert alert-success">
-                            {{ session('success') }}
-                        </div>
-                    @endif
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    <p>{{$user->name}}: Voici votre profil</p>
-                        <ul>
-                            <li><strong>Prenom: </strong> {{$user->firstname}}</li>
-                            <li><strong>Nom: </strong> {{$user->lastname}}</li>
-                            <li><strong>Utilisateur: </strong> {{$user->name}}</li>
-                            <li><strong>Entreprise: </strong> {{$user->company}}</li>
-                            <li><strong>TVA: </strong> {{$user->tva}}</li>
-                            <li><strong>Rue: </strong> {{$user->street}}, {{$user->nr}}</li>
-                            <li><strong>Localité: </strong> {{$user->city->code}} {{$user->city->city}}</li>
-                            <li><strong>Téléphone: </strong> {{$user->phone}}</li>
-                            <li><strong>Email: </strong> {{$user->email}}</li>
-
-                        </ul>
-                    <a href="{{route('user_update')}}" class="btn btn-primary">Modifier</a>
-                    <a href="" class="btn btn-danger">Supprimer</a>
-                </div>
-            </div>
+    <section class="card w-full  mb-10 border p-12px border-slate-200">
+        <div class="card-header bg-slate-500 text-slate-50">
+            {{__('app.Hello')}} {{$user->firstname}}
         </div>
-    </div>
-</div>
+        <div class="card-body  w-full flex  flex-col-reverse md:flex-row my-12">
+                <div class="card w-full md:w-1/2 ">
+                    <div class="card-body p-6">
+                        <ul class="text-lg ">
+                            <li>{{__('auth.Company')}}: <strong>{{$user->company}}</strong></li>
+                            <li>{{__('auth.Name')}}: <strong>{{$user->name}}</strong></li>
+                            <li>{{__('auth.Vat')}}: <strong>{{$user->vat}}</strong></li>
+                            <li>{{__('auth.Lastname')}}: <strong>{{$user->lastname}}</strong></li>
+                            <li>{{__('auth.Firstname')}} : <strong>{{$user->firstname}}</strong></li>
+                            <li>{{__('auth.Street')}}: <strong>{{$user->street}} {{$user->nr}}</strong></li>
+                            <li>{{__('auth.Post_code')}}: <strong>{{$user->city->code}}</strong></li>
+                            <li>{{__('auth.City')}}: <strong>{{$user->city->city}}</strong></li>
+                            <li>{{__('auth.Email')}}: <strong>{{$user->email}}</strong></li>
+                            <li>{{__('auth.Phone')}}: <strong>{{$user->phone}}</strong></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card w-full md:w-1/2 ">
+                    <div class="card-body p-6">
+                        <div class="flex flex-row items-left md:pl-5">
+                            <span class="button-text ">
+                                <a href="{{route('user_update', ['user' => $user])}}">
+                                    <span class="icon success">
+                                        <i class="fas fa-edit"></i>
+                                    </span>
+                                    <span class="label">
+                                        {{__('btn.Update')}}
+                                    </span>
+                                </a>
+                            </span>
+                            <span class="button-text ">
+                                <a href="#{{--{{route('user_delete', ['user' => $user])}}--}}">
+                                    <span class="icon danger">
+                                        <i class="fas fa-minus"></i>
+                                    </span>
+                                    <span class="label">
+                                        {{__('btn.Delete')}}
+                                    </span>
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </section>
+
 @endsection

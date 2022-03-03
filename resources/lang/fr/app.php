@@ -14,16 +14,20 @@ return [
     */
 
 
+    'Hello' => 'Bonjour',
+    'hello' => 'bonjour',
     'Home' => 'Accueil',
     'home' => 'accueil',
-    'My_invoices' => 'Mes factures',
-    'my_invoices' => 'mes factures',
     'My_clients' => 'Mes Clients',
     'my_clients' => 'mes clients',
     'Client_details' => 'Détails du client',
     'client_details' => 'détails du client',
+    'My_invoices' => 'Mes factures',
+    'my_invoices' => 'mes factures',
     'Invoice_details' => 'Détails de la facture',
     'invoice_details' => 'détails de la facture',
+    'Invoice_update' => 'Modification de la facture',
+    'invoice_update' => 'modification de la facture',
     'Description' => 'Description',
     'description' => 'description',
     'Price' => 'Prix',

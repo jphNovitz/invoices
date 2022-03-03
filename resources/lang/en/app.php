@@ -13,17 +13,20 @@ return [
     |
     */
 
-
+    'Hello' => 'Hello',
+    'hello' => 'hello',
     'Home' => 'Home',
     'home' => 'home',
-    'My_invoices' => 'My invoices',
-    'my_invoices' => 'my invoices',
     'My_clients' => 'My clients',
     'my_clients' => 'my clients',
     'Client_details' => 'Client details',
     'client_details' => 'client details',
     'Invoice_details' => 'Invoice Details',
     'invoice_details' => 'invoice details',
+    'My_invoices' => 'My invoices',
+    'my_invoices' => 'my invoices',
+    'Invoice_update' => 'Modification de la facture',
+    'invoice_update' => 'modification de la facture',
     'Description' => 'Description',
     'description' => 'description',
     'Price' => 'Price',
