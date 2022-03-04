@@ -6864,82 +6864,63 @@ document.addEventListener("DOMContentLoaded", function () {
 
   var row_container = document.getElementById('items');
   var row = document.getElementsByClassName('item-row')[0];
-  var add_buttons = document.getElementsByClassName('add-item');
+  var add_buttons = '';
   var remove_buttons = document.getElementsByClassName('remove-item');
   var i = 0; // console.log(add_buttons)
 
+  setAddButtons();
   hidePlus();
-  document.getElementById('items').addEventListener('click', function (e) {
-    if (e.target.classList.contains('remove-item')) {
-      var parent = document.getElementById('items');
-      parent.removeChild(e.target.parentNode.parentNode); // i--;
-    }
+  listenItems();
 
-    if (e.target.classList.contains('add-item')) {
-      i++;
-      var new_row = document.createElement('div');
-      new_row.classList.add('row');
-      new_row.classList.add('item-row');
-      new_row.innerHTML += "\n                        <div class=\"col-md-4\">\n                            <div class=\"form-group\">\n                                <input type=\"text\" id=\"description[]\"\n                                       name=\"items[".concat(i, "][description]\"\n                                       class=\"form-control\"\n                                       value=\"\"\n                                />\n                            </div>\n                        </div>\n                        <div class=\"col-md-2\">\n                            <div class=\"form-group\">\n                                <input type=\"text\"\n                                       name=\"items[").concat(i, "][price]\"\n                                       class=\"form-control\"\n                                       value=\"\"\n                                />\n                            </div>\n                        </div>\n                        <div class=\"col-md-2\">\n                            <div class=\"form-group\">\n                                <select class=\"custom-select\" \n                                        name=\"items[").concat(i, "][vat_id]\">\n                                        <option value=\"1\" >6 % </option>\n                                        <option value=\"2\" >12 % </option>\n                                        <option value=\"3\" >21 % </option>\n                                </select>\n                            </div>\n                        </div>\n                        <div class=\"col-md-1\">\n                            <div class=\"form-group\">\n                                <input type=\"text\"\n                                       name=\"items[").concat(i, "][qty]\"\n                                       class=\"form-control\"\n                                       value=\"\"\n                                />\n                            </div>\n                        </div>\n                        <div class=\"col-md-1\">\n                            <div class=\"form-group\">\n                                <input name=\"items[").concat(i, "][discount]\"\n                                       type=\"text\"\n                                       value=\"\"\n                                       class=\"form-control\"\n                                />\n                            </div>\n                        </div>\n                        <div class=\"col-md-2\" style=\"align-items: center\">\n                            <button type=\"button\"\n                                    class=\"btn btn-danger remove-item\">\n                                <i class=\"fa fa-minus\" style=\"pointer-events:none\"></i>\n                            </button>\n                            <button type=\"button\"\n                                    class=\"btn btn-primary add-item\">\n                                <i class=\"fa fa-plus\" style=\"pointer-events:none\"></i>\n                            </button>\n                    </div>\n");
-      row_container.append(new_row);
-      hidePlus();
-    }
-  });
+  function listenItems() {
+    document.getElementById('items').addEventListener('click', function (e) {
+      if (e.target.classList.contains('remove-item')) {
+        var parent = document.getElementById('items');
+        parent.removeChild(e.target.parentNode.parentNode.parentNode);
+        hideFirstMinus();
+        setAddButtons(); // listenItems()
+
+        hidePlus(); // i--;
+      }
+
+      if (e.target.classList.contains('add-item')) {
+        i++;
+        document.getElementsByClassName('remove-item')[0].style.display = "flex";
+        var new_row = document.createElement('div');
+        new_row.classList.add('table-data-row');
+        new_row.innerHTML += "\n                            <div class=\"form-row w-full md:w-1/3\">\n                                <input type=\"text\" id=\"description[]\"\n                                       name=\"items[".concat(i, "][description]\"\n                                       class=\"form-control\"\n                                       value=\"\"\n                                />\n                            </div>\n                            <div class=\"middle\">\n                             <div class=\"form-row w-16 md:w-16\">\n                                <input type=\"text\"\n                                       name=\"items[").concat(i, "][price]\"\n                                       class=\"form-control\"\n                                       value=\"\"\n                                />\n                            </div>\n                            <div class=\"form-row w-16 md:w-16\">\n                                <input type=\"number\"\n                                       min=\"1\"\n                                       name=\"items[").concat(i, "][qty]\"\n                                       class=\"form-control\"\n                                       value=\"1\"\n                                />\n                            </div>\n                            <div class=\"form-row w-16 md:w-16\">\n                                <select class=\"custom-select\" \n                                        name=\"items[").concat(i, "][vat_id]\">\n                                        <option value=\"1\" >6 % </option>\n                                        <option value=\"2\" >12 % </option>\n                                        <option value=\"3\" >21 % </option>\n                                </select>\n                            </div>\n                        </div>\n                            <div class=\"right\">\n                            <div class=\"form-row w-16 md:w-16\">\n                                <input name=\"items[").concat(i, "][discount]\"\n                                       type=\"text\"\n                                       value=\"\"\n                                       class=\"form-control\"\n                                />\n                            </div>\n                       \n                            <div class=\"form-row w-24 justify-between\" style=\"flex-direction: row\">\n                                <button type=\"button\"\n                                        class=\"button danger  remove-item\">\n                                        <i class=\"fa fa-minus\" style=\"pointer-events:none\"></i>\n                                </button>\n                                <button type=\"button\"\n                                        class=\"button success add-item \">\n                                        <i class=\"fa fa-plus\" style=\"pointer-events:none\"></i>\n                                </button>\n                            </div>\n                    ");
+        row_container.append(new_row);
+        hidePlus();
+      }
+    });
+  }
+
+  function setAddButtons() {
+    add_buttons = document.getElementsByClassName('add-item');
+  }
 
   function hidePlus() {
-    for (var _i = 0; _i < add_buttons.length - 1; _i++) {
-      add_buttons[_i].style.display = "none";
-    }
-  } // for (let btn of remove_buttons) {
-  //     btn.addEventListener('click', function (e) {
-  //         console.log(e)
-  //         if(e.target != 'svg') {
-  //             console.log(e)
-  //             console.log(e.target.parentNode.parentNode)
-  //             let parent = document.getElementById('items');
-  //             console.log(this);
-  //             parent.removeChild(e.target.parentNode.parentNode)
-  //         }
-  //     })
-  // }
-  // for (let btn of add_buttons) {
-  //     btn.addEventListener('click', function (e) {
-  //         let new_row = document.createElement('div');
-  //         new_row.classList.add('row');
-  //         new_row.classList.add('item-row');
-  //         new_row.innerHTML += ` <div class="col-md-6">
-  //                         <div class="form-group">
-  //                             <label for="description[]">Description</label>
-  //                             <input type="text" id="description[]" name="description" class="form-control"/>
-  //                         </div>
-  //                     </div>
-  //                     <div class="col-md-1">
-  //                         <div class="form-group">
-  //                             <label for="qty[]">Qty</label>
-  //                             <input type="text" name="qty[]" class="form-control"/>
-  //                         </div>
-  //                     </div>
-  //                     <div class="col-md-1">
-  //                         <div class="form-group">
-  //                             <label for="discount[]" class="control-label">Reduc</label>
-  //                             <input name="discount[]" type="text" value="" class="form-control">
-  //                         </div>
-  //                     </div>
-  //                     <div class="col-md-2" style="align-items: center">
-  //                         <button type="button"
-  //                                 class="btn btn-danger remove-item">
-  //                             <i class="fa fa-minus" style="pointer-events:none"></i>
-  //                         </button>
-  //                         <button type="button"
-  //                                 class="btn btn-primary add-item">
-  //                             <i class="fa fa-plus"></i>
-  //                         </button>
-  //                      </div>
-  // `
-  //         row_container.append(new_row);
-  //     })
-  // }
+    var length = add_buttons.length;
+    console.log(length);
 
+    if (add_buttons.length > 1) {
+      for (var _i = 0; _i < add_buttons.length - 1; _i++) {
+        add_buttons[_i].style.display = "none";
+      }
+
+      add_buttons[length - 1].style.display = "flex";
+    } else {
+      add_buttons[0].style.display = "flex";
+    }
+  }
+
+  function hideFirstMinus() {
+    var remove_buttons = document.getElementsByClassName('remove-item');
+
+    if (remove_buttons.length === 1) {
+      remove_buttons[0].style.display = "none";
+    }
+  }
 });
 
 /***/ }),

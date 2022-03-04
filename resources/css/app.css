@@ -134,3 +134,37 @@ nav .nav-link.active {
 .danger{
     @apply bg-red-600 text-slate-50
 }
+
+/**/
+.table-data-wrapper{
+    @apply flex flex-col w-full my-12
+}
+.table-data-header{
+    @apply hidden md:flex  w-full bg-slate-300 justify-between m-0 p-4
+}
+.table-data-header .middle{
+    @apply flex flex-row justify-between w-1/3 pl-8 pr-4
+}
+.table-data-header .right{
+    @apply flex flex-row justify-between w-1/3 pl-4 pr-8
+}
+.table-data-row{
+    @apply flex flex-col md:flex-row
+    w-full justify-between
+    items-center
+    odd:bg-slate-100  even:bg-white md:even:bg-slate-100 md:odd:bg-white
+    p-4
+}
+.table-data-row .middle{
+    @apply flex flex-row
+    w-full md:w-1/3
+    md:pl-8 md:pr-4
+    justify-between
+}
+.table-data-row .right{
+    @apply flex flex-row
+    w-full md:w-1/3
+    md:pl-4 md:pr-8
+    justify-between
+}
+/**/

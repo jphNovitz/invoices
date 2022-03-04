@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // toggle card infos
     const toggle_infos = document.getElementsByClassName('action-toggle')
     if (toggle_infos !== null) {
-        for ( let btn of toggle_infos) {
+        for (let btn of toggle_infos) {
             btn.addEventListener('click', () => {
                 btn.classList.toggle('rotate-180')
                 btn.parentNode.parentNode.parentNode.getElementsByClassName('infos')[0].classList.toggle('expand')
@@ -100,47 +100,56 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const row_container = document.getElementById('items');
     const row = document.getElementsByClassName('item-row')[0];
-    const add_buttons = document.getElementsByClassName('add-item');
+    var add_buttons = ''
     const remove_buttons = document.getElementsByClassName('remove-item');
     var i = 0;
     // console.log(add_buttons)
+    setAddButtons()
+    hidePlus()
+    listenItems()
 
-hidePlus()
+    function listenItems() {
+        document.getElementById('items').addEventListener('click', function (e) {
 
-
-    document.getElementById('items').addEventListener('click', function (e) {
-
-        if (e.target.classList.contains('remove-item')) {
-            let parent = document.getElementById('items');
-            parent.removeChild(e.target.parentNode.parentNode)
-            // i--;
-        }
-        if (e.target.classList.contains('add-item')) {
-            i++;
-            let new_row = document.createElement('div');
-            new_row.classList.add('row');
-            new_row.classList.add('item-row');
-            new_row.innerHTML += `
-                        <div class="col-md-4">
-                            <div class="form-group">
+            if (e.target.classList.contains('remove-item')) {
+                let parent = document.getElementById('items');
+                parent.removeChild(e.target.parentNode.parentNode.parentNode)
+                hideFirstMinus()
+                setAddButtons()
+                // listenItems()
+                hidePlus()
+                // i--;
+            }
+            if (e.target.classList.contains('add-item')) {
+                i++;
+                document.getElementsByClassName('remove-item')[0].style.display = "flex"
+                let new_row = document.createElement('div');
+                new_row.classList.add('table-data-row');
+                new_row.innerHTML += `
+                            <div class="form-row w-full md:w-1/3">
                                 <input type="text" id="description[]"
                                        name="items[${i}][description]"
                                        class="form-control"
                                        value=""
                                 />
                             </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="form-group">
+                            <div class="middle">
+                             <div class="form-row w-16 md:w-16">
                                 <input type="text"
                                        name="items[${i}][price]"
                                        class="form-control"
                                        value=""
                                 />
                             </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="form-group">
+                            <div class="form-row w-16 md:w-16">
+                                <input type="number"
+                                       min="1"
+                                       name="items[${i}][qty]"
+                                       class="form-control"
+                                       value="1"
+                                />
+                            </div>
+                            <div class="form-row w-16 md:w-16">
                                 <select class="custom-select" 
                                         name="items[${i}][vat_id]">
                                         <option value="1" >6 % </option>
@@ -149,96 +158,55 @@ hidePlus()
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md-1">
-                            <div class="form-group">
-                                <input type="text"
-                                       name="items[${i}][qty]"
-                                       class="form-control"
-                                       value=""
-                                />
-                            </div>
-                        </div>
-                        <div class="col-md-1">
-                            <div class="form-group">
+                            <div class="right">
+                            <div class="form-row w-16 md:w-16">
                                 <input name="items[${i}][discount]"
                                        type="text"
                                        value=""
                                        class="form-control"
                                 />
                             </div>
-                        </div>
-                        <div class="col-md-2" style="align-items: center">
-                            <button type="button"
-                                    class="btn btn-danger remove-item">
-                                <i class="fa fa-minus" style="pointer-events:none"></i>
-                            </button>
-                            <button type="button"
-                                    class="btn btn-primary add-item">
-                                <i class="fa fa-plus" style="pointer-events:none"></i>
-                            </button>
-                    </div>
-`
-            row_container.append(new_row);
-            hidePlus()
-        }
-    })
-
-function hidePlus(){
-    for (let i =0 ; i<  add_buttons.length-1 ; i++){
-        add_buttons[i].style.display = "none"
+                       
+                            <div class="form-row w-24 justify-between" style="flex-direction: row">
+                                <button type="button"
+                                        class="button danger  remove-item">
+                                        <i class="fa fa-minus" style="pointer-events:none"></i>
+                                </button>
+                                <button type="button"
+                                        class="button success add-item ">
+                                        <i class="fa fa-plus" style="pointer-events:none"></i>
+                                </button>
+                            </div>
+                    `
+                row_container.append(new_row);
+                hidePlus()
+            }
+        })
     }
-}
 
-// for (let btn of remove_buttons) {
-//     btn.addEventListener('click', function (e) {
-//         console.log(e)
-//         if(e.target != 'svg') {
-//             console.log(e)
-//             console.log(e.target.parentNode.parentNode)
-//             let parent = document.getElementById('items');
-//             console.log(this);
-//             parent.removeChild(e.target.parentNode.parentNode)
-//         }
-//     })
-// }
-// for (let btn of add_buttons) {
-//     btn.addEventListener('click', function (e) {
-//         let new_row = document.createElement('div');
-//         new_row.classList.add('row');
-//         new_row.classList.add('item-row');
-//         new_row.innerHTML += ` <div class="col-md-6">
-//                         <div class="form-group">
-//                             <label for="description[]">Description</label>
-//                             <input type="text" id="description[]" name="description" class="form-control"/>
-//                         </div>
-//                     </div>
-//                     <div class="col-md-1">
-//                         <div class="form-group">
-//                             <label for="qty[]">Qty</label>
-//                             <input type="text" name="qty[]" class="form-control"/>
-//                         </div>
-//                     </div>
-//                     <div class="col-md-1">
-//                         <div class="form-group">
-//                             <label for="discount[]" class="control-label">Reduc</label>
-//                             <input name="discount[]" type="text" value="" class="form-control">
-//                         </div>
-//                     </div>
-//                     <div class="col-md-2" style="align-items: center">
-//                         <button type="button"
-//                                 class="btn btn-danger remove-item">
-//                             <i class="fa fa-minus" style="pointer-events:none"></i>
-//                         </button>
-//                         <button type="button"
-//                                 class="btn btn-primary add-item">
-//                             <i class="fa fa-plus"></i>
-//                         </button>
-//                      </div>
-// `
-//         row_container.append(new_row);
-//     })
-// }
+    function setAddButtons() {
+        add_buttons = document.getElementsByClassName('add-item');
+    }
 
+    function hidePlus() {
+        let length = add_buttons.length
+        console.log(length)
+        if (add_buttons.length > 1) {
+            for (let i = 0; i < add_buttons.length - 1; i++) {
+                add_buttons[i].style.display = "none"
+            }
+            add_buttons[length-1].style.display = "flex"
+        } else {
+            add_buttons[0].style.display = "flex"
+        }
+    }
+
+    function hideFirstMinus(){
+        let remove_buttons = document.getElementsByClassName('remove-item');
+        if (remove_buttons.length === 1) {
+            remove_buttons[0].style.display = "none"
+        }
+    }
 
 })
 ;
