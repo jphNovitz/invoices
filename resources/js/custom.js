@@ -105,6 +105,9 @@ document.addEventListener("DOMContentLoaded", function () {
     var i = 0;
     // console.log(add_buttons)
 
+hidePlus()
+
+
     document.getElementById('items').addEventListener('click', function (e) {
 
         if (e.target.classList.contains('remove-item')) {
@@ -176,9 +179,15 @@ document.addEventListener("DOMContentLoaded", function () {
                     </div>
 `
             row_container.append(new_row);
+            hidePlus()
         }
     })
 
+function hidePlus(){
+    for (let i =0 ; i<  add_buttons.length-1 ; i++){
+        add_buttons[i].style.display = "none"
+    }
+}
 
 // for (let btn of remove_buttons) {
 //     btn.addEventListener('click', function (e) {
