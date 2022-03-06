@@ -56,6 +56,9 @@ class User extends Authenticatable
     public function Invoice(){
         return $this->hasMany('App\Invoice','id', 'invoice_id');
     }
+    public function Invoices(){
+        return $this->hasMany('App\Invoice','id', 'invoice_id');
+    }
     public function Clients(){
         return $this->belongsToMany('App\Client', 'user_client');
     }
