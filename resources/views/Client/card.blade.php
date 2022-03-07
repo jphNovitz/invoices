@@ -6,10 +6,8 @@
         <div class="card-header bg-slate-500 text-slate-50">
             {{__('app.Client_details')}}: {{$client->company}}
         </div>
-        <div class="card-body w-full">
-
-            <div class="w-full flex flex-row my-12">
-                <div class="card w-1/2 ">
+        <div class="card-body w-full flex  flex-col-reverse md:flex-row my-12">
+                <div class="card w-full md:w-1/2">
                     <div class="card-body p-6">
                         <ul class="text-lg ">
                             <li>{{__('auth.Company')}}: <strong>{{$client->company}}</strong></li>
@@ -24,9 +22,9 @@
                         </ul>
                     </div>
                 </div>
-                <div class="card w-1/2 ">
+                <div class="card w-full md:w-1/2">
                     <div class="card-body p-6">
-                        <div class="flex flex-row items-left pl-5">
+                        <div class="flex flex-row items-left md:pl-5">
                 <span class="button-text ">
                     <a href="{{route('clients_list')}}">
                         <span class="icon primary">
@@ -59,13 +57,14 @@
                 </span>
 
                         </div>
-                        <ul class="p-5 my-6">
+                        <ul class="md:p-5 my-6">
                             <li>Date encodage: {{$client->created_at}} </li>
                             <li>Date modification: {{$client->updated_at}}</li>
                         </ul>
                     </div>
                 </div>
-            </div>
+        </div>
+        <div class="card-body w-full">
             <h2 class="text-slate-900 px-6 py-2 my-3">Liste des factures</h2>
             <div class="px-6">
                 <table class="table-fixed w-full">
