@@ -22,6 +22,8 @@ return [
     'my_clients' => 'mes clients',
     'Client_details' => 'Détails du client',
     'client_details' => 'détails du client',
+    'Client_update' => 'Modification du client',
+    'client_update' => 'modification du client',
     'My_invoices' => 'Mes factures',
     'my_invoices' => 'mes factures',
     'Invoice_details' => 'Détails de la facture',

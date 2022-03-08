@@ -57,7 +57,7 @@ class ClientController extends Controller
             $message = 'Error';
         }
 
-        return redirect(route('clients_home'))->with('message', $message);
+        return redirect(route('clients_list'))->with('message', $message);
     }
 
     public function create($id = null)
@@ -83,7 +83,7 @@ class ClientController extends Controller
         $client = client::find($result->id);
         $user = auth()->user();
         $client->users()->attach($user);
-        return redirect(route('clients_home'));
+        return redirect(route('clients_list'));
     }
 
     public function edit(Client $client )
@@ -119,23 +119,23 @@ class ClientController extends Controller
         $client->email = $request->input('email');
         $client->save();
 
-        return redirect(route('clients_home'));
+        return redirect(route('clients_list'));
     }
 
     public function delete(Request $request, Client $client)
     {
         if (!$client) {
-            return redirect()->route('clients_home')->with('error', 'Client inconnu !');
+            return redirect()->route('clients_list')->with('error', 'Client inconnu !');
         }
 
         try {
             $client->delete();
 
             $request->session()->flash('alert-success', 'Client supprimé ! ');
-            return redirect()->route('clients_home');
+            return redirect()->route('clients_list');
 
         } catch (\Exception $e) {
-            return redirect()->route('clients_home')->with('error', 'Client inconnu !');
+            return redirect()->route('clients_list')->with('error', 'Client inconnu !');
 
         }
     }
