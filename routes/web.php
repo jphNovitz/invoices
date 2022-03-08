@@ -30,17 +30,17 @@ Route::post('/user/store', 'User\UserController@store')->name('user_store');
 
 Route::prefix('client')->group(function () {
     Route::get('/', 'Client\ClientController@index')->name('clients_list');
-    Route::get('/{client}', 'Client\ClientController@show')->name('client_show');
     Route::get('/findadd', 'Client\ClientController@findClientToAdd')->name('clients_search_create'); /*Find Client to add*/
     Route::get('/add/{id}', 'Client\ClientController@add')->name('client_add'); /*Add found client with id*/
-    Route::get('/create/', 'Client\ClientController@create')->name('client_create');
+    Route::get('/create', 'Client\ClientController@create')->name('client_create');
     Route::post('/store', 'Client\ClientController@store')->name('client_store');
-    Route::get('/edit/{client}', 'Client\ClientController@update')->name('client_edit');
-    Route::put('/update', 'Client\ClientController@save')->name('client_update');
+    Route::get('/update/{client}', 'Client\ClientController@edit')->name('client_update');
+    Route::put('/save', 'Client\ClientController@update')->name('client_save');
     Route::get('/delete/{client}', function (App\Client $client) {
         return view('Client.client-delete', ['client' => $client]);
     })->name('client_delete');
     Route::delete('/delete/{client}', 'Client\ClientController@delete')->name('client_remove');
+    Route::get('/{client}', 'Client\ClientController@show')->name('client_show');
 
     Route::get('/api/client/{client}', 'Client\ApiClientController@show')->name('api_client_infos');/* Invoices */;
 });
@@ -55,4 +55,5 @@ Route::prefix('invoice')->group(function () {
     Route::put('/update', 'Invoice\InvoiceController@update')->name('invoice_update');
     Route::get('/delete/{id}', 'Invoice\InvoiceController@delete')->name('invoice_delete')->middleware('owned_invoice');
     Route::post('/remove', 'Invoice\InvoiceController@remove')->name('invoice_remove');
+    Route::get('/generate-pdf', 'Invoice\PDFController@generatePDF')->name('invoice_generate_pdf');
 });
