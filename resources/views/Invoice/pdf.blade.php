@@ -4,28 +4,119 @@
 
 <head>
 
-    <title>Hi</title>
-
+    <title>{{__('app.Invoice')}} {{$invoice['reference']}}</title>
 </head>
 
+<style>
+    #container {
+        width: 100vw;
+        padding: 1.6rem;
+    }
+
+    header {
+        color: rgb(30 41 59);
+        font-size: 1.6rem;
+        border-bottom: solid 1px rgb(203 213 225);
+    }
+
+    ul {
+        padding-left: 0;
+    }
+
+    ul li {
+        list-style-type: none;
+    }
+
+    .rounded {
+        border: solid 1px rgb(203 213 225);
+        border-radius: 20px;
+        padding: 1.6rem;
+        margin-top: 15rem;
+    }
+
+    .left {
+        width: 35%;
+    }
+
+    table {
+        width: 100%;
+    }
+
+
+</style>
 <body>
 
-<h1>{{ $title }}</h1>
+<main id="container">
+    <header class="h1">{{__('app.Invoice')}} {{$invoice['reference']}}</header>
+    <aside>
+        <ul class="justify-self-right">
+            <li>Créée
+                le: {{ \Carbon\Carbon::createFromTimestamp(strtotime($invoice->created_at))->format('d-m-Y h:i')}}</li>
+            <li>Modifiée
+                le: {{ \Carbon\Carbon::createFromTimestamp(strtotime($invoice->updated_at))->format('d-m-Y h:i')}}</li>
+        </ul>
+    </aside>
+    <table>
+        <tr>
+            <td class="left">
+                <ul>
+                    <li>{{$invoice->client->company}}</strong> </li>
+                    <li>{{__('auth.Vat')}}: {{$invoice->client->tva}} </li>
+                    <li>{{$invoice->client->lastname}} {{$invoice->client->firstname}}</li>
+                    <li>{{$invoice->client->street}} {{$invoice->client->nr}} </li>
+                    <li>{{$invoice->client->city->code}} {{$invoice->client->city->city}}</li>
+                    <li>{{$invoice->client->email}}</li>
+                    <li>{{$invoice->client->phone}}</li>
+                </ul>
+            </td>
+            <td class="">
+                <ul class="rounded">
+                    <li>{{$invoice->client->company}}</strong> </li>
+                    <li>{{__('auth.Vat')}}: {{$invoice->client->tva}} </li>
+                    <li>{{$invoice->client->lastname}} {{$invoice->client->firstname}}</li>
+                    <li>{{$invoice->client->street}} {{$invoice->client->nr}} </li>
+                    <li>{{$invoice->client->city->code}} {{$invoice->client->city->city}}</li>
+                    <li>{{$invoice->client->email}}</li>
+                    <li>{{$invoice->client->phone}}</li>
+                </ul>
+            </td>
+        </tr>
+    </table>
 
-<p>{{ $date }}</p>
-
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-
-    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-
-    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-
-    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-
-    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-
-    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
+    <table style="border: solid 1px rgb(203 213 225)">
+        <tr style="background-color:  rgb(30 41 59) ; color: white ; width: 100%">
+            <th>Description</th>
+            <th>PU</th>
+            <th>Q</th>
+            <th>TVA</th>
+            <th>Total</th>
+        </tr>
+        @foreach($invoice->items as $item)
+            <tr style="width: 100%">
+                <td style="width: 40%">
+                    {{$item->description}}
+                </td>
+                <td>
+                    {{$item->price}}
+                </td>
+                <td>
+                    {{$item->qty}}
+                </td>
+                <td>
+                    {{$item->discount}}
+                </td>
+                <td>
+                    <?php $vat = \App\Vat::find($item->vat_id);
+                    echo $item->qty * ($item->price * $vat->rate)
+                    ?>
+                </td>
+                <td>
+                    <?php echo $item->qty * ($item->price + ($item->price * $vat->rate) - $item->discount)?>
+                </td>
+            </tr>
+        @endforeach
+    </table>
+</main>
 </body>
 
 </html>

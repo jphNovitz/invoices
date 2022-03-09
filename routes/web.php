@@ -55,5 +55,5 @@ Route::prefix('invoice')->group(function () {
     Route::put('/update', 'Invoice\InvoiceController@update')->name('invoice_update');
     Route::get('/delete/{id}', 'Invoice\InvoiceController@delete')->name('invoice_delete')->middleware('owned_invoice');
     Route::post('/remove', 'Invoice\InvoiceController@remove')->name('invoice_remove');
-    Route::get('/generate-pdf', 'Invoice\PDFController@generatePDF')->name('invoice_generate_pdf');
+    Route::get('/generate-pdf/{id}', 'Invoice\PDFController@generatePDF')->name('invoice_generate_pdf');
 });
