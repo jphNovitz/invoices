@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Invoice;
 
 
 
+use App\Invoice;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -13,37 +14,28 @@ use App\Http\Controllers\Controller;
 class PDFController extends Controller
 
 {
-
-    /**
-
-     * Display a listing of the resource.
-
-     *
-
-     * @return \Illuminate\Http\Response
-
-     */
-
-    public function generatePDF()
-
+    public function __construct()
     {
 
-        $data = [
-
-            'title' => 'Welcome to invoce PDF TEST',
-
-            'date' => date('m/d/Y')
-
-        ];
+        $this->middleware('auth');
+    }
 
 
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
 
-        $pdf = PDF::loadView('Invoice.pdf', $data);
+    public function generatePDF($id)
+    {
+        $user = \Auth::user();
+        $invoice = Invoice::where('id', $id)->first();
+//        $pdf = PDF::loadView('Invoice.pdf', compact('invoice', 'user'));
+//
+//        return $pdf->download('test.pdf');
 
-
-
-        return $pdf->download('test.pdf');
-
+        return view('Invoice.pdf', compact('invoice', 'user'));
     }
 
 }

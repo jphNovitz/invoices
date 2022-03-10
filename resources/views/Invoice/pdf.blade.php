@@ -9,8 +9,8 @@
 
 <style>
     #container {
-        width: 100vw;
-        padding: 1.6rem;
+        width: 95%;
+        padding: 10px;
     }
 
     header {
@@ -30,20 +30,28 @@
     .rounded {
         border: solid 1px rgb(203 213 225);
         border-radius: 20px;
-        padding: 1.6rem;
-        margin-top: 15rem;
+        padding: 3rem;
+        width: max-content;
     }
 
     .left {
-        width: 35%;
+        width: 40%;
+    }
+    .right{
+        width: 40%;
+        font-weight: bold;
     }
 
     table {
         width: 100%;
+        margin: 2rem auto;
     }
 
-
+    td{
+        padding: 1px 5px 1px 15px;
+    }
 </style>
+
 <body>
 
 <main id="container">
@@ -60,16 +68,16 @@
         <tr>
             <td class="left">
                 <ul>
-                    <li>{{$invoice->client->company}}</strong> </li>
-                    <li>{{__('auth.Vat')}}: {{$invoice->client->tva}} </li>
-                    <li>{{$invoice->client->lastname}} {{$invoice->client->firstname}}</li>
-                    <li>{{$invoice->client->street}} {{$invoice->client->nr}} </li>
-                    <li>{{$invoice->client->city->code}} {{$invoice->client->city->city}}</li>
-                    <li>{{$invoice->client->email}}</li>
-                    <li>{{$invoice->client->phone}}</li>
+                    <li>{{$user->company}}</strong> </li>
+                    <li>{{__('auth.Vat')}}: {{$user->tva}} </li>
+                    <li>{{$user->lastname}} {{$user->firstname}}</li>
+                    <li>{{$user->street}} {{$user->nr}} </li>
+                    <li>{{$user->city->code}} {{$user->city->city}}</li>
+                    <li>{{$user->email}}</li>
+                    <li>{{$user->phone}}</li>
                 </ul>
             </td>
-            <td class="">
+            <td class="right">
                 <ul class="rounded">
                     <li>{{$invoice->client->company}}</strong> </li>
                     <li>{{__('auth.Vat')}}: {{$invoice->client->tva}} </li>
@@ -85,10 +93,11 @@
 
     <table style="border: solid 1px rgb(203 213 225)">
         <tr style="background-color:  rgb(30 41 59) ; color: white ; width: 100%">
-            <th>Description</th>
+            <th  style="width: 40%">Description</th>
             <th>PU</th>
-            <th>Q</th>
+            <th>Qté</th>
             <th>TVA</th>
+            <th>Réduc</th>
             <th>Total</th>
         </tr>
         @foreach($invoice->items as $item)
@@ -103,12 +112,12 @@
                     {{$item->qty}}
                 </td>
                 <td>
-                    {{$item->discount}}
-                </td>
-                <td>
                     <?php $vat = \App\Vat::find($item->vat_id);
                     echo $item->qty * ($item->price * $vat->rate)
                     ?>
+                </td>
+                <td>
+                    {{$item->discount}}
                 </td>
                 <td>
                     <?php echo $item->qty * ($item->price + ($item->price * $vat->rate) - $item->discount)?>
