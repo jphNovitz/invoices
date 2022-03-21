@@ -9,7 +9,7 @@
 
 <style>
     #container {
-        width: 95%;
+        width: 20cm;
         padding: 10px;
     }
 

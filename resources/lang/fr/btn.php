@@ -40,5 +40,7 @@ return [
     'delete' => 'supprimer',
     'List' => 'Liste',
     'list' => 'liste',
+    'Download' => 'Telecharger',
+    'download' => 'telecharger',
 
 ];

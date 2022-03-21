@@ -34,12 +34,12 @@ $user = auth()->user();
                     </a>
                 </span>
                 <span class="button-text ">
-                    <a href="{{--{{route('clients_search_create')}}--}}">
+                    <a href="{{route('invoice_generate_pdf', ["id"=>$invoice->id])}}">
                         <span class="icon bg-white text-red-600 border border-red-600">
                             <i class="fas fa-file-pdf"></i>
                         </span>
                         <span class="label">
-                            {{__('btn.Pdf')}}
+                            {{__('btn.Download')}}
                         </span>
                     </a>
                 </span>

@@ -40,6 +40,8 @@ return [
     'delete' => 'delete',
     'List' => 'List',
     'list' => 'list',
+    'Download' => 'Download',
+    'download' => 'download',
     '' => ''
 
 ];

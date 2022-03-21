@@ -31,11 +31,11 @@ class PDFController extends Controller
     {
         $user = \Auth::user();
         $invoice = Invoice::where('id', $id)->first();
-//        $pdf = PDF::loadView('Invoice.pdf', compact('invoice', 'user'));
-//
-//        return $pdf->download('test.pdf');
+        $pdf = PDF::loadView('Invoice.pdf', compact('invoice', 'user'));
 
-        return view('Invoice.pdf', compact('invoice', 'user'));
+        return $pdf->download('test.pdf');
+
+//        return view('Invoice.pdf', compact('invoice', 'user'));
     }
 
 }
