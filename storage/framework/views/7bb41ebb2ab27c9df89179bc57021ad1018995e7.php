@@ -4,7 +4,7 @@
 
 <head>
 
-    <title>{{__('app.Invoice')}} {{$invoice['reference']}}</title>
+    <title><?php echo e(__('app.Invoice')); ?> <?php echo e($invoice['reference']); ?></title>
 </head>
 
 
@@ -63,36 +63,36 @@
 <body>
 
 <main id="container">
-    <sections class="h1">{{__('app.Invoice')}} {{$invoice['reference']}}</sections>
+    <sections class="h1"><?php echo e(__('app.Invoice')); ?> <?php echo e($invoice['reference']); ?></sections>
         <ul class="justify-self-right">
             <li>Créée
-                le: {{ \Carbon\Carbon::createFromTimestamp(strtotime($invoice->created_at))->format('d-m-Y h:i')}}</li>
+                le: <?php echo e(\Carbon\Carbon::createFromTimestamp(strtotime($invoice->created_at))->format('d-m-Y h:i')); ?></li>
             <li>Modifiée
-                le: {{ \Carbon\Carbon::createFromTimestamp(strtotime($invoice->updated_at))->format('d-m-Y h:i')}}</li>
+                le: <?php echo e(\Carbon\Carbon::createFromTimestamp(strtotime($invoice->updated_at))->format('d-m-Y h:i')); ?></li>
         </ul>
     <article>
         <table>
             <tr>
                 <td class="left">
                     <ul>
-                        <li>{{$user->company}}</strong> </li>
-                        <li>{{__('auth.Vat')}}: {{$user->tva}} </li>
-                        <li>{{$user->lastname}} {{$user->firstname}}</li>
-                        <li>{{$user->street}} {{$user->nr}} </li>
-                        <li>{{$user->city->code}} {{$user->city->city}}</li>
-                        <li>{{$user->email}}</li>
-                        <li>{{$user->phone}}</li>
+                        <li><?php echo e($user->company); ?></strong> </li>
+                        <li><?php echo e(__('auth.Vat')); ?>: <?php echo e($user->tva); ?> </li>
+                        <li><?php echo e($user->lastname); ?> <?php echo e($user->firstname); ?></li>
+                        <li><?php echo e($user->street); ?> <?php echo e($user->nr); ?> </li>
+                        <li><?php echo e($user->city->code); ?> <?php echo e($user->city->city); ?></li>
+                        <li><?php echo e($user->email); ?></li>
+                        <li><?php echo e($user->phone); ?></li>
                     </ul>
                 </td>
                 <td class="right">
                     <ul class="rounded">
-                        <li>{{$invoice->client->company}}</strong> </li>
-                        <li>{{__('auth.Vat')}}: {{$invoice->client->tva}} </li>
-                        <li>{{$invoice->client->lastname}} {{$invoice->client->firstname}}</li>
-                        <li>{{$invoice->client->street}} {{$invoice->client->nr}} </li>
-                        <li>{{$invoice->client->city->code}} {{$invoice->client->city->city}}</li>
-                        <li>{{$invoice->client->email}}</li>
-                        <li>{{$invoice->client->phone}}</li>
+                        <li><?php echo e($invoice->client->company); ?></strong> </li>
+                        <li><?php echo e(__('auth.Vat')); ?>: <?php echo e($invoice->client->tva); ?> </li>
+                        <li><?php echo e($invoice->client->lastname); ?> <?php echo e($invoice->client->firstname); ?></li>
+                        <li><?php echo e($invoice->client->street); ?> <?php echo e($invoice->client->nr); ?> </li>
+                        <li><?php echo e($invoice->client->city->code); ?> <?php echo e($invoice->client->city->city); ?></li>
+                        <li><?php echo e($invoice->client->email); ?></li>
+                        <li><?php echo e($invoice->client->phone); ?></li>
                     </ul>
                 </td>
             </tr>
@@ -108,16 +108,19 @@
                 <th>Réduc</th>
                 <th>Total</th>
             </tr>
-            @foreach($invoice->items as $item)
+            <?php $__currentLoopData = $invoice->items; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <tr style="width: 100%">
                     <td style="width: 40%">
-                        {{$item->description}}
+                        <?php echo e($item->description); ?>
+
                     </td>
                     <td>
-                        {{$item->price}}
+                        <?php echo e($item->price); ?>
+
                     </td>
                     <td>
-                        {{$item->qty}}
+                        <?php echo e($item->qty); ?>
+
                     </td>
                     <td>
                         <?php $vat = \App\Vat::find($item->vat_id);
@@ -125,16 +128,17 @@
                         ?>
                     </td>
                     <td>
-                        {{$item->discount}}
+                        <?php echo e($item->discount); ?>
+
                     </td>
                     <td>
                         <?php echo $item->qty * ($item->price + ($item->price * $vat->rate) - $item->discount)?>
                     </td>
                 </tr>
-            @endforeach
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </table>
     </article>
 </main>
 </body>
 
-</html>
+</html><?php /**PATH /home/jiffy/dev/invoices/resources/views/Invoice/pdf.blade.php ENDPATH**/ ?>

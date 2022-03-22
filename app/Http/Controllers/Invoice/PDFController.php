@@ -33,7 +33,7 @@ class PDFController extends Controller
         $invoice = Invoice::where('id', $id)->first();
         $pdf = PDF::loadView('Invoice.pdf', compact('invoice', 'user'));
 
-        return $pdf->download('test.pdf');
+        return $pdf->download(str_replace(" ", "_",$invoice->client->company.$invoice->created_at.'.pdf'));
 
 //        return view('Invoice.pdf', compact('invoice', 'user'));
     }
