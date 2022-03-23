@@ -57,3 +57,8 @@ Route::prefix('invoice')->group(function () {
     Route::post('/remove', 'Invoice\InvoiceController@remove')->name('invoice_remove');
     Route::get('/generate-pdf/{id}', 'Invoice\PDFController@generatePDF')->name('invoice_generate_pdf');
 });
+
+//To be updated
+Route::get('sendbasicemail','MailController@basic_email');
+Route::get('sendhtmlemail','MailController@html_email');
+Route::get('sendattachmentemail','MailController@attachment_email');
