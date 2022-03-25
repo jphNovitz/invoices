@@ -26,6 +26,8 @@ return [
     'client_update' => 'modification du client',
     'Invoice' => 'Facture',
     'invoice' => 'facture',
+    'Invoice_create' => 'Nouvelle facture',
+    'invoice_create' => 'nouvelle facture',
     'My_invoices' => 'Mes factures',
     'my_invoices' => 'mes factures',
     'Invoice_details' => 'Détails de la facture',

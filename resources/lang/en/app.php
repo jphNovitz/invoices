@@ -25,6 +25,8 @@ return [
     'client_update' => 'client update',
     'Invoice' => 'Invoice',
     'invoice' => 'invoice',
+    'Invoice_create' => 'Create°invoice',
+    'invoice_create' => 'create°invoice',
     'Invoice_details' => 'Invoice Details',
     'invoice_details' => 'invoice details',
     'My_invoices' => 'My invoices',

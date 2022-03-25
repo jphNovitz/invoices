@@ -60,12 +60,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 fetch('/api/client/' + this.value)
                     .then(response => {
                         if (response.ok) {
+
                             return response;
                         } else throw Error('Pas de client');
 
                     })
                     .then(response => {
                         response.text().then(function (text) {
+                            infos.innerHTML=""
                             const content = JSON.parse(text)
                             console.log(content)
                             const location = document.createElement('p');
@@ -73,13 +75,14 @@ document.addEventListener("DOMContentLoaded", function () {
                             location.innerHTML += '<br />';
                             location.innerHTML += content.firstname + ' ' + content.lastname + '<br />'
                             location.innerHTML += content.street + ' ' + content.nr + '<br />'
-                            location.innerHTML += content.city.code + ' ' + content.city.city
-                            infos.append(location)
+                            // location.innerHTML += content.city.code + ' ' + content.city.city
+                            // infos.append(location)
 
                             const contact = document.createElement('p');
                             contact.innerHTML += 'TVA: ' + content.vat + '<br />'
                             contact.innerHTML += 'Email: ' + content.email + '<br />'
                             contact.innerHTML += 'Phone: ' + content.phone
+                            infos.append(location)
                             infos.append(contact)
                         })
                     })

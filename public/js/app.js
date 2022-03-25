@@ -6833,19 +6833,21 @@ document.addEventListener("DOMContentLoaded", function () {
           } else throw Error('Pas de client');
         }).then(function (response) {
           response.text().then(function (text) {
+            infos.innerHTML = "";
             var content = JSON.parse(text);
             console.log(content);
             var location = document.createElement('p');
             location.innerHTML += content.company;
             location.innerHTML += '<br />';
             location.innerHTML += content.firstname + ' ' + content.lastname + '<br />';
-            location.innerHTML += content.street + ' ' + content.nr + '<br />';
-            location.innerHTML += content.city.code + ' ' + content.city.city;
-            infos.append(location);
+            location.innerHTML += content.street + ' ' + content.nr + '<br />'; // location.innerHTML += content.city.code + ' ' + content.city.city
+            // infos.append(location)
+
             var contact = document.createElement('p');
             contact.innerHTML += 'TVA: ' + content.vat + '<br />';
             contact.innerHTML += 'Email: ' + content.email + '<br />';
             contact.innerHTML += 'Phone: ' + content.phone;
+            infos.append(location);
             infos.append(contact);
           });
         })["catch"](function (error) {

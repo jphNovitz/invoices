@@ -14,22 +14,12 @@ $user = auth()->user();
         <div class="card-body w-full">
             <div class="flex flex-row items-left">
                 <span class="button-text ">
-                    <a href="{{route('client_create')}}">
+                    <a href="{{route('invoice_create', ['id'=>$invoice->client->id])}}">
                         <span class="icon info">
                             <i class="fas fa-plus"></i>
                         </span>
                         <span class="label">
                             {{__('btn.New')}}
-                        </span>
-                    </a>
-                </span>
-                <span class="button-text ">
-                    <a href="{{route('clients_search_create')}}">
-                        <span class="icon success">
-                            <i class="fas fa-search-plus"></i>
-                        </span>
-                        <span class="label">
-                            {{__('btn.Search')}}
                         </span>
                     </a>
                 </span>
