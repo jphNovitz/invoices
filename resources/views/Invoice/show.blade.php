@@ -44,7 +44,7 @@ $user = auth()->user();
                     </a>
                 </span>
                 <span class="button-text ">
-                    <a href="{{route('clients_search_create')}}">
+                    <a href="{{route('invoice_send_pdf', ["id"=>$invoice->id])}}">
                         <span class="icon bg-white text-blue-600 border border-blue-600">
                             <i class="fas fa-envelope"></i>
                         </span>

@@ -56,9 +56,6 @@ Route::prefix('invoice')->group(function () {
     Route::get('/delete/{id}', 'Invoice\InvoiceController@delete')->name('invoice_delete')->middleware('owned_invoice');
     Route::post('/remove', 'Invoice\InvoiceController@remove')->name('invoice_remove');
     Route::get('/generate-pdf/{id}', 'Invoice\PDFController@generatePDF')->name('invoice_generate_pdf');
-});
+    Route::get('/send-pdf/{id}','Invoice\PDFController@sendPDF')->name('invoice_send_pdf');
 
-//To be updated
-Route::get('sendbasicemail','MailController@basic_email');
-Route::get('sendhtmlemail','MailController@html_email');
-Route::get('sendattachmentemail','MailController@attachment_email');
+});
