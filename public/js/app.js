@@ -6835,7 +6835,13 @@ document.addEventListener("DOMContentLoaded", function () {
           response.text().then(function (text) {
             infos.innerHTML = "";
             var content = JSON.parse(text);
-            console.log(content);
+            var clientUrl = document.getElementById('showClient');
+            var href = clientUrl.href;
+            var splitted = href.split("/");
+            var newId = splitted[splitted.length - 1];
+            var currentId = String(content.id);
+            href = href.replace(newId, currentId);
+            clientUrl.href = href;
             var location = document.createElement('p');
             location.innerHTML += content.company;
             location.innerHTML += '<br />';

@@ -69,7 +69,13 @@ document.addEventListener("DOMContentLoaded", function () {
                         response.text().then(function (text) {
                             infos.innerHTML=""
                             const content = JSON.parse(text)
-                            console.log(content)
+                            let clientUrl = document.getElementById('showClient')
+                            let href = clientUrl.href
+                            let splitted = href.split("/")
+                            let newId = splitted[splitted.length-1]
+                            let currentId = String(content.id)
+                            href = href.replace(newId, currentId)
+                            clientUrl.href = href
                             const location = document.createElement('p');
                             location.innerHTML += content.company;
                             location.innerHTML += '<br />';
