@@ -17,6 +17,8 @@ return [
     'Create_this_client' => 'Add this client to my list',
     "Register" => "Register",
     "register" => "register",
+    'Client'=> 'Client',
+    'client'=> 'client',
     'New_client'=> 'New Client',
     'new_client'=> 'new client',
     'New_invoice'=> 'New Invoice',

@@ -54,51 +54,112 @@ document.addEventListener("DOMContentLoaded", function () {
      */
     var select = document.getElementById('select-client');
     var infos = document.getElementById('show-client-infos');
-    if (select) {
-        select.addEventListener('change', function () {
-            if (this.value > -1) {
-                fetch('/api/client/' + this.value)
-                    .then(response => {
-                        if (response.ok) {
 
-                            return response;
-                        } else throw Error('Pas de client');
+    function getClientId() {
+        if ( clientUrl = document.getElementById('showClient')
+    )
+        {
+            let href = clientUrl.href
+            let splitted = href.split("/")
+            return splitted[splitted.length - 1]
+        }
+    }
 
-                    })
-                    .then(response => {
-                        response.text().then(function (text) {
-                            infos.innerHTML=""
-                            const content = JSON.parse(text)
-                            let clientUrl = document.getElementById('showClient')
-                            let href = clientUrl.href
-                            let splitted = href.split("/")
-                            let newId = splitted[splitted.length-1]
-                            let currentId = String(content.id)
-                            href = href.replace(newId, currentId)
-                            clientUrl.href = href
-                            const location = document.createElement('p');
-                            location.innerHTML += content.company;
-                            location.innerHTML += '<br />';
-                            location.innerHTML += content.firstname + ' ' + content.lastname + '<br />'
-                            location.innerHTML += content.street + ' ' + content.nr + '<br />'
-                            // location.innerHTML += content.city.code + ' ' + content.city.city
-                            // infos.append(location)
+    function actualzeClient(value) {
+        if (value > -1) {
+            fetch('/api/client/' + value)
+                .then(response => {
+                    if (response.ok) {
 
-                            const contact = document.createElement('p');
-                            contact.innerHTML += 'TVA: ' + content.vat + '<br />'
-                            contact.innerHTML += 'Email: ' + content.email + '<br />'
-                            contact.innerHTML += 'Phone: ' + content.phone
-                            infos.append(location)
-                            infos.append(contact)
-                        })
+                        return response;
+                    } else throw Error('Pas de client');
+
+                })
+                .then(response => {
+                    response.text().then(function (text) {
+                        infos.innerHTML = ""
+                        const content = JSON.parse(text)
+                        let newId = getClientId()
+                        let clientUrl = document.getElementById('showClient')
+                        /*let href = clientUrl.href
+                        let splitted = href.split("/")
+                        let newId = splitted[splitted.length-1]*/
+                        let currentId = String(content.id)
+                        clientUrl.href = clientUrl.href.replace(newId, currentId)
+                        const location = document.createElement('p');
+                        location.innerHTML += content.company;
+                        location.innerHTML += '<br />';
+                        location.innerHTML += content.firstname + ' ' + content.lastname + '<br />'
+                        location.innerHTML += content.street + ' ' + content.nr + '<br />'
+                        // location.innerHTML += content.city.code + ' ' + content.city.city
+                        // infos.append(location)
+
+                        const contact = document.createElement('p');
+                        contact.innerHTML += 'TVA: ' + content.vat + '<br />'
+                        contact.innerHTML += 'Email: ' + content.email + '<br />'
+                        contact.innerHTML += 'Phone: ' + content.phone
+                        infos.append(location)
+                        infos.append(contact)
                     })
-                    .catch(error => {
-                        console.log(error)
-                        infos.innerText = ''
-                    })
-            } else {
+                })
+                .catch(error => {
+                    console.log(error)
+                    infos.innerText = ''
+                })
+        } else {
+            if(infos !== null){
                 infos.innerText = ''
             }
+        }
+    }
+
+    actualzeClient(getClientId())
+    if (select) {
+        select.addEventListener('change', function () {
+            actualzeClient(this.value)
+            /* if (this.value > -1) {
+                 fetch('/api/client/' + this.value)
+                     .then(response => {
+                         if (response.ok) {
+
+                             return response;
+                         } else throw Error('Pas de client');
+
+                     })
+                     .then(response => {
+                         response.text().then(function (text) {
+                             infos.innerHTML=""
+                             const content = JSON.parse(text)
+                             let clientUrl = document.getElementById('showClient')
+                             let href = clientUrl.href
+                             let splitted = href.split("/")
+                             let newId = splitted[splitted.length-1]
+                             let currentId = String(content.id)
+                             href = href.replace(newId, currentId)
+                             clientUrl.href = href
+                             const location = document.createElement('p');
+                             location.innerHTML += content.company;
+                             location.innerHTML += '<br />';
+                             location.innerHTML += content.firstname + ' ' + content.lastname + '<br />'
+                             location.innerHTML += content.street + ' ' + content.nr + '<br />'
+                             // location.innerHTML += content.city.code + ' ' + content.city.city
+                             // infos.append(location)
+
+                             const contact = document.createElement('p');
+                             contact.innerHTML += 'TVA: ' + content.vat + '<br />'
+                             contact.innerHTML += 'Email: ' + content.email + '<br />'
+                             contact.innerHTML += 'Phone: ' + content.phone
+                             infos.append(location)
+                             infos.append(contact)
+                         })
+                     })
+                     .catch(error => {
+                         console.log(error)
+                         infos.innerText = ''
+                     })
+             } else {
+                 infos.innerText = ''
+             }*/
         });
 
     }
@@ -204,13 +265,13 @@ document.addEventListener("DOMContentLoaded", function () {
             for (let i = 0; i < add_buttons.length - 1; i++) {
                 add_buttons[i].style.display = "none"
             }
-            add_buttons[length-1].style.display = "flex"
+            add_buttons[length - 1].style.display = "flex"
         } else {
             add_buttons[0].style.display = "flex"
         }
     }
 
-    function hideFirstMinus(){
+    function hideFirstMinus() {
         let remove_buttons = document.getElementsByClassName('remove-item');
         if (remove_buttons.length === 1) {
             remove_buttons[0].style.display = "none"

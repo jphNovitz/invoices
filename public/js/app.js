@@ -6824,45 +6824,102 @@ document.addEventListener("DOMContentLoaded", function () {
   var select = document.getElementById('select-client');
   var infos = document.getElementById('show-client-infos');
 
-  if (select) {
-    select.addEventListener('change', function () {
-      if (this.value > -1) {
-        fetch('/api/client/' + this.value).then(function (response) {
-          if (response.ok) {
-            return response;
-          } else throw Error('Pas de client');
-        }).then(function (response) {
-          response.text().then(function (text) {
-            infos.innerHTML = "";
-            var content = JSON.parse(text);
-            var clientUrl = document.getElementById('showClient');
-            var href = clientUrl.href;
-            var splitted = href.split("/");
-            var newId = splitted[splitted.length - 1];
-            var currentId = String(content.id);
-            href = href.replace(newId, currentId);
-            clientUrl.href = href;
-            var location = document.createElement('p');
-            location.innerHTML += content.company;
-            location.innerHTML += '<br />';
-            location.innerHTML += content.firstname + ' ' + content.lastname + '<br />';
-            location.innerHTML += content.street + ' ' + content.nr + '<br />'; // location.innerHTML += content.city.code + ' ' + content.city.city
-            // infos.append(location)
+  function getClientId() {
+    if (clientUrl = document.getElementById('showClient')) {
+      var href = clientUrl.href;
+      var splitted = href.split("/");
+      return splitted[splitted.length - 1];
+    }
+  }
 
-            var contact = document.createElement('p');
-            contact.innerHTML += 'TVA: ' + content.vat + '<br />';
-            contact.innerHTML += 'Email: ' + content.email + '<br />';
-            contact.innerHTML += 'Phone: ' + content.phone;
-            infos.append(location);
-            infos.append(contact);
-          });
-        })["catch"](function (error) {
-          console.log(error);
-          infos.innerText = '';
+  function actualzeClient(value) {
+    if (value > -1) {
+      fetch('/api/client/' + value).then(function (response) {
+        if (response.ok) {
+          return response;
+        } else throw Error('Pas de client');
+      }).then(function (response) {
+        response.text().then(function (text) {
+          infos.innerHTML = "";
+          var content = JSON.parse(text);
+          var newId = getClientId();
+          var clientUrl = document.getElementById('showClient');
+          /*let href = clientUrl.href
+          let splitted = href.split("/")
+          let newId = splitted[splitted.length-1]*/
+
+          var currentId = String(content.id);
+          clientUrl.href = clientUrl.href.replace(newId, currentId);
+          var location = document.createElement('p');
+          location.innerHTML += content.company;
+          location.innerHTML += '<br />';
+          location.innerHTML += content.firstname + ' ' + content.lastname + '<br />';
+          location.innerHTML += content.street + ' ' + content.nr + '<br />'; // location.innerHTML += content.city.code + ' ' + content.city.city
+          // infos.append(location)
+
+          var contact = document.createElement('p');
+          contact.innerHTML += 'TVA: ' + content.vat + '<br />';
+          contact.innerHTML += 'Email: ' + content.email + '<br />';
+          contact.innerHTML += 'Phone: ' + content.phone;
+          infos.append(location);
+          infos.append(contact);
         });
-      } else {
+      })["catch"](function (error) {
+        console.log(error);
+        infos.innerText = '';
+      });
+    } else {
+      if (infos !== null) {
         infos.innerText = '';
       }
+    }
+  }
+
+  actualzeClient(getClientId());
+
+  if (select) {
+    select.addEventListener('change', function () {
+      actualzeClient(this.value);
+      /* if (this.value > -1) {
+           fetch('/api/client/' + this.value)
+               .then(response => {
+                   if (response.ok) {
+                         return response;
+                   } else throw Error('Pas de client');
+                 })
+               .then(response => {
+                   response.text().then(function (text) {
+                       infos.innerHTML=""
+                       const content = JSON.parse(text)
+                       let clientUrl = document.getElementById('showClient')
+                       let href = clientUrl.href
+                       let splitted = href.split("/")
+                       let newId = splitted[splitted.length-1]
+                       let currentId = String(content.id)
+                       href = href.replace(newId, currentId)
+                       clientUrl.href = href
+                       const location = document.createElement('p');
+                       location.innerHTML += content.company;
+                       location.innerHTML += '<br />';
+                       location.innerHTML += content.firstname + ' ' + content.lastname + '<br />'
+                       location.innerHTML += content.street + ' ' + content.nr + '<br />'
+                       // location.innerHTML += content.city.code + ' ' + content.city.city
+                       // infos.append(location)
+                         const contact = document.createElement('p');
+                       contact.innerHTML += 'TVA: ' + content.vat + '<br />'
+                       contact.innerHTML += 'Email: ' + content.email + '<br />'
+                       contact.innerHTML += 'Phone: ' + content.phone
+                       infos.append(location)
+                       infos.append(contact)
+                   })
+               })
+               .catch(error => {
+                   console.log(error)
+                   infos.innerText = ''
+               })
+       } else {
+           infos.innerText = ''
+       }*/
     });
   }
   /**

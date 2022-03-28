@@ -16,6 +16,8 @@ return [
     'Find_client_to_add' => 'Chercher un client à ajouter',
     "Register" => "S'engeristrer",
     "register" => "s'engeristrer",
+    'Client'=> 'Client',
+    'client'=> 'client',
     'New_client'=> 'Nouveau Client',
     'new_client'=> 'nouveau Client',
     'Search/Add'=> 'Chercher/Ajouter',
