@@ -12,7 +12,8 @@ return [
     */
 
     'Not_found_create' => 'Pas trouvé ?  Créer en un',
-    'Create_this_client' => 'Ajouter ce client à ma liste',
+    'Create_this_client' => 'Ajouter ce client',
+//    'Create_this_client' => 'Ajouter ce client à ma liste',
     'Find_client_to_add' => 'Chercher un client à ajouter',
     "Register" => "S'engeristrer",
     "register" => "s'engeristrer",

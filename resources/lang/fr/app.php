@@ -20,6 +20,8 @@ return [
     'home' => 'accueil',
     'My_clients' => 'Mes Clients',
     'my_clients' => 'mes clients',
+    'Find_client_add' => 'Rechercher / Ajouter un client',
+    'find_client_add' => 'rechercher / ajouter un client',
     'Client_details' => 'Détails du client',
     'client_details' => 'détails du client',
     'Client_update' => 'Modification du client',

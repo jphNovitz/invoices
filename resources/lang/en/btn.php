@@ -14,7 +14,8 @@ return [
 
     'Not_found_create' => 'Not found ?  Create it !',
     'Find_client_to_add' => 'Find client to add',
-    'Create_this_client' => 'Add this client to my list',
+    'Create_this_client' => 'Add this client',
+//    'Create_this_client' => 'Add this client to my list',
     "Register" => "Register",
     "register" => "register",
     'Client'=> 'Client',
