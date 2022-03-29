@@ -20,14 +20,16 @@ $cities = \App\City::all();
                     </a>
                 </span>
             </div>
-            <ul class="flex flex-col justify-start w-full">
-                <li>
-                    {{__('Created_at')}}: <strong>{{$client->created_at->isoFormat('DD/MM/YYYY HH:mm')}}</strong>
-                </li>
-                <li>
-                    {{__('Updated_at')}}: <strong>{{$client->updated_at->isoFormat('DD/MM/YYYY HH:mm')}}</strong>
-                </li>
-            </ul>
+            @if(null !== $client->created_at){
+                <ul class="flex flex-col justify-start w-full">
+                    <li>
+                        {{__('Created_at')}}: <strong>{{$client->created_at->isoFormat('DD/MM/YYYY HH:mm')}}</strong>
+                    </li>
+                    <li>
+                        {{__('Updated_at')}}: <strong>{{$client->updated_at->isoFormat('DD/MM/YYYY HH:mm')}}</strong>
+                    </li>
+                </ul>
+           @endif
             <div class="flex flex-col md:flex-row w-full my-12">
                 @if ($errors->any())
                     <div class="alert alert-danger">

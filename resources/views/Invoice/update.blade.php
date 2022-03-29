@@ -53,7 +53,7 @@ $date = Carbon::now('Europe/Zurich')
                     </ul>
                 </div>
                 <?php $client = $invoice->client;?>
-                <div id="show-client-infos" class="md:w-1/2 p-12 m-12 border border-slate-200">
+                <div id="" class="md:w-1/2 p-12 m-12 border border-slate-200">
                     <ul class="font-bold ">
                         <li>{{$client->company}}</li>
                         <li>{{$client->vat}}</li>

@@ -1,69 +1,90 @@
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header">
-                    <h2>{{title}}</h2>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <a href="{{route('clients_create')}}" class="btn btn-primary">Ajouter un client</a>
-                        </div>
-                    </div>
+<?php
+/*
+ * LIST LAYOUT
+ */
+?>
 
-                    <div class="row">
-                        <div class="col-md-12">
 
-                            <h3>Liste des clients</h3>
+@extends('layouts.app')
 
-                            <table class="table">
-                                <thead>
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Entreprise</th>
-                                    <th scope="col">Prénom</th>
-                                    <th scope="col">Nom</th>
-                                    <th scope="col">Télephone</th>
-                                    <th scope="col">email</th>
-                                    <th scope="col"></th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @foreach($clients as $client)
-                                    <tr>
-                                        <th scope="row">{{$client->id}}</th>
-                                        <td>{{$client->company}}</td>
-                                        <td>{{$client->firstname}}</td>
-                                        <td>{{$client->lastname}}</td>
-                                        <td>{{$client->phone}}</td>
-                                        <td>{{$client->email}}</td>
-                                        <td>
-                                            <a href="{{route('client_card', ['client'=>$client->id])}}"
-                                               class="btn btn-sm btn-primary">
-                                                <i class="fas fa-info"></i>
-                                                Détail
-                                            </a>
-                                            <a href="{{route('client_update', ['client' => $client->id])}}"
-                                               class="btn btn-sm btn-success">
-                                                <i class="fas fa-edit"></i>
-                                                Modifier
-                                            </a>
-                                            <a href="{{route('client_delete', ['client' => $client->id])}}"
-                                               class="btn btn-sm btn-danger">
-                                                <i class="fas fa-trash"></i>
-                                                Supprimer
-                                            </a>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
+@section('content')
+    <section class="card w-full  mb-10 border p-12px border-slate-200">
+        <div class="card-header bg-slate-500 text-slate-50">
+            Liste de vos blabla
         </div>
-    </div>
-</div>
+
+        <div class="card-body w-full">
+            <div class="list py-4 ">
+        <span class="button secondary p-3 mx-1 w-40">
+            <a href="{{route($model.'_create')}}">
+                <i class="fas fa-plus"></i>
+            </a>
+        </span>
+                @foreach($itemss as $item )
+                    <article
+                            class="odd:bg-white even:bg-slate-100 overflow-hidden w-full my-6  px-3 flex flex-col justify-between">
+                        <div class="w-full flex flex-row justify-between">
+                            <div class="font-black flex flex-col">
+                                {{$item->client->company}} ({{$item->total }} eur)
+{{--                                <span>Ref: {{$item->reference}}</span></div>--}}
+{{--                            <div class="actions flex flex-row justify-end items-center my-auto">--}}
+{{--                               <span class="button-text self-start action-toggle transition-transform ease-in duration-400">--}}
+{{--                                   <span class="icon primary ">--}}
+{{--                                        <i class="fas fa-chevron-down"></i>--}}
+{{--                                   </span>--}}
+{{--                                   <span class="label ">&nbsp; </span>--}}
+{{--                               </span>--}}
+{{--                                <div class="button-text">--}}
+{{--                                    <a href="{{route('invoice_show', ["id"=>$item->id])}}">--}}
+{{--                                        <span class="flex m-auto w-7 h-7 items-center justify-center rounded-full info ">--}}
+{{--                                            <i class="fas fa-search-plus"></i>--}}
+{{--                                        </span>--}}
+{{--                                        <span class="hidden flex md:flex flex-col text-sm">{{__('btn.Details')}}</span>--}}
+{{--                                    </a>--}}
+{{--                                </div>--}}
+{{--                                <span class="button-text p-3">--}}
+{{--                                    <a href="{{route('invoice_show', ["id"=>$item->id])}}">--}}
+{{--                                        <span class="icon success">--}}
+{{--                                             <i class="fas fa-edit"></i>--}}
+{{--                                        </span>--}}
+{{--                                        <span class="label">--}}
+{{--                                            {{__('btn.Update')}}--}}
+{{--                                        </span>--}}
+{{--                                    </a>--}}
+{{--                                </span>--}}
+{{--                                <span class="button-text">--}}
+{{--                                    <a href="{{route('invoice_show', ["id"=>$item->id])}}">--}}
+{{--                                        <span class="icon danger">--}}
+{{--                                            <i class="fas fa-trash-alt"></i>--}}
+{{--                                        </span>--}}
+{{--                                        <span class="label">--}}
+{{--                                            {{__('btn.Remove')}}--}}
+{{--                                        </span>--}}
+{{--                                    </a>--}}
+{{--                                </span>--}}
+
+{{--                            </div>--}}
+{{--                        </div>--}}
+
+{{--                        <ul class="infos flex flex-col h-0 transition-height ease-in duration-600">--}}
+{{--                            <li>{{__('auth.Lastname')}}: <strong>{{$item->client->lastname}}</strong></li>--}}
+{{--                            <li>{{__('auth.Firstname')}}: <strong>{{$item->client->firstname}}</strong></li>--}}
+{{--                            <li>{{__('auth.Vat')}}: <strong>T{{$item->client->vat}}</strong></li>--}}
+{{--                            <li>{{__('auth.Email')}}: <strong>{{$item->client->email}}</strong></li>--}}
+{{--                            <li>{{__('auth.Street')}}:--}}
+{{--                                <strong>{{$item->client->street}} {{$item->client->nr}}</strong></li>--}}
+{{--                        </ul>--}}
+{{--                    </article>--}}
+{{--                    --}}{{--                    {{dd($client)}}--}}
+{{--                @endforeach--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--        <div class="card-footer bg-slate-200 text-slate-700 flex flex-row justify-center">--}}
+{{--            {{ $items->links('pagination::tailwind') }}--}}
+
+{{--        </div>--}}
+{{--    </section>--}}
+
+@endsection
+
+

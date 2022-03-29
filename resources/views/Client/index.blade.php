@@ -9,7 +9,7 @@
 @section('content')
     <section class="card w-full  mb-10 border p-12px border-slate-200">
         <div class="card-header bg-slate-500 text-slate-50">
-            Liste de vos clients
+            {{__('app.My_clients')}}
         </div>
 
         <div class="card-body w-full">

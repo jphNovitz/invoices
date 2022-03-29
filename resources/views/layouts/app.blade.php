@@ -57,17 +57,27 @@
          * @todo externaliser vers un fichier séparé et faire un include
          */
         ?>
-        @if(session()->has('alert-success'))
-            <div class="alert alert-success">
-                {{ session()->get('alert-success') }}
-            </div>
-        @elseif(session()->has('alert-danger'))
-            <div class="alert alert-danger">
-                {{ session()->get('alert-danger') }}
-            </div>
-        @endif
+        <aside>
+            @if (session('status'))
+                <div class="alert alert-success" role="alert">
+                    {{ session('status') }}
+                </div>
+
+            @elseif(session()->has('alert-success'))
+                <div class="alert alert-success">
+                    {{ session()->get('alert-success') }}
+                </div>
+            @elseif(session()->has('alert-danger'))
+                <div class="alert alert-danger">
+                    {{ session()->get('alert-danger') }}
+                </div>
+            @endif
+        </aside>
         @yield('content')
     </main>
+    <footer>
+        (2022) <a href="https://jphnovitz.be"> Novitz Jean-Philippe, Développeur Web à Liège </a>
+    </footer>
 </div>
 </body>
 </html>
