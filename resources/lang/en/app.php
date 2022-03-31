@@ -35,6 +35,8 @@ return [
     'invoice_update' => 'invoice update',
     'Invoice_delete' => 'Delete invoice',
     'invoice_delete' => 'delete invoice',
+    'Confirm_delete'=>'Souhaitez-vous supprimer cette facture',
+    'confirm_delete'=>'souhaitez-vous supprimer cette facture',
     'Description' => 'Description',
     'description' => 'description',
     'Price' => 'Price',
