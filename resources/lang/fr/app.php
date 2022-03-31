@@ -36,6 +36,8 @@ return [
     'invoice_details' => 'détails de la facture',
     'Invoice_update' => 'Modification de la facture',
     'invoice_update' => 'modification de la facture',
+    'Invoice_delete' => 'Suppression de la facture',
+    'invoice_delete' => 'suppression de la facture',
     'Description' => 'Description',
     'description' => 'description',
     'Price' => 'Prix',
