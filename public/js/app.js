@@ -6824,12 +6824,18 @@ document.addEventListener("DOMContentLoaded", function () {
   var select = document.getElementById('select-client');
   var infos = document.getElementById('show-client-infos');
 
-  function getClientId() {
-    if (clientUrl = document.getElementById('showClient')) {
+  function getCurrentClientId() {
+    var clientUrl = document.getElementById('showClient');
+
+    if (clientUrl) {
       var href = clientUrl.href;
       var splitted = href.split("/");
       return splitted[splitted.length - 1];
     }
+  }
+
+  function getFirstSelectedClientId() {
+    return select.getElementsByTagName('option')[0].value;
   }
 
   function actualzeClient(value) {
@@ -6842,14 +6848,19 @@ document.addEventListener("DOMContentLoaded", function () {
         response.text().then(function (text) {
           infos.innerHTML = "";
           var content = JSON.parse(text);
-          var newId = getClientId();
+          var newId = String(content.id);
           var clientUrl = document.getElementById('showClient');
-          /*let href = clientUrl.href
-          let splitted = href.split("/")
-          let newId = splitted[splitted.length-1]*/
 
-          var currentId = String(content.id);
-          clientUrl.href = clientUrl.href.replace(newId, currentId);
+          if (clientUrl) {
+            currentId = String(getCurrentClientId());
+            console.log(clientUrl.href);
+            var lastIndex = clientUrl.href.lastIndexOf(currentId);
+            console.log(lastIndex);
+            clientUrl.href = clientUrl.href.substring(0, lastIndex) + newId + clientUrl.href.substring(lastIndex + currentId.length); // clientUrl.href = clientUrl.href.replace(currentId, newId)
+
+            console.log(clientUrl.href);
+          } else currentId = content.id;
+
           var location = document.createElement('p');
           location.innerHTML += content.company;
           location.innerHTML += '<br />';
@@ -6875,7 +6886,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  actualzeClient(getClientId());
+  actualzeClient(getCurrentClientId());
 
   if (select) {
     select.addEventListener('change', function () {

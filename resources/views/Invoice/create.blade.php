@@ -21,9 +21,15 @@ $vat_all = \App\Vat::all();
         <div class="card-body  w-full  my-12">
             <div class="flex flex-row justify-start w-full">
                  <span class="button-text ">
-                    <a id="showClient" href="{{route('client_show', ['client'=>$new_client->id])}}">
+                        <a id="showClient" href="
+                        @if(isset($client))
+                        {{route('client_show', ['client'=>$new_client->id])}}
+                        @else{{route('client_show', ['client'=>$user->clients[0]])}}
+                        @endif
+                                ">
+
                         <span class="icon primary">
-                            <i class="fas fa-user"></i>
+                        <i class="fas fa-user"></i>
                         </span>
                         <span class="label">
                             {{__('btn.Client')}}

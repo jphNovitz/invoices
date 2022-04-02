@@ -55,14 +55,17 @@ document.addEventListener("DOMContentLoaded", function () {
     var select = document.getElementById('select-client');
     var infos = document.getElementById('show-client-infos');
 
-    function getClientId() {
-        if ( clientUrl = document.getElementById('showClient')
-    )
-        {
+    function getCurrentClientId(){
+        var clientUrl = document.getElementById('showClient')
+        if (clientUrl) {
             let href = clientUrl.href
             let splitted = href.split("/")
-            return splitted[splitted.length - 1]
+                return splitted[splitted.length - 1]
         }
+    }
+
+    function getFirstSelectedClientId() {
+                return select.getElementsByTagName('option')[0].value
     }
 
     function actualzeClient(value) {
@@ -70,7 +73,6 @@ document.addEventListener("DOMContentLoaded", function () {
             fetch('/api/client/' + value)
                 .then(response => {
                     if (response.ok) {
-
                         return response;
                     } else throw Error('Pas de client');
 
@@ -79,13 +81,20 @@ document.addEventListener("DOMContentLoaded", function () {
                     response.text().then(function (text) {
                         infos.innerHTML = ""
                         const content = JSON.parse(text)
-                        let newId = getClientId()
+                        let newId = String(content.id)
                         let clientUrl = document.getElementById('showClient')
-                        /*let href = clientUrl.href
-                        let splitted = href.split("/")
-                        let newId = splitted[splitted.length-1]*/
-                        let currentId = String(content.id)
-                        clientUrl.href = clientUrl.href.replace(newId, currentId)
+                        if (clientUrl) {
+                            currentId = String(getCurrentClientId())
+                            console.log(clientUrl.href)
+                            let lastIndex = clientUrl.href.lastIndexOf(currentId)
+                            console.log(lastIndex)
+                            clientUrl.href = clientUrl.href.substring(0, lastIndex) +
+                            newId +
+                            clientUrl.href.substring(lastIndex + currentId.length);
+                            // clientUrl.href = clientUrl.href.replace(currentId, newId)
+                            console.log(clientUrl.href)
+                        } else currentId = content.id
+
                         const location = document.createElement('p');
                         location.innerHTML += content.company;
                         location.innerHTML += '<br />';
@@ -107,13 +116,13 @@ document.addEventListener("DOMContentLoaded", function () {
                     infos.innerText = ''
                 })
         } else {
-            if(infos !== null){
+            if (infos !== null) {
                 infos.innerText = ''
             }
         }
     }
 
-    actualzeClient(getClientId())
+    actualzeClient(getCurrentClientId())
     if (select) {
         select.addEventListener('change', function () {
             actualzeClient(this.value)
