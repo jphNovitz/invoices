@@ -168,7 +168,7 @@ class InvoiceController extends Controller
 
     public function delete($id = null)
     {
-//        if (!$id) return;
+        if (!$id) return;
 
         return view('Invoice.delete', [
             'invoice' => invoice::where('id', $id)->first()

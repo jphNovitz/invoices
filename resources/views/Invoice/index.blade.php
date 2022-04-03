@@ -53,7 +53,7 @@
                                     </a>
                                 </span>
                                 <span class="button-text">
-                                    <a href="{{route('invoice_show', ["id"=>$invoice->id])}}">
+                                    <a href="{{route('invoice_delete', ["id"=>$invoice->id])}}">
                                         <span class="icon danger">
                                             <i class="fas fa-trash-alt"></i>
                                         </span>
