@@ -13,7 +13,10 @@ return [
     |
     */
 
-
+    'Created_at' => 'Création',
+    'created_at' => 'création',
+    'Updated_at' => 'Modification',
+    'updated_at' => 'modification',
     'Hello' => 'Bonjour',
     'hello' => 'bonjour',
     'Home' => 'Accueil',

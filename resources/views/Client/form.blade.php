@@ -20,13 +20,13 @@ $cities = \App\City::all();
                     </a>
                 </span>
             </div>
-            @if(null !== $client->created_at){
+            @if(null !== $client->created_at)
                 <ul class="flex flex-col justify-start w-full">
                     <li>
-                        {{__('Created_at')}}: <strong>{{$client->created_at->isoFormat('DD/MM/YYYY HH:mm')}}</strong>
+                        {{__('app.Created_at')}}: <strong>{{$client->created_at->isoFormat('DD/MM/YYYY HH:mm')}}</strong>
                     </li>
                     <li>
-                        {{__('Updated_at')}}: <strong>{{$client->updated_at->isoFormat('DD/MM/YYYY HH:mm')}}</strong>
+                        {{__('app.Updated_at')}}: <strong>{{$client->updated_at->isoFormat('DD/MM/YYYY HH:mm')}}</strong>
                     </li>
                 </ul>
            @endif
