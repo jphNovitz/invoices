@@ -30,23 +30,21 @@ $cities = \App\City::all();
                     </li>
                 </ul>
            @endif
-            <div class="flex flex-col md:flex-row w-full my-12">
+            <div class="flex flex-col md:flex-row w-full my-12 md:justify-center">
                 @if ($errors->any())
                     <div class="alert alert-danger">
                         <p>Veuillez corriger les erreur !</p>
 
                     </div>
                 @endif
-                <?php
-                echo Form::open(['route' => $route, 'method' => $method, 'class' => 'w-1/2']);
-                echo Form::hidden('id', $client->id);
-                ?>
+                    <form action="{{route($route)}}" class="w-1/2 md:p-6 md:rounded-b-md md:border border-slate-300 shadow-sm " >
+                        @csrf
+
+                        <input type="hidden" id="id" name="id" value="{{$client->id}}">
                 <div class="form-row">
-                    <?php
-                    echo Form::label('company', __('auth.Company'), ['class' => '']);
-                    echo Form::text('company', $client->company, ['class' => 'form-control']);
-                        ?>
-                        @error('company')
+                    <label for="company">{{__('auth.Company')}}</label>
+                    <input type="text" name="company" id="company" value="{{$client->company}}" />
+                       @error('company')
                         <span class="alert-danger" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -54,10 +52,8 @@ $cities = \App\City::all();
                 </div>
 
                 <div class="form-row">
-                    <?php
-                    echo Form::label('firstname', __('auth.Firstname'), ['class' => '']);
-                    echo Form::text('firstname', $client->firstname, ['class' => 'form-control']);
-                        ?>
+                    <label for="firstname">{{__('auth.firstname')}}</label>
+                    <input type="text" name="firstname" id="firstname" value="{{$client->firstname}}" />
                         @error('firstname')
                         <span class="alert-danger" role="alert">
                             <strong>{{ $message }}</strong>
@@ -66,10 +62,9 @@ $cities = \App\City::all();
                 </div>
 
                 <div class="form-row">
-                    <?php
-                    echo Form::label('lastname', __('auth.Lastname'), ['class' => '']);
-                    echo Form::text('lastname', $client->lastname, ['class' => 'form-control']);
-                    ?>
+                    <label for="company">{{__('auth.lastname')}}</label>
+                    <input type="text" name="lastname" id="lastname" value="{{$client->lastname}}" />
+
                     @error('lastname')
                     <span class="alert-danger" role="alert">
                         <strong>{{ $message }}</strong>
@@ -78,10 +73,10 @@ $cities = \App\City::all();
                 </div>
 
                 <div class="form-row">
-                    <?php
-                    echo Form::label('vat', __('auth.Vat'), ['class' => '']);
-                    echo Form::text('vat', $client->vat, ['class' => 'form-control']);
-                    ?>
+
+                    <label for="company">{{__('auth.Vat')}}</label>
+                    <input type="text" name="Vat" id="Vat" value="{{$client->Vat}}" />
+
                     @error('vat')
                     <span class="alert-danger" role="alert">
                         <strong>{{ $message }}</strong>
@@ -155,8 +150,9 @@ $cities = \App\City::all();
                         @enderror
                 </div>
                 <?php echo Form::submit($submit, ['class' => 'info rounded-md p-3']);
-                echo Form::close();
                 ?>
+            </form>
+
             </div>
         </div>
     </section>
