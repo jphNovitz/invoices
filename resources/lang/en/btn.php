@@ -45,6 +45,8 @@ return [
     'list' => 'list',
     'Download' => 'Download',
     'download' => 'download',
+    'submit' => 'submit',
+    'Submit' => 'Submit',
     '' => ''
 
 ];

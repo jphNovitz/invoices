@@ -735,6 +735,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-bg-opacity: 1;
   background-color: rgb(51 65 85 / var(--tw-bg-opacity));
 }
+.bg-blue-600{
+  --tw-bg-opacity: 1;
+  background-color: rgb(37 99 235 / var(--tw-bg-opacity));
+}
+.bg-red-200{
+  --tw-bg-opacity: 1;
+  background-color: rgb(254 202 202 / var(--tw-bg-opacity));
+}
 .bg-opacity-60{
   --tw-bg-opacity: 0.6;
 }
@@ -755,6 +763,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .p-0{
   padding: 0px;
+}
+.p-4{
+  padding: 1rem;
 }
 .py-4{
   padding-top: 1rem;
@@ -835,6 +846,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 .text-gray-50{
   --tw-text-opacity: 1;
   color: rgb(249 250 251 / var(--tw-text-opacity));
+}
+.text-blue-50{
+  --tw-text-opacity: 1;
+  color: rgb(239 246 255 / var(--tw-text-opacity));
+}
+.text-red-900{
+  --tw-text-opacity: 1;
+  color: rgb(127 29 29 / var(--tw-text-opacity));
 }
 .no-underline{
   -webkit-text-decoration-line: none;
@@ -1411,6 +1430,10 @@ nav .nav-link.active::after{
 
   .md\:flex-col{
     flex-direction: column;
+  }
+
+  .md\:items-center{
+    align-items: center;
   }
 
   .md\:justify-center{

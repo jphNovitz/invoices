@@ -45,5 +45,7 @@ return [
     'list' => 'liste',
     'Download' => 'Telecharger',
     'download' => 'telecharger',
+    'submit' => 'envoi',
+    'Submit' => 'Envoi'
 
 ];
