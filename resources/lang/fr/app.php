@@ -43,6 +43,8 @@ return [
     'invoice_delete' => 'suppression de la facture',
     'Confirm_delete'=>'Souhaitez-vous supprimer cette facture',
     'confirm_delete'=>'souhaitez-vous supprimer cette facture',
+    'Confirm_delete_client'=>'Souhaitez-vous supprimer ce client',
+    'confirm_delete_client'=>'souhaitez-vous supprimer ce client',
     'Description' => 'Description',
     'description' => 'description',
     'Price' => 'Prix',
