@@ -37,6 +37,8 @@ return [
     'my_invoices' => 'mes factures',
     'Invoice_details' => 'Détails de la facture',
     'invoice_details' => 'détails de la facture',
+    'Profile_update' => 'Modification de mon profil',
+    'profile_update' => 'modification de mon profil',
     'Invoice_update' => 'Modification de la facture',
     'invoice_update' => 'modification de la facture',
     'Invoice_delete' => 'Suppression de la facture',

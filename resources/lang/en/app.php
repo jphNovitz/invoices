@@ -31,6 +31,8 @@ return [
     'invoice_details' => 'invoice details',
     'My_invoices' => 'My invoices',
     'my_invoices' => 'my invoices',
+    'Profile_update' => 'Modification de mon profil',
+    'profile_update' => 'modification de mon profil',
     'Invoice_update' => 'Invoice update',
     'invoice_update' => 'invoice update',
     'Invoice_delete' => 'Delete invoice',
