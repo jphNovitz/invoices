@@ -46,7 +46,7 @@
                         {{\auth()->getUser()->firstname}}
                     </a>
                 </li>
-                <li class="mx-3">(<a href="{{route('home')}}">{{__('auth.logout')}}</a>)</li>
+                <li class="mx-3">(<a href="{{route('logout')}}">{{__('auth.logout')}}</a>)</li>
             </ul>
         @endauth
     </nav>

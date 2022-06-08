@@ -25,7 +25,11 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/user', 'User\UserController@index')->name('user_home');
 Route::get('/user/update', 'User\UserController@update')->name('user_update');
 Route::put('/user/store', 'User\UserController@store')->name('user_store');
-Route::delete('/user/delete', 'User\UserController@delete')->name('user_delete');
+Route::get('/user/delete', function (App\User $user ) {
+    $user = \Auth::user();
+    return view('User.user-delete', ['user' => $user]);
+})->name('user_delete');
+Route::delete('user/delete}', 'User\UserController@delete')->name('user_remove');
 
 /* Clients */
 

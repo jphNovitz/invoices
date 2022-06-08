@@ -36,7 +36,7 @@
                                 </a>
                             </span>
                             <span class="button-text ">
-                                <a href="#{{--{{route('user_delete', ['user' => $user])}}--}}">
+                                <a href="{{route('user_delete')}}">
                                     <span class="icon danger">
                                         <i class="fas fa-minus"></i>
                                     </span>

@@ -10,10 +10,11 @@
             <div class="card-body w-full">
                 <div class="list py-4 ">
                     @foreach($invoices as $invoice )
+                         @if($invoice->client)
                         <article class="overflow-hidden w-full my-6  flex flex-col justify-between">
                             <div class="w-full flex flex-row justify-between">
                                 <div class="font-black flex flex-col ">
-                                    {{$invoice->client->company}} ({{$invoice->total }} eur)
+                                    {{$invoice->client ? $invoice->client->company : $invoice->name }} ({{$invoice->total }} eur)
                                     <span>Ref: {{$invoice->reference}}</span></div>
                                 <div class="actions flex flex-row justify-end">
                                <span class="button primary action-toggle transition-transform ease-in duration-400 p-3 mr-1 w-5 ">
@@ -37,6 +38,7 @@
                             </ul>
                         </article>
                         {{--                    {{dd($client)}}--}}
+                        @endif
                     @endforeach
                 </div>
             </div>

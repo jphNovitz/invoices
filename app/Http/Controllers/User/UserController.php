@@ -52,10 +52,30 @@ class UserController extends Controller
         $user->nr = $data['nr'];
         $user->city_id = $data['city_id'];
         $user->tva = $data['vat'];
-        $user->phone =$data['phone'];
+        $user->phone = $data['phone'];
 
         if ($user->save()) {
             return redirect()->route('user_home')->with('success', 'Votre profil est modifié');
         }
     }
+
+    public function delete(Request $request)
+    {
+        $user = \Auth::user();
+        if (!$user) {
+            return redirect()->route('user')->with('error', 'Connectez vous !');
+        }
+
+        if ($request->_decline) return redirect(route('user_home'))->with('message', 'annulé');
+
+
+        try {
+            $user->delete();
+            $message = 'Compte supprimée';
+        } catch (\Exception $e) {
+            $message = 'Erreur dans la suppression';
+        }
+        return redirect()->route('user_home')->with('message', $message);
+    }
+
 }

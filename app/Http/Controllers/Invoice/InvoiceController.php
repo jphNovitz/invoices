@@ -177,7 +177,7 @@ class InvoiceController extends Controller
 
     public function remove(Request $request)
     {
-        if ($request->_decline) return redirect(route('invoices_list'))->with('message', 'invoice created');
+        if ($request->_decline) return redirect(route('invoices_list'))->with('message', 'annulé');
         $invoice = invoice::where('id', $request->_id)->first();
         try {
             $invoice->delete();
@@ -185,6 +185,6 @@ class InvoiceController extends Controller
         } catch (\Exception $e) {
             $message = 'Erreur dans la suppression';
         }
-        return redirect()->route('invoices_list')->with('message', 'facture supprimée');
+        return redirect()->route('invoices_list')->with('message', $message);
     }
 }
