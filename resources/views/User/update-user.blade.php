@@ -48,7 +48,7 @@ $cities = \App\City::all();
                 <form action="{{route('user_store')}}" method="POST"
                       class="w-1/2 md:p-6 md:rounded-b-md md:border border-slate-300 shadow-sm ">
                     @csrf
-                    @method('delete')
+                    @method('put')
                     <input type="hidden" id="id" name="id" value="{{$user->id}}">
 
                     <div class="form-row">

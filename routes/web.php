@@ -24,7 +24,7 @@ Route::get('/', 'HomeController@index')->name('home');
 /* user  */
 Route::get('/user', 'User\UserController@index')->name('user_home');
 Route::get('/user/update', 'User\UserController@update')->name('user_update');
-Route::post('/user/store', 'User\UserController@store')->name('user_store');
+Route::put('/user/store', 'User\UserController@store')->name('user_store');
 Route::delete('/user/delete', 'User\UserController@delete')->name('user_delete');
 
 /* Clients */
