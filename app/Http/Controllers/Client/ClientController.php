@@ -124,20 +124,7 @@ class ClientController extends Controller
 
     public function delete(Request $request, Client $client)
     {
-        if (!$client) {
-            return redirect()->route('clients_list')->with('error', 'Client inconnu !');
-        }
-
-        try {
-            $client->delete();
-
-            $request->session()->flash('alert-success', 'Client supprimé ! ');
-            return redirect()->route('clients_list');
-
-        } catch (\Exception $e) {
-            return redirect()->route('clients_list')->with('error', 'Client inconnu !');
-
-        }
+        return redirect()->route('user_home')->with('message', ' ');
     }
 
 }
