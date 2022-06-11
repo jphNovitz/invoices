@@ -19,8 +19,12 @@ Ce projet m'a appris:
 * Apprendre Tailwind.  En tant que développeur PHP qui voyage entre Symfony, Laravel et Wordpress ... j'avais besoin d'un Framework css pour gagner du temps en 'front'.
 * Le Vanilla JS c'est rapide pour faire de petites choses en 2022.
 ___ 
-  
-images  
+
+![jphnovitz_screenshots-invoices_01.png](/doc/jphnovitz_screenshots-invoices_01.png) 
+![jphnovitz_screenshots-invoices_02.png](/doc/jphnovitz_screenshots-invoices_02.png) 
+![jphnovitz_screenshots-invoices_03.png](/doc/jphnovitz_screenshots-invoices_03.png) 
+![jphnovitz_screenshots-invoices_04.png](/doc/jphnovitz_screenshots-invoices_04.png) 
+![jphnovitz_screenshots-invoices_05.png](/doc/jphnovitz_screenshots-invoices_05.png) 
 
 ___
 ## Yet another invoice app !
