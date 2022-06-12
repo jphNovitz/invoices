@@ -618,6 +618,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .flex-wrap{
   flex-wrap: wrap;
 }
+.items-start{
+  align-items: flex-start;
+}
 .items-center{
   align-items: center;
 }
@@ -676,6 +679,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .border-4{
   border-width: 4px;
+}
+.border-2{
+  border-width: 2px;
 }
 .border-t{
   border-top-width: 1px;
@@ -1482,6 +1488,10 @@ nav .nav-link.active::after{
     align-items: center;
   }
 
+  .md\:justify-center{
+    justify-content: center;
+  }
+
   .md\:rounded-b-md{
     border-bottom-right-radius: 0.375rem;
     border-bottom-left-radius: 0.375rem;
@@ -1497,6 +1507,10 @@ nav .nav-link.active::after{
 
   .md\:p-6{
     padding: 1.5rem;
+  }
+
+  .md\:p-12{
+    padding: 3rem;
   }
 
   .md\:pl-5{
