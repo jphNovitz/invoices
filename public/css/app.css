@@ -509,6 +509,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-left: 0.75rem;
   margin-right: 0.75rem;
 }
+.my-4{
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
 .mb-10{
   margin-bottom: 2.5rem;
 }
@@ -640,6 +644,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .overflow-hidden{
   overflow: hidden;
+}
+.break-words{
+  overflow-wrap: break-word;
 }
 .rounded{
   border-radius: 0.25rem;
@@ -824,6 +831,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 .text-2xl{
   font-size: 1.5rem;
   line-height: 2rem;
+}
+.text-base{
+  font-size: 1rem;
+  line-height: 1.5rem;
 }
 .font-black{
   font-weight: 900;
@@ -1404,6 +1415,11 @@ nav .nav-link.active::after{
     margin-right: 3rem;
   }
 
+  .md\:my-12{
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+  }
+
   .md\:mb-0{
     margin-bottom: 0px;
   }
@@ -1448,6 +1464,12 @@ nav .nav-link.active::after{
     width: 8rem;
   }
 
+  .md\:w-max{
+    width: -webkit-max-content;
+    width: -moz-max-content;
+    width: max-content;
+  }
+
   .md\:flex-row{
     flex-direction: row;
   }
@@ -1483,6 +1505,11 @@ nav .nav-link.active::after{
 
   .md\:pt-0{
     padding-top: 0px;
+  }
+
+  .md\:text-lg{
+    font-size: 1.125rem;
+    line-height: 1.75rem;
   }
 
   .md\:before\:content-\[\'\'\]::before{

@@ -45,41 +45,15 @@ $user = auth()->user();
                 </span>
             </div>
 
-            <div class="">
+            {{--Invoice HEADER--}}
+            @component('component.InvoiceHeader', [
+                'invoice' => $invoice,
+                'user'=> $user,
+                'client=> $client'])
 
-                <ul class="p-5 my-6">
-                    <li>Date encodage: {{$invoice->created_at}} </li>
-                    <li>Date modification: {{$invoice->updated_at}}</li>
-                </ul>
-            </div>
-            <div class="w-full flex flex-row my-12">
-                <div class="card w-1/2 ">
-                    <div class="card-body p-6">
-                        <p class="text-lg font-black">
-                            <em>{{$user->company}}</em> <br/>
-                            {{$user->tva}} <br/>
-                            {{$user->lastname}} {{$user->firstname}}<br/>
-                            {{$user->street}} {{$user->nr}} <br/>
-                            {{$user->city->code}} {{$user->city->city}} <br/>
-                            {{$user->email}}{{$user->phone}}
-                        </p>
-                    </div>
-                </div>
-                <div class="card w-max  mt-12">
-                    <div class="card-body ">
-                        <p class="font-bold border border-slate-300 p-6">
-                            {{$invoice->client->company}}</strong> <br/>
-                            {{__('auth.Vat')}}: {{$invoice->client->tva}} <br/>
-                            {{$invoice->client->lastname}} {{$invoice->client->firstname}}<br/>
-                            {{$invoice->client->street}} {{$invoice->client->nr}} <br/>
-                            {{$invoice->client->city->code}} {{$invoice->client->city->city}}<br/>
-                            {{$invoice->client->email}}<br/>
-                            {{$invoice->client->phone}}
+            @endcomponent
+            {{--END Invoice HEADER--}}
 
-                        </p>
-                    </div>
-                </div>
-            </div>
             <div class="list flex flex-col w-full">
                 <article class="w-full hidden md:flex md:flex-row justify-between bg-slate-300 p-6">
                     <div class="w-1/2 ">
