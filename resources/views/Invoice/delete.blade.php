@@ -45,42 +45,15 @@ $user = auth()->user();
             </div>
 
 
-            <div class="">
-
-                <ul class="p-5 my-6">
-                    <li>Date encodage: {{$invoice->created_at}} </li>
-                    <li>Date modification: {{$invoice->updated_at}}</li>
-                </ul>
-            </div>
             <div class="relative">
-                <div class="w-full flex flex-row my-12">
-                    <div class="card w-1/2 ">
-                        <div class="card-body p-6">
-                            <p class="text-lg font-black">
-                                <em>{{$user->company}}</em> <br/>
-                                {{$user->tva}} <br/>
-                                {{$user->lastname}} {{$user->firstname}}<br/>
-                                {{$user->street}} {{$user->nr}} <br/>
-                                {{$user->city->code}} {{$user->city->city}} <br/>
-                                {{$user->email}}{{$user->phone}}
-                            </p>
-                        </div>
-                    </div>
-                    <div class="card w-max  mt-12">
-                        <div class="card-body ">
-                            <p class="font-bold border border-slate-300 p-6">
-                                {{$invoice->client->company}}</strong> <br/>
-                                {{__('auth.Vat')}}: {{$invoice->client->tva}} <br/>
-                                {{$invoice->client->lastname}} {{$invoice->client->firstname}}<br/>
-                                {{$invoice->client->street}} {{$invoice->client->nr}} <br/>
-                                {{$invoice->client->city->code}} {{$invoice->client->city->city}}<br/>
-                                {{$invoice->client->email}}<br/>
-                                {{$invoice->client->phone}}
+                {{--Invoice HEADER--}}
+                @component('component.InvoiceHeader', [
+                    'invoice' => $invoice,
+                    'user'=> $user,
+                    'client=> $client'])
 
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                @endcomponent
+                {{--END Invoice HEADER--}}
                 <div class="list flex flex-col w-full">
                     <article class="w-full hidden md:flex md:flex-row justify-between bg-slate-300 p-6">
                         <div class="w-1/2 ">
@@ -130,25 +103,13 @@ $user = auth()->user();
                     @endforeach
                 </div>
 
-                <div class="absolute bg-opacity-60 bg-slate-900 top-0 left-0 w-full h-full flex justify-center items-center ">
-                    <form action="{{route('invoice_remove')}}" method="post"
-                          class="w-1/2 bg-opacity-60 bg-slate-50 p-12 border border-black border-4">
-                        @csrf
-                        <p class="font-black">
-                            {{__('app.Confirm_delete')}}
-                        </p>
-                        <div class="flex justify-evenly my-6 ">
-                            <input type="hidden" name="_id" value="{{$invoice->id}}"/>
-                            <input type="submit" name="_accept" value="Oui"
-                                   class="success py-2 px-5 rounded-lg w-1/3  "/>
-                            <input type="submit" name="_decline" value="Non"
-                                   class="danger py-2 px-5 rounded-lg w-1/3"/>
-                        </div>
-                        <aside class="font-black mt-5">
-                            <h3>Attention, la facture n'apparaîtra plus mais sera conservée en base de données</h3>
-                        </aside>
-                    </form>
-                </div>
+                @component('component.DeleteConfirm', [
+                            'route' => 'invoice_remove',
+                            'confirm_message' => 'app.Confirm_delete',
+                            'id' => $invoice->id
+                            ])
+                @endcomponent
+
             </div>
         </div>
 
