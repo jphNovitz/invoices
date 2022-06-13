@@ -124,7 +124,19 @@ class ClientController extends Controller
 
     public function delete(Request $request, Client $client)
     {
-        return redirect()->route('user_home')->with('message', ' ');
+//        REMOVED BECAUSE I CAN'T REMOVE A CLIENT => multiple users can have the client
+
+       /* if ($request->_decline || !$client) return redirect(route('invoices_list'))->with('message', 'annulé');
+
+        try {
+            $client->delete();
+            $message = 'Client Supprimé';
+        } catch (\Exception $e) {
+            $message = 'Erreur dans la suppression';
+        }
+        return redirect()->route('home')->with('message', $message);*/
+
+        return redirect()->route('home')->with('message', ' ');
     }
 
 }

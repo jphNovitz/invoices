@@ -29,6 +29,8 @@ return [
     'client_details' => 'détails du client',
     'Client_update' => 'Modification du client',
     'client_update' => 'modification du client',
+    'Client_delete' => 'Suppression du client',
+    'client_delete' => 'suppression du client',
     'Invoice' => 'Facture',
     'invoice' => 'facture',
     'Invoice_create' => 'Nouvelle facture',

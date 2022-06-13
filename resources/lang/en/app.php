@@ -23,6 +23,7 @@ return [
     'client_details' => 'client details',
     'Client_update' => 'Client update',
     'client_update' => 'client update',
+    'Client_delete' => 'Client delete',
     'Invoice' => 'Invoice',
     'invoice' => 'invoice',
     'Invoice_create' => 'Create°invoice',

@@ -49,7 +49,7 @@ $user = auth()->user();
             @component('component.InvoiceHeader', [
                 'invoice' => $invoice,
                 'user'=> $user,
-                'client'=> $client])
+                'client'=> $invoice->client])
 
             @endcomponent
             {{--END Invoice HEADER--}}
