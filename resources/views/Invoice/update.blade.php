@@ -31,40 +31,15 @@ $date = Carbon::now('Europe/Zurich')
                     </a>
                 </span>
             </div>
-            <ul class="flex flex-col justify-start w-full">
-                <li>
-                    {{__('Created_at')}}: <strong>{{$invoice->created_at->isoFormat('DD/MM/YYYY HH:mm')}}</strong>
-                </li>
-                <li>
-                    {{__('Updated_at')}}: <strong>{{$invoice->updated_at->isoFormat('DD/MM/YYYY HH:mm')}}</strong>
-                </li>
-            </ul>
+            {{--Invoice HEADER--}}
+            @component('component.InvoiceHeader', [
+                'invoice' => $invoice,
+                'user'=> $user,
+                'client=> $client'])
 
-            <div class="flex flex-col md:flex-row w-full my-12">
-                <div class="hidden md:flex md:flex-col md:w-1/2">
-                    <h3 class="company w-full">{{$user->company}}</h3>
-                    <ul class="w-full">
-                        <li>{{$user->firstname}} {{$user->lastname}}</li>
-                        <li>{{$user->street}} {{$user->nr}} </li>
-                        <li>{{$user->city}} </li>
-                        <li>{{$user->email}} </li>
-                        <li>{{$user->phone}}</li>
-                        <li>{{__('app.vat')}} {{$user->tva}}</li>
-                    </ul>
-                </div>
-                <?php $client = $invoice->client;?>
-                <div id="" class="md:w-1/2 p-12 m-12 border border-slate-200">
-                    <ul class="font-bold ">
-                        <li>{{$client->company}}</li>
-                        <li>{{$client->vat}}</li>
-                        <li>{{$client->firstname}} {{$client->lastname}}</li>
-                        <li>{{$client->street}} {{$client->nr}}</li>
-                        <li>{{$client->city}}</li>
-                        <li>{{$client->email}}</li>
-                        <li>{{$client->phone}}</li>
-                    </ul>
-                </div>
-            </div>
+            @endcomponent
+            {{--END Invoice HEADER--}}
+
             <div class="table-data-wrapper">
                 <div class="table-data-header">
                     <div class="w-1/3">
