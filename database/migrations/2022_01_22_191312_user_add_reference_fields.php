@@ -13,10 +13,10 @@ class UserAddReferenceFields extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->text('prefix');
-            $table->integer('first_id');
-        });
+//        Schema::table('users', function (Blueprint $table) {
+//            $table->text('prefix');
+//            $table->integer('first_id');
+//        });
     }
 
     /**
@@ -26,9 +26,9 @@ class UserAddReferenceFields extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('prefix')->default('');
-            $table->dropColumn('first_id')->default(1);
-        });
+//        Schema::table('users', function (Blueprint $table) {
+//            $table->dropColumn('prefix')->default('');
+//            $table->dropColumn('first_id')->default(1);
+//        });
     }
 }
