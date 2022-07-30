@@ -16,7 +16,6 @@
                             </label>
                             <input id="firstname" type="text"
                                    class="form-control
-{{--                                   class="form-control bg-transparent border-slate-200 focus-within:border-slate-600--}}
                                    @error('firstname') is-invalid @enderror"
                                    name="firstname" value="{{ old('firstname') }}" required autocomplete="name"
                                    autofocus>
@@ -43,7 +42,7 @@
                         </div>
                         <div class="form-row">
                             <label for="name">
-                                {{ __('auth.Name') }}
+                                {{ __('auth.Username') }}
                             </label>
                             <input id="name" type="text"
                                    class="form-control @error('name') is-invalid @enderror" name="name"
@@ -126,25 +125,13 @@
                                     </span>
                             @enderror
                         </div>
-                    <!--                        <div class="form-row">
-                            <label for="email">{{ __('E-Mail Address') }}</label>
-                            <input id="email" type="email"
-                                   class="form-control @error('email') is-invalid @enderror" name="email"
-                                   value="{{ old('email') }}" required autocomplete="email">
-
-                            @error('email')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                            </div>-->
                     </div>
                     <div class="form-group md:mx-12">
                         <div class="form-row">
                             <label for="email">{{ __('auth.Email') }}</label>
                             <input id="email" type="text"
                                    class="form-control @error('email') is-invalid @enderror"
-                                   name="phone" value="{{ old('email') }}" required autocomplete="email"
+                                   name="email" value="{{ old('email') }}" required autocomplete="email"
                                    autofocus>
                             @error('email')
                             <span class="invalid-feedback" role="alert">
