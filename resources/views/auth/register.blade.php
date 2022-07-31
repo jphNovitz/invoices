@@ -21,8 +21,8 @@
                                    autofocus>
                             @error('firstname')
                             <span class="text-red-700 font-bold " role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
+                              {{__('errors.'.$message }}
+                            </span>
                             @enderror
                         </div>
                         <div class="form-row">
@@ -36,7 +36,7 @@
 
                             @error('lastname')
                             <span class="text-red-700 font-bold " role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        {{__('errors.'.$message }}
                                     </span>
                             @enderror
                         </div>
@@ -50,7 +50,7 @@
 
                             @error('name')
                             <span class="text-red-700 font-bold " role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        {{__('errors.'.$message }}
                                     </span>
                             @enderror
                         </div>
@@ -65,7 +65,7 @@
 
                             @error('company')
                             <span class="text-red-700 font-bold " role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        {{__('errors.'.$message }}
                             </span>
                             @enderror
                         </div>
@@ -80,7 +80,7 @@
 
                             @error('street')
                             <span class="text-red-700 font-bold " role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        {{__('errors.'.$message }}
                                 </span>
                             @enderror
                         </div>
@@ -92,7 +92,7 @@
                                    autofocus/>
                             @error('nr')
                             <span class="text-red-700 font-bold " role="alert">
-                                <strong>{{ $message }}</strong>
+                                {{__('errors.'.$message }}
                             </span>
                             @enderror
                         </div>
@@ -109,7 +109,7 @@
 
                             @error('city_id')
                             <span class="text-red-700 font-bold " role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        {{__('errors.'.$message }}
                                     </span>
                             @enderror
                         </div>
@@ -121,7 +121,7 @@
                                    autofocus>
                             @error('phone')
                             <span class="text-red-700 font-bold " role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        {{__('errors.'.$message }}
                                     </span>
                             @enderror
                         </div>
@@ -135,7 +135,7 @@
                                    autofocus>
                             @error('email')
                             <span class="text-red-700 font-bold " role="alert">
-                                <strong>{{ $message }}</strong>
+                                {{__('errors.'.$message }}
                             </span>
                             @enderror
                         </div>
@@ -148,7 +148,7 @@
 
                             @error('tva')
                             <span class="text-red-700 font-bold " role="alert">
-                                <strong>{{ $message }}</strong>
+                                {{__('errors.'.$message }}
                             </span>
                             @enderror
                         </div>
@@ -173,7 +173,7 @@
 
                             @error('password')
                             <span class="text-red-700 font-bold " role="alert">
-                                <strong>{{ $message }}</strong>
+                                {{__('errors.'.$message }}
                             </span>
                             @enderror
                         </div>
@@ -183,10 +183,10 @@
                                    name="password_confirmation" required autocomplete="new-password">
                         </div>
                         <div class="form-row">
-                                <button type="submit"
-                                        class="mt-12 bg-slate-800 text-slate-50  p-3 rounded">
-                                    {{ __('btn.Register') }}
-                                </button>
+                            <button type="submit"
+                                    class="mt-12 bg-slate-800 text-slate-50  p-3 rounded">
+                                {{ __('btn.Register') }}
+                            </button>
                         </div>
                     </div>
                 </div>
