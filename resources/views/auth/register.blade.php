@@ -21,7 +21,7 @@
                                    autofocus>
                             @error('firstname')
                             <span class="text-red-700 font-bold " role="alert">
-                              {{__('errors.'.$message)) }}
+                              {{__('errors.'.$message) }}
                             </span>
                             @enderror
                         </div>
