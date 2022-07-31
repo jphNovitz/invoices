@@ -26,6 +26,8 @@ return [
     'Forgot_your_password?' => 'Mot de passe oublié ?',
     'failed' => 'These credentials do not match our records.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+    'Username' => 'Nom d\'utilisateur',
+    'username' => 'nom d\'utilisateur',
     'Firstname' => 'Prénom',
     'firstname' => 'prénom',
     'Lastname' => 'Nom',
