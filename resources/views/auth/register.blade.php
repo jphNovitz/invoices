@@ -21,7 +21,7 @@
                                    autofocus>
                             @error('firstname')
                             <span class="text-red-700 font-bold " role="alert">
-                              {{__('errors.'.$message }}
+                              {{__('errors.'.$message)) }}
                             </span>
                             @enderror
                         </div>
@@ -36,7 +36,7 @@
 
                             @error('lastname')
                             <span class="text-red-700 font-bold " role="alert">
-                                        {{__('errors.'.$message }}
+                                        {{__('errors.'.$message) }}
                                     </span>
                             @enderror
                         </div>
@@ -50,7 +50,7 @@
 
                             @error('name')
                             <span class="text-red-700 font-bold " role="alert">
-                                        {{__('errors.'.$message }}
+                                        {{__('errors.'.$message) }}
                                     </span>
                             @enderror
                         </div>
@@ -65,7 +65,7 @@
 
                             @error('company')
                             <span class="text-red-700 font-bold " role="alert">
-                                        {{__('errors.'.$message }}
+                                        {{__('errors.'.$message) }}
                             </span>
                             @enderror
                         </div>
@@ -80,7 +80,7 @@
 
                             @error('street')
                             <span class="text-red-700 font-bold " role="alert">
-                                        {{__('errors.'.$message }}
+                                        {{__('errors.'.$message) }}
                                 </span>
                             @enderror
                         </div>
@@ -92,7 +92,7 @@
                                    autofocus/>
                             @error('nr')
                             <span class="text-red-700 font-bold " role="alert">
-                                {{__('errors.'.$message }}
+                                {{__('errors.'.$message) }}
                             </span>
                             @enderror
                         </div>
@@ -109,7 +109,7 @@
 
                             @error('city_id')
                             <span class="text-red-700 font-bold " role="alert">
-                                        {{__('errors.'.$message }}
+                                        {{__('errors.'.$message) }}
                                     </span>
                             @enderror
                         </div>
@@ -121,7 +121,7 @@
                                    autofocus>
                             @error('phone')
                             <span class="text-red-700 font-bold " role="alert">
-                                        {{__('errors.'.$message }}
+                                        {{__('errors.'.$message) }}
                                     </span>
                             @enderror
                         </div>
@@ -135,7 +135,7 @@
                                    autofocus>
                             @error('email')
                             <span class="text-red-700 font-bold " role="alert">
-                                {{__('errors.'.$message }}
+                                {{__('errors.'.$message) }}
                             </span>
                             @enderror
                         </div>
@@ -148,7 +148,7 @@
 
                             @error('tva')
                             <span class="text-red-700 font-bold " role="alert">
-                                {{__('errors.'.$message }}
+                                {{__('errors.'.$message) }}
                             </span>
                             @enderror
                         </div>
@@ -173,7 +173,7 @@
 
                             @error('password')
                             <span class="text-red-700 font-bold " role="alert">
-                                {{__('errors.'.$message }}
+                                {{__('errors.'.$message) }}
                             </span>
                             @enderror
                         </div>
