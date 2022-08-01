@@ -67,6 +67,7 @@ return [
     'discount' => 'remise',
     'Please_find_your_Invoice_attached' => 'Veuillez trouver votre facture ci joint',
     'please_find_your_Invoice_attached' => 'veuillez trouver votre facture ci joint',
+    'empty_list' => 'Aucun élément pour l\'instant'
 
 
 ];

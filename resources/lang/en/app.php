@@ -60,5 +60,6 @@ return [
     'discount' => 'discount',
     'Please_find_your_Invoice_attached' => 'Please_find_your_Invoice_attached',
     'please_find_your_Invoice_attached' => 'please_find_your_Invoice_attached',
+    'empty_list' => 'No item'
 
 ];
