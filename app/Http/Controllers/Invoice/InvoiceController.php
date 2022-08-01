@@ -140,13 +140,13 @@ class InvoiceController extends Controller
         }
 
         // The invoice
-        $last_reference = Invoice::where('user_id', $user->id)
-            ->orderBy('id', 'desc')->first()->reference;
-
-        if (!$last_reference) {
+        $last_invoice = Invoice::where('user_id', $user->id)->orderBy('id', 'desc')->first();
+        if (empty($last_invoice)){
             $reference_parts[0] = $user->prefix;
             $reference_parts[1] = --$user->first_id;
-        } else $reference_parts = explode('-', $last_reference);
+        } else {
+            $reference_parts = explode('-', $last_invoice->reference);
+        }
 
         $invoice_datas['reference'] = $reference_parts[0] . '-' . ++$reference_parts[1];
         $invoice_datas['client_id'] = $client->id;
