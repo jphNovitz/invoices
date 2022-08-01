@@ -9,7 +9,7 @@
 
             <div class="card-body w-full">
                 <div class="list py-4 ">
-                    @foreach($invoices as $invoice )
+                    @forelse($invoices as $invoice )
                          @if($invoice->client)
                         <article class="overflow-hidden w-full my-6  flex flex-col justify-between">
                             <div class="w-full flex flex-row justify-between">
@@ -39,7 +39,9 @@
                         </article>
                         {{--                    {{dd($client)}}--}}
                         @endif
-                    @endforeach
+                    @empty
+                        @include('_parts._empty_list_message')
+                    @endforelse
                 </div>
             </div>
         </section>
@@ -49,7 +51,7 @@
             <div class="card-body w-full">
                 <p>Souhaitez vous envoyer créer une facture pour ces clients ?</p>
                 <div class="list py-4 ">
-                    @foreach($promote_clients as $client )
+                    @forelse($promote_clients as $client )
                         <article class="overflow-hidden w-full my-6  flex flex-col justify-between">
                             <div class="w-full flex flex-row justify-between">
                                 <div class="font-black flex flex-col ">
@@ -79,8 +81,9 @@
                                 <li>{{__('auth.Street')}}: <strong>{{$client->street}} {{$client->nr}}</strong></li>
                             </ul>
                         </article>
-                        {{--                    {{dd($client)}}--}}
-                    @endforeach
+                    @empty
+                        @include('_parts._empty_list_message')
+                    @endforelse
                 </div>
                 <div>
 
