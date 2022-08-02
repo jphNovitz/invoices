@@ -19,5 +19,8 @@ class UsersTableSeeder extends Seeder
                 $clients = factory(App\Client::class, $n)->create();
                 $user->clients()->saveMany($clients);
             });
+        $firstUser = \App\User::all()->first();
+        $firstUser->email = "zoe21@example.org";
+        $firstUser->save();
     }
 }
