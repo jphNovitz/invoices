@@ -28,7 +28,7 @@
                     </thead>
                     <tbody>
 
-                    @foreach($client->invoices as $invoice)
+                    @forelse($client->invoices as $invoice)
                         <tr class="flex flex-col md:table-row">
                             <td class="w-full md:w-70 text-left before:font-bold before:block before:content-['Référence'] md:before:content-['']">
                                 {{$invoice->reference}}
@@ -57,7 +57,9 @@
                                 </a>
                             </td>
                         </tr>
-                    @endforeach
+                    @empty
+                        @include('_parts._empty_list_message')
+                    @endforelse
                     </tbody>
                 </table>
             </div>
