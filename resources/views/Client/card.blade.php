@@ -15,7 +15,7 @@
 
         </div>
         <div class="card-body w-full">
-            <h2 class="text-slate-900 px-6 py-2 my-3">Liste des factures</h2>
+            <h2 class="text-slate-900 px-6 py-2 my-3 font-bold text-xl">Liste des factures</h2>
             <div class="px-6">
                 <table class="table-fixed w-full">
                     <thead class=" hidden md:table-header-group  bg-slate-300 p-6">
@@ -58,15 +58,16 @@
                             </td>
                         </tr>
                     @empty
-                        @include('_parts._empty_list_message')
+                        <tr class="flex flex-col md:table-row">
+                            <td class="" colspan="4" >
+                                @include('_parts._empty_list_message')
+                            </td>
+                        </tr>
                     @endforelse
                     </tbody>
                 </table>
             </div>
         </div>
     </section>
-
-
-
 
 @endsection
