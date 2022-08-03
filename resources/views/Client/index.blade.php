@@ -36,7 +36,7 @@
                 </span>
             </div>
             <div class="list py-4 ">
-                @foreach($clients as $client )
+                @forelse($clients as $client )
                     <article
                             class="odd:bg-white even:bg-slate-100 overflow-hidden w-full my-6  px-3 flex flex-col justify-between">
                         <div class="w-full flex flex-row justify-between">
@@ -94,8 +94,9 @@
                                 <strong>{{$client->street}} {{$client->nr}}</strong></li>
                         </ul>
                     </article>
-                    {{--                    {{dd($client)}}--}}
-                @endforeach
+                @empty
+                    @include('_parts._empty_list_message')
+                @endforelse
             </div>
         </div>
         <div class="card-footer bg-slate-200 text-slate-700 flex flex-row justify-center">
