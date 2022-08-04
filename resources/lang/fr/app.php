@@ -61,6 +61,8 @@ return [
     'vat' => 'tva',
     'Quantity' => 'Quantité',
     'quantity' => 'quantité',
+    'Qty' => 'Qté',
+    'qty' => 'qté',
     'Total' => 'Total',
     'total' => 'total',
     'Discount' => 'Remise',

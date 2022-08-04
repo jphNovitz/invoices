@@ -81,61 +81,6 @@ $vat_all = \App\Vat::all();
                         </div>
                     </div>
                 </div>
-                <!--                        <div id="items">
-                                            <div class="row item-row">
-                                                    <div class="form-group">
-                                                        <input type="text" id="description[]"
-                                                               name='items[0][description]'
-                                                               class="form-control"
-                                                               value=""
-                                                        />
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <div class="form-group">
-                                                        <input type="text"
-                                                               name="items[0][price]"
-                                                               class="form-control"
-                                                               value=""
-                                                        />
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <div class="form-group">
-                                                        <select class="custom-select"
-                                                                name="items[0][vat_id]">
-                                                            <option value="1">6 %</option>
-                                                            <option value="2">12 %</option>
-                                                            <option value="3">21 %</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-1">
-                                                    <div class="form-group">
-                                                        <input type="text"
-                                                               name="items[0][qty]"
-                                                               class="form-control"
-                                                               value=""
-                                                        />
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-1">
-                                                    <div class="form-group">
-                                                        <input name="items[0][discount]"
-                                                               type="text"
-                                                               value=""
-                                                               class="form-control"
-                                                        />
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-2" style="align-items: center">
-                                                    <button type="button"
-                                                            class="btn btn-primary add-item">
-                                                        <i class="fa fa-plus" style="pointer-events:none"></i>
-                                                    </button>
-                                                </div>
-
-                                        </div>-->
                 <?php   $id_loop = 0 ?>
                 <div id="items" class="flex flex-col  w-full ">
                     <div class="table-data-row">
@@ -146,7 +91,7 @@ $vat_all = \App\Vat::all();
                             <input type="text" id="description[]"
                                    name='items[{{ $id_loop }}][description]'
                                    class="form-control flex flex-wrap"
-                                   value=""
+                                   value="" placeholder="{{__('app.description')}}"
                             />
                         </div>
                         <div class="middle">
@@ -155,6 +100,7 @@ $vat_all = \App\Vat::all();
                                        name="items[{{ $id_loop }}][price]"
                                        class="form-control text-slate-900"
                                        value=""
+                                       placeholder="{{__('app.price')}}"
                                 />
                             </div>
                             <div class="form-row w-16 md:w-16">
@@ -162,9 +108,10 @@ $vat_all = \App\Vat::all();
                                        name="items[{{ $id_loop }}][qty]"
                                        class="form-control"
                                        value=""
+                                       placeholder="{{__('app.qty')}}"
                                 />
                             </div>
-                            <div class="form-row w-16">
+                            <div class="form-row w-24">
                                 <select class="custom-select"
                                         name="items[{{ $id_loop }}][vat_id]">
                                     @foreach($vat_all as $vat_one)
@@ -187,6 +134,7 @@ $vat_all = \App\Vat::all();
                                        type="text"
                                        value=""
                                        class="form-control"
+                                       placeholder="{{__('app.discount')}}"
                                 />
                             </div>
                             <div class="form-row w-24 justify-between" style="flex-direction: row">
@@ -204,7 +152,7 @@ $vat_all = \App\Vat::all();
                     <?php $id_loop++ ?>
 
                 </div>
-                <input type="submit" class="info p-2 rounded-md" value="{{__('btn.Update')}}"/>
+                <input type="submit" class="info p-2 rounded-md" value="{{__('btn.Submit')}}"/>
 
             </form>
 
