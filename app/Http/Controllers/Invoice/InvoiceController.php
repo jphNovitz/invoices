@@ -88,7 +88,7 @@ class InvoiceController extends Controller
             $tva_temp = $item['price'] * $vat_rate;
             $htva += $htva_temp;
             $tva += $tva_temp;
-            $total = $htva_temp + $tva_temp;
+            $total += ($htva_temp + $tva_temp);
         }
 
         // The invoice
@@ -98,7 +98,8 @@ class InvoiceController extends Controller
         $invoice_datas['total'] = $total;
 
         try {
-            $invoice->save($invoice_datas);
+//            dd($invoice_datas);
+            $invoice->update($invoice_datas);
             return redirect(route('invoices_list'))->with('message', 'invoice updated');
         } catch (QueryException $queryException) {
             return redirect()->back()->with('message', 'Erreur');
@@ -136,7 +137,7 @@ class InvoiceController extends Controller
             $tva_temp = $item['price'] * $vat_rate;
             $htva += $htva_temp;
             $tva += $tva_temp;
-            $total = $htva_temp + $tva_temp;
+            $total = $total + ($htva_temp + $tva_temp);
         }
 
         // The invoice

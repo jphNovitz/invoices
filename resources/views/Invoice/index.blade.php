@@ -22,6 +22,7 @@
         </span>
 
                 @forelse($invoices as $invoice )
+
                     <article
                             class="odd:bg-white even:bg-slate-100 overflow-hidden w-full my-6  px-3 flex flex-col justify-between">
                         <div class="w-full flex flex-row justify-between">
