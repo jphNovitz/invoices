@@ -95,6 +95,7 @@ $date = Carbon::now('Europe/Zurich')
                                     <input type="number"
                                            name="items[{{ $id_loop }}][qty]"
                                            class="form-control"
+                                           min="0" step="1"
                                            value="{{$item->qty}}"
                                     />
                                 </div>

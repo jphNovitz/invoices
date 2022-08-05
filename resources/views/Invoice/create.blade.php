@@ -107,7 +107,7 @@ $vat_all = \App\Vat::all();
                                 <input type="number"
                                        name="items[{{ $id_loop }}][qty]"
                                        class="form-control"
-                                       value=""
+                                       value="" min="0" step="1"
                                        placeholder="{{__('app.qty')}}"
                                 />
                             </div>
