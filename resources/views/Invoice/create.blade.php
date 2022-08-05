@@ -132,7 +132,7 @@ $vat_all = \App\Vat::all();
                                 {{--<label for="discount[]" class="control-label">Reduc</label>--}}
                                 <input name="items[{{ $id_loop }}][discount]"
                                        type="text"
-                                       value=""
+                                       value="0"
                                        class="form-control"
                                        placeholder="{{__('app.discount')}}"
                                 />
