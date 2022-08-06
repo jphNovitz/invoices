@@ -53,8 +53,10 @@ class ClientController extends Controller
         try {
             \Auth::user()->clients()->attach($client);
             $message = 'Client_Added';
+            $alert = 'alert-success';
         } catch (\Exception $e) {
             $message = 'Error';
+            $alert = 'alert-danger';
         }
 
         return redirect(route('clients_list'))->with('message', $message);
@@ -89,7 +91,7 @@ class ClientController extends Controller
     public function edit(Client $client )
     {
         if (!$client) {
-            return redirect()->route('client_home')->with('error', 'Client inconnu !');
+            return redirect()->route('client_home')->with('alert-danger', 'Client inconnu !');
         }
         return view('Client.client-update', ['client' => $client]);
     }
@@ -136,7 +138,7 @@ class ClientController extends Controller
         }
         return redirect()->route('home')->with('message', $message);*/
 
-        return redirect()->route('home')->with('message', ' ');
+        return redirect()->route('home')->with('alert-success', 'demo ');
     }
 
 }

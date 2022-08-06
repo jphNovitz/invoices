@@ -100,7 +100,7 @@ class InvoiceController extends Controller
         try {
 //            dd($invoice_datas);
             $invoice->update($invoice_datas);
-            return redirect(route('invoices_list'))->with('message', 'invoice updated');
+            return redirect(route('invoices_list'))->with('alert-success', 'invoice updated');
         } catch (QueryException $queryException) {
             return redirect()->back()->with('message', 'Erreur');
         }
@@ -163,7 +163,7 @@ class InvoiceController extends Controller
 
         $last_added->items()->createMany($items_to_add);
 
-        return redirect(route('invoices_list'))->with('success', 'invoice created');
+        return redirect(route('invoices_list'))->with('alert-success', 'invoice created');
     }
 
 
@@ -178,14 +178,16 @@ class InvoiceController extends Controller
 
     public function remove(Request $request)
     {
-        if ($request->_decline) return redirect(route('invoices_list'))->with('message', 'annulé');
+        if ($request->_decline) return redirect(route('invoices_list'))->with('alert-info', 'annulé');
         $invoice = invoice::where('id', $request->_id)->first();
         try {
             $invoice->delete();
             $message = 'Facture supprimée';
+            $alert = 'alert-success';
         } catch (\Exception $e) {
             $message = 'Erreur dans la suppression';
+            $alert = 'alert-danger';
         }
-        return redirect()->route('invoices_list')->with('message', $message);
+        return redirect()->route('invoices_list')->with($alert, $message);
     }
 }

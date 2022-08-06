@@ -63,12 +63,16 @@
                     {{ session('status') }}
                 </div>
 
+            @elseif(session()->has('alert-info'))
+                <div class="bg-blue-300 text-blue-900 border border-blue-800 px-6 py-3 my-2 ">
+                    {{ session()->get('alert-info') }}
+                </div>
             @elseif(session()->has('alert-success'))
-                <div class="alert alert-success">
+                <div class="bg-green-300 text-green-900 border border-green-800 px-6 py-3 my-2 ">
                     {{ session()->get('alert-success') }}
                 </div>
             @elseif(session()->has('alert-danger'))
-                <div class="alert alert-danger">
+                <div class="bg-red-300 text-red-900 border border-red-800 px-6 py-3 my-2 ">
                     {{ session()->get('alert-danger') }}
                 </div>
             @endif
