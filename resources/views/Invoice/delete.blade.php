@@ -44,13 +44,13 @@ $user = auth()->user();
                 </span>
             </div>
 
-
             <div class="relative">
                 {{--Invoice HEADER--}}
                 @component('component.InvoiceHeader', [
                     'invoice' => $invoice,
                     'user'=> $user,
-                    'client=> $client'])
+                    'client'=> $invoice->client])
+                    ])
 
                 @endcomponent
                 {{--END Invoice HEADER--}}

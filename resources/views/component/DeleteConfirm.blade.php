@@ -1,7 +1,7 @@
-@if(!$params) $params= [] @endif
+{{--@if(!$params) $params= [] @endif--}}
 
 <div class="absolute bg-opacity-60 bg-slate-900 top-0 left-0 w-full h-full flex items-start justify-center md:items-center ">
-    <form action="{{route($route, $params)}}" method="post"
+    <form action="{{route($route, $id)}}" method="post"
           class="w-full md:w-1/2 bg-opacity-60 bg-slate-50 p-3 md:p-12 border border-black border-2 rounded-lg">
         @csrf
         @method('DELETE')
