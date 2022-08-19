@@ -158,7 +158,7 @@ $cities = \App\City::all();
                     </div>
 
                     <input type="submit"
-                           value="{{__('Update')}}"
+                           value="{{__('Update')}}" 
                             class="py-3 px-4 bg-slate-400 text-slate-50 rounded-lg focus:shadow-md cursor-pointer">
 
                 </form>
