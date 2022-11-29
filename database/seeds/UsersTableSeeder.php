@@ -20,7 +20,7 @@ class UsersTableSeeder extends Seeder
                 $user->clients()->saveMany($clients);
             });
         $firstUser = \App\User::all()->first();
-        $firstUser->email = "zoe21@example.org";
+        $firstUser->email = "hello@pixelservices.be";
         $firstUser->save();
     }
 }
