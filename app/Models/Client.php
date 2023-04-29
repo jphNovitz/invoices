@@ -1,8 +1,7 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
-use Illuminate\Auth\AuthManager;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -25,16 +24,16 @@ class Client extends Model
     ];
 
     public function City(){
-        return $this->hasOne('App\City', 'id', 'city_id');
+        return $this->hasOne('App\Models\city', 'id', 'city_id');
     }
 
     public function Invoices(){
         $id = \Auth::user()->id;
-        return $this->hasMany('App\Invoice')->where('user_id', $id);
+        return $this->hasMany('App\Models\Invoice')->where('user_id', $id);
 //        return $this->hasMany('App\Invoice')->where('user_id','==', $id);
     }
 
     public function Users(){
-        return $this->belongsToMany('App\User', 'user_client');
+        return $this->belongsToMany('App\Models\User', 'user_client');
     }
 }

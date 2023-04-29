@@ -1,8 +1,7 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -50,16 +49,16 @@ class User extends Authenticatable
     ];
 
     public function City(){
-        return $this->hasOne('App\City', 'id', 'city_id');
+        return $this->hasOne('App\Models\city', 'id', 'city_id');
     }
 
     public function Invoice(){
-        return $this->hasMany('App\Invoice','id', 'invoice_id');
+        return $this->hasMany('App\Models\Invoice','id', 'invoice_id');
     }
     public function Invoices(){
-        return $this->hasMany('App\Invoice','id', 'invoice_id');
+        return $this->hasMany('App\Models\Invoice','id', 'invoice_id');
     }
     public function Clients(){
-        return $this->belongsToMany('App\Client', 'user_client');
+        return $this->belongsToMany('App\Models\Client', 'user_client');
     }
 }

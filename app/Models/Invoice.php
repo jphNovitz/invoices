@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -21,17 +21,17 @@ class Invoice extends Model
 
     public function client()
     {
-        return $this->belongsTo('App\Client');
+        return $this->belongsTo('App\Models\Client');
     }
 
     public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\Models\User');
     }
 
     public function items()
     {
-        return $this->belongsToMany('App\Item');
+        return $this->belongsToMany('App\Models\item');
     }
 
 
