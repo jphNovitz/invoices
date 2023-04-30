@@ -1,8 +1,10 @@
 <?php
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
-use App\User;
-use Faker\Generator as Faker;
+namespace Database\Factories;
+
+use App\Models\City;
+use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\User;
 use Illuminate\Support\Str;
 
 /*
@@ -16,22 +18,45 @@ use Illuminate\Support\Str;
 |
 */
 
-$factory->define(User::class, function (Faker $faker) {
+
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
+ */
+class UserFactory extends Factory
+{
+
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = User::class;
+
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array<string, mixed>
+     */
+    public function definition()
+    {
     return [
-        'company' => $faker->company,
-        'firstname' => $faker->firstName,
-        'lastname' => $faker->lastName,
-        'street' => $faker->streetAddress,
-        'nr' => $faker->numberBetween(1, 100),
-        'phone' => $faker->phoneNumber,
-        'name' => $faker->userName,
-        'tva' => $faker->vat,
-        'city_id' => $faker->numberBetween(1, 1000),
-        'email' => $faker->unique()->safeEmail,
+        'company' => $this->faker->company,
+        'firstname' => $this->faker->firstName,
+        'lastname' => $this->faker->lastName,
+        'street' => $this->faker->streetAddress,
+        'nr' => $this->faker->numberBetween(1, 100),
+        'phone' => $this->faker->phoneNumber,
+        'name' => $this->faker->userName,
+        'tva' => $this->faker->vat,
+        'city_id' => City::all()->random(),
+        'email' => $this->faker->unique()->safeEmail,
         'email_verified_at' => now(),
         'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
         'remember_token' => Str::random(10),
-        'prefix' => 'test',
-        'first_id' => '75'
+        'prefix' => 'invoice',
+        'first_id' => '75',
+
     ];
-});
+}
+}

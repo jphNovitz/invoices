@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
+use Illuminate\Database\Seeder;
 
 class UsersTableSeeder extends Seeder
 {
@@ -12,14 +12,14 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\User::class, 10)->create()
+        factory(\App\Models\User::class, 10)->create()
             ->each(function ($user) {
                 $faker = Faker::create();
                 $n = $faker->numberBetween(1, 15);
-                $clients = factory(App\Client::class, $n)->create();
+                $clients = factory(\App\Models\Client::class, $n)->create();
                 $user->clients()->saveMany($clients);
             });
-        $firstUser = \App\User::all()->first();
+        $firstUser = \App\Models\User::all()->first();
         $firstUser->email = "hello@pixelservices.be";
         $firstUser->save();
     }

@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
+use Illuminate\Database\Seeder;
 
 class InvoicesTableSeeder extends Seeder
 {
@@ -12,11 +12,11 @@ class InvoicesTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Invoice::class, 1000)->create()
+        factory(\App\Models\Invoice::class, 1000)->create()
             ->each(function ($invoice) {
                 $faker = Faker::create();
                 $n = $faker->numberBetween(1, 15);
-                $items = factory(App\Item::class, $n)->create();
+                $items = factory(\App\Models\Item::class, $n)->create();
                 $invoice->items()->saveMany($items);
             });
 

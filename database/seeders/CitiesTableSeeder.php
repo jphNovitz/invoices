@@ -1,8 +1,9 @@
 <?php
 
+use App\Models\City;
 use Illuminate\Database\Seeder;
 
-class ItemsTableSeeder extends Seeder
+class CitiesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +12,6 @@ class ItemsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Item::class, 3000)->create();
+        City::factory()->create(100);
     }
 }

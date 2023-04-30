@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class item extends Model
+class Item extends Model
 {
+    use HasFactory;
 
     protected $attributes = ['discount' => 0];
     protected $fillable = ['description', 'price', 'qty', 'discount', 'vat_id'];
