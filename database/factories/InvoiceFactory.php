@@ -1,9 +1,8 @@
 <?php
+namespace Database\Factories;
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
-use App\Invoice;
-use Faker\Generator as Faker;
-use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Invoice;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,12 +15,31 @@ use Illuminate\Support\Str;
 |
 */
 
-$factory->define(Invoice::class, function (Faker $faker) {
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Invoice>
+ */
+class InvoiceFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = Invoice::class;
 
-    $count_clients = App\Client::count();
-    return [
-        'reference' => $faker->text(5).'-'.$faker->numberBetween(1, 5),
-        'user_id' => $faker->numberBetween(1, 10),
-        'client_id' => $faker->numberBetween(1, $count_clients),
-    ];
-});
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array<string, mixed>
+     */
+    public function definition()
+    {
+        $count_clients = \App\Models\Client::count();
+        return [
+            'reference' => $this->faker->text(5) . '-' . $this->faker->numberBetween(1, 5),
+            'user_id' => $this->faker->numberBetween(1, 10),
+            'client_id' => $this->faker->numberBetween(1, $count_clients),
+        ];
+    }
+}

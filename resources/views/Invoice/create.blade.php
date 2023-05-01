@@ -4,12 +4,11 @@
  */
 
 use Carbon\Carbon;
-use Illuminate\Support\Facades\Auth;
 
-$new_client = \App\Client::where('id', $client_id)->first();
+$new_client = \App\Models\Client::where('id', $client_id)->first();
 $user = auth()->user();
 $date = Carbon::now('Europe/Zurich');
-$vat_all = \App\Vat::all();
+$vat_all = \App\Models\Vat::all();
 ?>
 @extends('layouts.app')
 
@@ -81,7 +80,7 @@ $vat_all = \App\Vat::all();
                         </div>
                     </div>
                 </div>
-                <?php   $id_loop = 0 ?>
+                <?php $id_loop = 0 ?>
                 <div id="items" class="flex flex-col  w-full ">
                     <div class="table-data-row">
                         <input type="hidden"

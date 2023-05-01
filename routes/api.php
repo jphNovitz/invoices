@@ -18,5 +18,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 Route::get('/client/{id}', function ($id) {
     if ($id)
-      return  response()->json(\App\Client::where('id', $id)->first());
+      return  response()->json(\App\Models\Client::where('id', $id)->first());
 });

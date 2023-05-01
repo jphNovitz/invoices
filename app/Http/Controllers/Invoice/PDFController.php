@@ -4,11 +4,10 @@ namespace App\Http\Controllers\Invoice;
 
 
 
-use App\Invoice;
-use App\Mail\InvoiceMail;
-use Barryvdh\DomPDF\Facade\Pdf;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Mail\InvoiceMail;
+use App\Models\Invoice;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Mail;
 
 

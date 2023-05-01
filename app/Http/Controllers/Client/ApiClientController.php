@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers\Client;
 
-use App\client;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\client;
 
 
 class ApiClientController extends Controller

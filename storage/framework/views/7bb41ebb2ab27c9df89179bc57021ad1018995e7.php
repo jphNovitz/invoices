@@ -123,7 +123,7 @@
 
                     </td>
                     <td>
-                        <?php $vat = \App\Vat::find($item->vat_id);
+                        <?php $vat = \App\Models\Vat::find($item->vat_id);
                         echo $item->qty * ($item->price * $vat->rate)
                         ?>
                     </td>

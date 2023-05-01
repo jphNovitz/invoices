@@ -14,7 +14,7 @@ class UserAddReferenceFields extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->text('prefix')->default('inv');;
+            $table->string('prefix')->default('inv');;
             $table->integer('first_id')->default(1);;
 
 

@@ -2,7 +2,7 @@
 
 namespace App\Http\Middleware;
 
-use App\Invoice;
+use App\Models\Invoice;
 use Closure;
 
 class UserOwnInvoice

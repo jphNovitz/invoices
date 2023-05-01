@@ -1,9 +1,12 @@
 <?php
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
-use App\Item;
-use Faker\Generator as Faker;
-use Illuminate\Support\Str;
+namespace Database\factories;
+
+
+use App\Models\Vat;
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+use App\Models\Item;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,12 +19,29 @@ use Illuminate\Support\Str;
 |
 */
 
-$factory->define(Item::class, function (Faker $faker) {
-    return [
-        'description' => $faker->text(200),
-        'price' => $faker->numberBetween(1,100),
-        'qty' => $faker->numberBetween(1,10),
-        'discount' => $faker->numberBetween(0,5),
-        'vat_id' => $faker->numberBetween(1,3)
-    ];
-});
+class ItemFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = Item::class;
+
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array<string, mixed>
+     */
+    public function definition()
+    {
+        return [
+            'description' => $this->faker->text(200),
+            'price' => $this->faker->numberBetween(1, 100),
+            'qty' => $this->faker->numberBetween(1, 10),
+            'discount' => $this->faker->numberBetween(0, 5),
+            'vat_id' => Vat::all()->random()
+        ];
+    }
+}

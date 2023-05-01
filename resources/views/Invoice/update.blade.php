@@ -4,11 +4,10 @@
  */
 
 use Carbon\Carbon;
-use Illuminate\Support\Facades\Auth;
 
 $user = auth()->user();
 //$clients = $user->clients;
-$vat_all = \App\Vat::all();
+$vat_all = \App\Models\Vat::all();
 $date = Carbon::now('Europe/Zurich')
 ?>
 @extends('layouts.app')
@@ -66,9 +65,9 @@ $date = Carbon::now('Europe/Zurich')
                     </div>
                 </div>
                 <?php
-                echo Form::open(['route' => 'invoice_update', 'method' => 'PUT']);?>
+                echo Form::open(['route' => 'invoice_update', 'method' => 'PUT']); ?>
                 <input type="hidden" name="id" value="{{$invoice->id}}"/>
-                <?php   $id_loop = 0 ?>
+                <?php $id_loop = 0 ?>
                 <div id="items" class="flex flex-col  w-full ">
                     @foreach ($invoice->items as $item)
                         <div class="table-data-row">
@@ -105,7 +104,7 @@ $date = Carbon::now('Europe/Zurich')
                                         @foreach($vat_all as $vat_one)
                                             <option value="{{$vat_one->id}}"
                                                     @if ($vat_one->id == $item->vat->id)
-                                                    selected=selected
+                                                        selected=selected
                                                     @endif
                                             >
                                                 {{$vat_one->name}}
@@ -136,7 +135,7 @@ $date = Carbon::now('Europe/Zurich')
                                 </div>
                             </div>
                         </div>
-                        <?php $id_loop++ ?>
+                            <?php $id_loop++ ?>
                     @endforeach
 
                 </div>

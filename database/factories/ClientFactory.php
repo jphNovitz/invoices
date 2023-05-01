@@ -1,31 +1,41 @@
 <?php
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
-use App\Client;
-use Faker\Generator as Faker;
-use Illuminate\Support\Str;
+namespace Database\Factories;
 
-/*
-|--------------------------------------------------------------------------
-| Model Factories
-|--------------------------------------------------------------------------
-|
-| This directory should contain each of the model factory definitions for
-| your application. Factories provide a convenient way to generate new
-| model instances for testing / seeding your application's database.
-|
-*/
+use App\Models\City;
+use App\Models\Client;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
-$factory->define(Client::class, function (Faker $faker) {
-    return [
-        'company' => $faker->company,
-        'firstname' => $faker->firstName,
-        'lastname' => $faker->lastName,
-        'street' => $faker->streetAddress,
-        'nr' => $faker->numberBetween(1, 100),
-        'phone' => $faker->phoneNumber,
-        'email' => $faker->unique()->safeEmail,
-        'vat' => $faker->vat,
-        'city_id' => $faker->numberBetween(1, 1000)
-    ];
-});
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Client>
+ */
+class ClientFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = Client::class;
+
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array<string, mixed>
+     */
+    public function definition()
+    {
+        return [
+            'company' => $this->faker->company,
+            'firstname' => $this->faker->firstName,
+            'lastname' => $this->faker->lastName,
+            'street' => $this->faker->streetAddress,
+            'nr' => $this->faker->numberBetween(1, 100),
+            'phone' => $this->faker->phoneNumber,
+            'email' => $this->faker->unique()->safeEmail,
+            'vat' => $this->faker->vat,
+            'city_id' => City::all()->random()
+        ];
+    }
+}

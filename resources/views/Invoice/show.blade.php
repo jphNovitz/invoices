@@ -85,10 +85,10 @@ $user = auth()->user();
                             {{$item->price}}
                         </div>
                         <div class="w-12 md:mx-3 before:block before:content-['Tva'] before:font-bold md:before:content-[''] ">
-                            <?php
-                            $vat = \App\Vat::find($item->vat_id);
-                            echo $vat->name;
-                            ?>
+                                <?php
+                                $vat = \App\Models\Vat::find($item->vat_id);
+                                echo $vat->name;
+                                ?>
                         </div>
                         <div class="w-12 md:mx-3 before:block before:content-['Quantité'] before:font-bold md:before:content-[''] ">
                             {{$item->qty}}
@@ -97,7 +97,7 @@ $user = auth()->user();
                             {{$item->discount}}
                         </div>
                         <div class="w-12 md:mx-3 before:block before:content-['Total'] before:font-bold md:before:content-[''] ">
-                            <?php echo $item->qty * ($item->price + ($item->price * $vat->rate) - $item->discount)?>
+                                <?php echo $item->qty * ($item->price + ($item->price * $vat->rate) - $item->discount) ?>
                         </div>
                     </article>
                 @endforeach

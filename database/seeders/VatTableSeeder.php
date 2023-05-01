@@ -1,7 +1,11 @@
 <?php
 
-use Illuminate\Database\Seeder;
+namespace Database\Seeders;
+
 use Faker\Generator as Faker;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+
 class VatTableSeeder extends Seeder
 {
     /**
@@ -9,7 +13,7 @@ class VatTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run(\Faker\Generator $faker)
+    public function run(Faker $faker)
     {
         $rates = [6, 12, 21];
 
@@ -17,7 +21,7 @@ class VatTableSeeder extends Seeder
             DB::table('vat')->insert([
                 'rate' => $rates[$i]/100,
                 'name' => 'taux '. $rates[$i] .' %',
-                'description' => $faker->sentence(5),
+                'description' => $faker->sentence(5, true),
             ]);
         }
     }

@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers\Client;
 
-use App\Client;
 use App\Http\Controllers\Controller;
-use App\User;
+use App\Models\Client;
 use Illuminate\Http\Request;
 
 class ClientController extends Controller
@@ -64,7 +63,7 @@ class ClientController extends Controller
 
     public function create($id = null)
     {
-        return view('Client.create', ['client' => new \App\Client()]);
+        return view('Client.create', ['client' => new \App\Models\Client()]);
     }
 
     public function store(Request $request)

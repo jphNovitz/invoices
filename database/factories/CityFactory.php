@@ -1,24 +1,34 @@
 <?php
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
-use App\City;
-use Faker\Generator as Faker;
-use Illuminate\Support\Str;
+namespace Database\factories;
 
-/*
-|--------------------------------------------------------------------------
-| Model Factories
-|--------------------------------------------------------------------------
-|
-| This directory should contain each of the model factory definitions for
-| your application. Factories provide a convenient way to generate new
-| model instances for testing / seeding your application's database.
-|
-*/
+use App\Models\City;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
-$factory->define(City::class, function (Faker $faker) {
-    return [
-        'code' => $faker->postcode,
-        'city' => $faker->city,
-    ];
-});
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\City>
+ */
+class CityFactory extends Factory
+{
+
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = City::class;
+
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array<string, mixed>
+     */
+    public function definition()
+    {
+        return [
+            'code' => $this->faker->postcode,
+            'city' => $this->faker->city,
+        ];
+    }
+}

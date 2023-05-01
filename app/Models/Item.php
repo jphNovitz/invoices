@@ -1,11 +1,13 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class item extends Model
+class Item extends Model
 {
+    use HasFactory;
 
     protected $attributes = ['discount' => 0];
     protected $fillable = ['description', 'price', 'qty', 'discount', 'vat_id'];
@@ -16,6 +18,6 @@ class item extends Model
     }
 
     public function vat(){
-        return $this->hasOne('App\Vat', 'id', 'vat_id');
+        return $this->hasOne('App\Models\Vat', 'id', 'vat_id');
     }
 }
