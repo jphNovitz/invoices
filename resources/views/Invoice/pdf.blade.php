@@ -9,67 +9,68 @@
 
 
 <style>
-    body, section, article, table, #container{
+    body, section, article, table, #container {
         width: 100% !important;
         padding: 0 !important;
         margin: 0 !important;
     }
-        /*article, section {*/
-        /*    width: 100% !important;*/
-        /*    padding: 0 !important;*/
-        /*    margin: 0 !important;*/
-        /*}*/
 
-        section {
-            color: rgb(30 41 59);
-            font-size: 1.6rem;
-            border-bottom: solid 1px rgb(203 213 225);
-        }
+    /*article, section {*/
+    /*    width: 100% !important;*/
+    /*    padding: 0 !important;*/
+    /*    margin: 0 !important;*/
+    /*}*/
 
-        ul {
-            padding-left: 0;
-        }
+    section {
+        color: rgb(30 41 59);
+        font-size: 1.6rem;
+        border-bottom: solid 1px rgb(203 213 225);
+    }
 
-        ul li {
-            list-style-type: none;
-        }
+    ul {
+        padding-left: 0;
+    }
 
-        .rounded {
-            border: solid 1px rgb(203 213 225);
-            border-radius: 20px;
-            padding: 3rem;
-            width: 45%;
-        }
+    ul li {
+        list-style-type: none;
+    }
 
-        .left {
-            width: 40%;
-        }
+    .rounded {
+        border: solid 1px rgb(203 213 225);
+        border-radius: 20px;
+        padding: 3rem;
+        width: 45%;
+    }
 
-        .right {
-            width: 40%;
-            font-weight: bold;
-        }
+    .left {
+        width: 40%;
+    }
 
-        table {
-            width: 100%;
-            margin: 2rem auto;
-        }
+    .right {
+        width: 40%;
+        font-weight: bold;
+    }
 
-        td {
-            padding: 1px 5px 1px 15px;
-        }
+    table {
+        width: 100%;
+        margin: 2rem auto;
+    }
+
+    td {
+        padding: 1px 5px 1px 15px;
+    }
 </style>
 
 <body>
 
 <main id="container">
     <sections class="h1">{{__('app.Invoice')}} {{$invoice['reference']}}</sections>
-        <ul class="justify-self-right">
-            <li>Créée
-                le: {{ \Carbon\Carbon::createFromTimestamp(strtotime($invoice->created_at))->format('d-m-Y h:i')}}</li>
-            <li>Modifiée
-                le: {{ \Carbon\Carbon::createFromTimestamp(strtotime($invoice->updated_at))->format('d-m-Y h:i')}}</li>
-        </ul>
+    <ul class="justify-self-right">
+        <li>Créée
+            le: {{ \Carbon\Carbon::createFromTimestamp(strtotime($invoice->created_at))->format('d-m-Y h:i')}}</li>
+        <li>Modifiée
+            le: {{ \Carbon\Carbon::createFromTimestamp(strtotime($invoice->updated_at))->format('d-m-Y h:i')}}</li>
+    </ul>
     <article>
         <table>
             <tr>
@@ -120,15 +121,15 @@
                         {{$item->qty}}
                     </td>
                     <td>
-                        <?php $vat = \App\Vat::find($item->vat_id);
-                        echo $item->qty * ($item->price * $vat->rate)
-                        ?>
+                            <?php $vat = \App\Models\Vat::find($item->vat_id);
+                            echo $item->qty * ($item->price * $vat->rate)
+                            ?>
                     </td>
                     <td>
                         {{$item->discount}}
                     </td>
                     <td>
-                        <?php echo $item->qty * ($item->price + ($item->price * $vat->rate) - $item->discount)?>
+                            <?php echo $item->qty * ($item->price + ($item->price * $vat->rate) - $item->discount) ?>
                     </td>
                 </tr>
             @endforeach

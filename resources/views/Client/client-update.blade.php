@@ -1,6 +1,6 @@
 @extends('layouts.app')
 <?php
-$cities = \App\City::all();
+$cities = \App\Models\City::all();
 ?>
 @section('content')
     <section class="card w-full  mb-10 border p-12px border-slate-200">
@@ -148,7 +148,8 @@ $cities = \App\City::all();
                             </span>
                         @enderror
                     </div>
-                    <input type="submit" class="bg-blue-600 text-blue-50 rounded-lg my-3 px-6" value="{{__('btn.Submit')}}">
+                    <input type="submit" class="bg-blue-600 text-blue-50 rounded-lg my-3 px-6"
+                           value="{{__('btn.Submit')}}">
 
                 </form>
 

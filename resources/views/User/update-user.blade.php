@@ -1,6 +1,6 @@
 @extends('layouts.app')
 <?php
-$cities = \App\City::all();
+$cities = \App\Models\City::all();
 ?>
 @section('content')
     <section class="card w-full  mb-10 border p-12px border-slate-200">
@@ -158,11 +158,11 @@ $cities = \App\City::all();
                     </div>
 
                     <input type="submit"
-                           value="{{__('Update')}}" 
-                            class="py-3 px-4 bg-slate-400 text-slate-50 rounded-lg focus:shadow-md cursor-pointer">
+                           value="{{__('Update')}}"
+                           class="py-3 px-4 bg-slate-400 text-slate-50 rounded-lg focus:shadow-md cursor-pointer">
 
                 </form>
             </div>
-           </div>
+        </div>
     </section>
 @endsection

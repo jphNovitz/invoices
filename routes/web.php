@@ -25,7 +25,7 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/user', 'User\UserController@index')->name('user_home');
 Route::get('/user/update', 'User\UserController@update')->name('user_update');
 Route::put('/user/store', 'User\UserController@store')->name('user_store');
-Route::get('/user/delete', function (App\User $user ) {
+Route::get('/user/delete', function (\App\Models\User $user ) {
     $user = \Auth::user();
     return view('User.user-delete', ['user' => $user]);
 })->name('user_delete');
@@ -41,7 +41,7 @@ Route::prefix('client')->group(function () {
     Route::post('/store', 'Client\ClientController@store')->name('client_store');
     Route::get('/update/{client}', 'Client\ClientController@edit')->name('client_update');
     Route::put('/save', 'Client\ClientController@update')->name('client_save');
-    Route::get('/delete/{client}', function (App\Client $client) {
+    Route::get('/delete/{client}', function (\App\Models\Client $client) {
         return view('Client.client-delete', ['client' => $client]);
     })->name('client_delete');
     Route::delete('/delete/{client}', 'Client\ClientController@delete')->name('client_remove');

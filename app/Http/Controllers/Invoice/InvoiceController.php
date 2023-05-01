@@ -2,15 +2,13 @@
 
 namespace App\Http\Controllers\Invoice;
 
-use App\Client;
-use App\Http\Controllers\Client\ClientController;
-use App\Invoice;
-use App\Item;
-use App\Vat;
+use App\Http\Controllers\Controller;
+use App\Models\Client;
+use App\Models\Invoice;
+use App\Models\Item;
+use App\Models\Vat;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\DB;
 
 class InvoiceController extends Controller
 {

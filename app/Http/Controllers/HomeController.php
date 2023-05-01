@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Client;
-use App\Invoice;
-use Illuminate\Http\Request;
+use App\Models\Client;
+use App\Models\Invoice;
 
 class HomeController extends Controller
 {

@@ -31,7 +31,7 @@ class UserController extends Controller
     public function update()
     {
         $user = auth()->user();
-        $cities = \App\City::all();
+        $cities = \App\Models\City::all();
         return view('User.update-user', [
             'user' => $user,
             'cities' => $cities
