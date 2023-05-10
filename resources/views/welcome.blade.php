@@ -1,122 +1,60 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Invoices</title>
+    <title>Invoices</title>
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
-        <!-- Scripts -->
-        <script src="{{ asset('js/app.js') }}" defer></script>
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
 
-        <!-- Styles -->
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                /*color: #000;*/
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <!-- Styles -->
+</head>
+<body>
+{{--    Naviguation--}}
+{{--    @if (Route::has('login'))--}}
+{{--        <div class="top-right links">--}}
+{{--            @auth--}}
+{{--                <a href="{{ url('/home') }}">Home</a>--}}
+{{--            @else--}}
+{{--                <a href="{{ route('login') }}">Login</a>--}}
 
-            .full-height {
-                height: 100vh;
-            }
+{{--                @if (Route::has('register'))--}}
+{{--                    <a href="{{ route('register') }}">Register</a>--}}
+{{--                @endif--}}
+{{--            @endauth--}}
+{{--        </div>--}}
+{{--    @endif--}}
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
+<main class="w-full md:max-w-7xl  m-auto p-6 md:p-12">
+    <x-title.h1 class="text-4xl text-blue-900"> Invoice - Demo</x-title.h1>
+    <header class="overflow-hidden flex p-6 flex-col md:flex-row-reverse relative border-2 bg-slate-100 border-blue-800 rounded-lg">
+{{--        <article class="w-full md:w-1/2 border border-2 border-blue-600 rounded-lg shadow-lg shadow-blue-300">--}}
+            <figure class="bg-hero-mobile md:bg-hero-md w-2/3 md:w-80 md:h-full lg:w-96 aspect-video md:aspect-square absolute  top:0 m-auto left-0 right-4 md:left-auto md:right-6 md:top-50 bg-no-repeat bg-cover  z-0"></figure>
+{{--        </article>--}}
 
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                /*color: #;*/
-                /*color: #636b6f;*/
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-                line-height: 2.8rem;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Invoices
-                </div>
-                <div class="">
-                    <p>Tu es un petit indépendant et tu vends au comptoir.
-                    <br /> Tu ne fais pas des factures tous les jours !</p>
-
-                    <p>Quand un client te demande une facture tu ne veux pas jouer avec un tableur
-                     ou un traitement de texte.
-                        <br />Tu sais que ces factures 'à la main' tu vas les perdres.</p>
-                </div>
-                <div class="links">
-                    <a class="btn btn-secondary rounded"
-                       href="https://laravel.com/docs">
-                        <i class="fas fa-home fa-lg"></i> Accueil
-                    </a>
-                    <a class="btn btn-secondary rounded"
-                       href="https://laravel.com/docs">
-                        <i class="fas fa-info-circle fa-lg"></i> A propos
-                    </a>
-                    <a class="btn btn-secondary rounded"
-                       href="https://laravel.com/docs">
-                        <i class="fas fa-pen-square fa-lg"></i> Inscription
-                    </a>
-
-                </div>
+        <article class="w-full pt-[30vh] pt-0 md:pb-12 md:pr-96 md:pr-[28rem] z-20 flex flex-col-reverse md:flex-col bg-slate-100/50">
+            <div>
+                <x-title.h2> Gestion des factures et des clients</x-title.h2>
+                <p class="text-lg">
+                    Un site de gestion des factures et des clients est une plateforme en ligne qui permet aux
+                    entreprises de
+                    gérer leur facturation et de suivre les informations de leurs clients de manière efficace.
+                </p>
             </div>
+            <nav class="flex justify-center md:my-12">
+                <x-button.primary route="" label="test" class="mr-1.5"/>
+                <x-button.secondary route="" label="test" class="ml-1.5"/>
+            </nav>
+        </article>
 
-
-        </div>
-    </body>
+    </header>
+</main>
+</body>
 </html>
