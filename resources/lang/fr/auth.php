@@ -13,8 +13,8 @@ return [
     |
     */
 
-    'Register' => 'Inscription',
-    'register' => 'inscription',
+    'Register' => 'Rejoindre',
+    'register' => 'rejoindre',
     'Login' => 'Conexion',
     'login' => 'conexion',
     'Logout' => 'Déonexion',
