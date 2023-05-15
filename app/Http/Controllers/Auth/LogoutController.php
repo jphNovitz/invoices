@@ -17,6 +17,6 @@ class LogoutController extends Controller
     {
         \Auth::logout();
         \Session::flash('success',"logout");
-        return redirect()->route('login');
+        return redirect()->route('/');
     }
 }
