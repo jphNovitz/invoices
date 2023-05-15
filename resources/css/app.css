@@ -9,11 +9,11 @@
 /*********************************/
 
 #auth-page {
-    @apply bg-auth bg-cover bg-no-repeat flex flex-col min-h-screen;
+    @apply bg-gradient-to-r from-slate-200 via-slate-100 to-slate-200 md:bg-auth md:bg-cover md:bg-no-repeat flex flex-col  min-h-screen;
 }
 
 #auth-page header {
-    @apply text-slate-50 ml-12 mr-12 mt-12  flex items-center justify-between;
+    @apply text-blue-900 ml-12 mr-12 mt-12  flex flex-col items-start justify-between;
 }
 
 #auth-page header h1 {
@@ -25,7 +25,7 @@
 }
 
 #auth-page main #app {
-    @apply flex md:mr-12 md:mb-12 my-12 p-0 w-min bg-transparent;
+    @apply flex m-12 p-0 w-min bg-transparent w-full;
 }
 
 #auth-page footer {
@@ -42,15 +42,15 @@ Login page
  */
 
 .card {
-    @apply rounded-lg;
+    @apply rounded-xl;
 }
 
 .card .card-header {
-    @apply p-2 text-xl font-black font-header;
+    @apply p-4 text-xl font-black font-header rounded-t-xl;
 }
 
 .card .card-body {
-    @apply py-4 px-4 /*md:py-6 md:px-12*/;
+    @apply p-4 /*md:py-6 md:px-12*/;
 }
 
 .card .card-body .infos.expand {
@@ -59,7 +59,7 @@ Login page
 
 
 form .form-row {
-    @apply my-6 flex flex-col;
+    @apply my-14 flex flex-col;
 }
 
 form .form-row input {

@@ -1,7 +1,7 @@
 @extends('layouts.auth')
 
 @section('content')
-    <section class="card bg-slate-50 ">
+    <section class="card bg-slate-50 w-full rounded-lg">
         <div class="card-header bg-slate-500 text-gray-50">
             {{ __('auth.Login') }}
         </div>
@@ -50,8 +50,8 @@
                     @enderror
                 </div>
 
-                <div class="form-row">
-                    <input class="form-check-input"
+                <div class="form-row !flex-row">
+                    <input class="form-check-input mr-6"
                            type="checkbox"
                            name="remember"
                            id="remember" {{ old('remember') ? 'checked' : '' }}>
@@ -63,7 +63,7 @@
 
                 <div class="form-row">
                     <button type="submit"
-                            class="bg-slate-800 text-slate-50  p-3 rounded">
+                            class="bg-slate-700 text-slate-50  py-4 px-6 rounded-md max-w-fit">
                         {{ __('auth.Login') }}
                     </button>
 

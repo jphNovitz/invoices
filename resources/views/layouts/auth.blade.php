@@ -21,7 +21,7 @@
     {{--    <link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
 </head>
 <body id="auth-page">
-<header>
+<header class="">
     <h1>Factures</h1>
     <nav>
         @if(Request::segment(1) === 'register')
@@ -31,8 +31,8 @@
     </nav>
 </header>
 
-<main>
-    <div id="app">
+<main class="">
+    <div id="app" class="">
         @yield('content')
     </div>
 </main>
