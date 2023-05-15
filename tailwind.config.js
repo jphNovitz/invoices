@@ -14,6 +14,7 @@ module.exports = {
                 // 'hero': "url('/img/screenshot 2023-01.webp')",
                 'hero-mobile': "url('/img/hero-mobile.webp')",
                 'hero-md': "url('/img/hero-md.webp')",
+                'auth-mobile': "bg-gradient-to-r from-slate-900 via-slate-50 to-slate-100",
                 'auth': "url('/img/invoice-bg.webp')",
             },
             transitionProperty: {
