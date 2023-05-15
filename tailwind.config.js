@@ -12,8 +12,8 @@ module.exports = {
             },
             backgroundImage: {
                 // 'hero': "url('/img/screenshot 2023-01.webp')",
-                'hero-mobile': "url('/img/screenshot-test.webp')",
-                'hero-md': "url('/img/screenshot-test.webp')",
+                'hero-mobile': "url('/img/hero-mobile.webp')",
+                'hero-md': "url('/img/hero-md.webp')",
                 'auth': "url('/img/invoice-bg.webp')",
             },
             transitionProperty: {
