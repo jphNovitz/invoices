@@ -22,13 +22,17 @@
         "laravel/sail": "^1.21",
         "mockery/mockery": "^1.0",
         "nunomaduro/collision": "^6.1",
-        "phpunit/phpunit": "^8.0",
+        "pestphp/pest-plugin-laravel": "^1.4",
+        "phpunit/phpunit": "^9.0",
         "spatie/laravel-ignition": "^1.0"
     },
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
     },
     "extra": {
         "laravel": {
