@@ -1,7 +1,7 @@
 @extends('layouts.auth')
 
 @section('content')
-    <section class="card bg-slate-50 w-full rounded-lg">
+    <section class="card bg-slate-50 w-full ">
         <div class="card-header bg-slate-500 text-gray-50">
             {{ __('auth.Login') }}
         </div>

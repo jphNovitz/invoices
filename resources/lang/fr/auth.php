@@ -58,6 +58,7 @@ return [
     'prefix' => 'prefix',
     'First Id' => 'Premier id',
     'first Id' => 'premier id',
+    "User_successfully_created" => "Votre compte a été créé. L'envoi d'un email de confirmation a été désactivé afin d'éviter tout spam.",
 
 
 ];

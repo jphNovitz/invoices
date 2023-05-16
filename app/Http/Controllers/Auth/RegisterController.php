@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
@@ -28,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = 'dashboard';
 
     /**
      * Create a new controller instance.
@@ -71,9 +72,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-
-//        dump($data); die();
-
+        Session::flash('alert-success', trans('auth.User_successfully_created'));
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],

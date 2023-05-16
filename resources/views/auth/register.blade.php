@@ -1,7 +1,7 @@
 @extends('layouts.auth')
 
 @section('content')
-    <section class="card bg-slate-50">
+    <section class="card bg-slate-50 w-full">
         <div class="card-header bg-slate-500 text-gray-50">
             {{ __('auth.Register') }}
         </div>
@@ -100,7 +100,7 @@
                             <label for="city_id">{{ __('auth.City') }}</label>
                             <select id="city_id"
                                     name="city_id"
-                                    class="form-control @error('city_id') is-invalid @enderror">
+                                    class="form-control h-9 rounded-md p-1.5  @error('city_id') is-invalid @enderror">
                                 <option value="null">-&#45;&#45;</option>
                                 @foreach($cities as $city)
                                     <option value="{{$city->id}}">{{$city->city}}</option>
@@ -184,7 +184,7 @@
                         </div>
                         <div class="form-row">
                             <button type="submit"
-                                    class="mt-12 bg-slate-800 text-slate-50  p-3 rounded">
+                                    class="bg-slate-700 text-slate-50  py-4 px-6 rounded-md max-w-fit">
                                 {{ __('btn.Register') }}
                             </button>
                         </div>
