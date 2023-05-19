@@ -48,7 +48,7 @@ class UserFactory extends Factory
         'nr' => $this->faker->numberBetween(1, 100),
         'phone' => $this->faker->phoneNumber,
         'name' => $this->faker->userName,
-        'tva' => $this->faker->vat,
+        'vat' => $this->faker->vat,
         'city_id' => City::all()->random(),
         'email' => $this->faker->unique()->safeEmail,
         'email_verified_at' => now(),
