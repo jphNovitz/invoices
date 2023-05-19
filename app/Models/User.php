@@ -50,7 +50,7 @@ class User extends Authenticatable
     ];
 
     public function City(){
-        return $this->hasOne('App\Models\city', 'id', 'city_id');
+        return $this->hasOne('App\Models\City', 'id', 'city_id');
     }
 
     public function Invoice(){

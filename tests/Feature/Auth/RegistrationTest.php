@@ -23,7 +23,7 @@ test('new users can register', function () {
         'street' => 'Street Test',
         'nr' => '1',
         'phone' => '555 1234',
-        'tva' => '1234567890',
+        'vat' => '1234567890',
         'city_id' => City::all()->random()->id,
         'remember_token' => Str::random(10),
         'prefix' => 'test',
