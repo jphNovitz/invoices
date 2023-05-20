@@ -53,9 +53,9 @@
                         </p>
                         <div class="flex justify-evenly my-6 ">
                             <input type="hidden" name="_id" value="{{$user->id}}"/>
-                            <input type="submit" name="_accept" value="Oui"
+                            <input type="submit" name="_accept" value="true"
                                    class="success py-2 px-5 rounded-lg w-1/3  "/>
-                            <input type="submit" name="_decline" value="Non"
+                            <input type="submit" name="_decline" value="true"
                                    class="danger py-2 px-5 rounded-lg w-1/3"/>
                         </div>
                         <aside class="font-black mt-5">

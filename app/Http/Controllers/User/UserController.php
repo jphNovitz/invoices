@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -59,7 +60,13 @@ class UserController extends Controller
         }
     }
 
-    public function delete(Request $request)
+    public function delete()
+    {
+        $user = auth()->user();
+        return view('User.user-delete', ['user' => $user]);
+    }
+
+    public function remove(Request $request)
     {
         $user = \Auth::user();
         if (!$user) {
