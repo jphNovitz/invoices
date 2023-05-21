@@ -18,18 +18,15 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/logout', 'Auth\LogoutController')->middleware('auth');
+Route::get('/logout', 'Auth\LogoutController')->middleware('auth')->name('logout');
 Route::get('/dashboard', 'HomeController@index')->name('home');
 
 /* user  */
-Route::get('/user', 'User\UserController@index')->name('user_home');
-Route::get('/user/update', 'User\UserController@update')->name('user_update');
-Route::put('/user/store', 'User\UserController@store')->name('user_store');
-Route::get('/user/delete', function (\App\Models\User $user ) {
-    $user = \Auth::user();
-    return view('User.user-delete', ['user' => $user]);
-})->name('user_delete');
-Route::delete('user/delete}', 'User\UserController@delete')->name('user_remove');
+Route::get('/profile', 'User\UserController@index')->name('user_home');
+Route::get('/profile/update', 'User\UserController@update')->name('user_update');
+Route::put('/profile/store', 'User\UserController@store')->name('user_store');
+Route::get('/profile/delete', 'User\UserController@delete')->name('user_delete');
+Route::delete('user/delete}', 'User\UserController@remove')->name('user_remove');
 
 /* Clients */
 
