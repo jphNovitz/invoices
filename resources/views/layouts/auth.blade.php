@@ -32,7 +32,7 @@
 </header>
 
 <main class="">
-    <div id="app" class="">
+    <div id="app" class="bg-auth bg-cover bg-no-repeat @if(Route::currentRouteName() === 'login') md:!pl-[50%] @endif">
         @yield('content')
     </div>
 </main>

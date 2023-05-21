@@ -8,8 +8,8 @@
         <div class="card-body text-slate-900">
             <form method="POST" action="{{ route('register') }}">
                 @csrf
-                <div class="flex flex-col md:flex-row">
-                    <div class="form-group md:mx-12">
+                <div class="flex flex-col md:flex-row md:justify-between">
+                    <div class="form-group md:w-full md:mx-12">
                         <div class="form-row">
                             <label for="firstname">
                                 {{ __('auth.Firstname') }}
@@ -113,6 +113,9 @@
                                     </span>
                             @enderror
                         </div>
+                    </div>
+                    <div class="form-group md:w-full md:mx-12">
+
                         <div class="form-row">
                             <label for="phone">{{ __('auth.Phone') }}</label>
                             <input id="phone" type="text"
@@ -125,8 +128,6 @@
                                     </span>
                             @enderror
                         </div>
-                    </div>
-                    <div class="form-group md:mx-12">
                         <div class="form-row">
                             <label for="email">{{ __('auth.Email') }}</label>
                             <input id="email" type="text"
@@ -182,12 +183,15 @@
                             <input id="password-confirm" type="password" class="form-control"
                                    name="password_confirmation" required autocomplete="new-password">
                         </div>
-                        <div class="form-row">
-                            <button type="submit"
-                                    class="bg-slate-700 text-slate-50  py-4 px-6 rounded-md max-w-fit">
-                                {{ __('btn.Register') }}
-                            </button>
-                        </div>
+
+                    </div>
+                </div>
+                <div class="md:mx-12">
+                    <div class="form-row">
+                        <button type="submit"
+                                class="bg-slate-700 text-slate-50  py-4 px-6 rounded-md max-w-fit">
+                            {{ __('btn.Register') }}
+                        </button>
                     </div>
                 </div>
             </form>

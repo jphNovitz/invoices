@@ -550,6 +550,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .mt-5{
   margin-top: 1.25rem;
 }
+.mr-6{
+  margin-right: 1.5rem;
+}
 .mb-0{
   margin-bottom: 0px;
 }
@@ -561,9 +564,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .mt-3{
   margin-top: 0.75rem;
-}
-.mr-6{
-  margin-right: 1.5rem;
 }
 .block{
   display: block;
@@ -597,9 +597,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .h-full{
   height: 100%;
-}
-.h-4{
-  height: 1rem;
 }
 .h-9{
   height: 2.25rem;
@@ -827,10 +824,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .bg-transparent{
   background-color: transparent;
 }
-.bg-slate-800{
-  --tw-bg-opacity: 1;
-  background-color: rgb(30 41 59 / var(--tw-bg-opacity));
-}
 .bg-slate-700{
   --tw-bg-opacity: 1;
   background-color: rgb(51 65 85 / var(--tw-bg-opacity));
@@ -852,6 +845,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .bg-hero-mobile{
   background-image: url('/img/hero-mobile.webp');
+}
+.bg-auth{
+  background-image: url('/img/invoice-bg.webp');
 }
 .bg-cover{
   background-size: cover;
@@ -880,14 +876,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 .p-5{
   padding: 1.25rem;
 }
-.p-0{
-  padding: 0px;
-}
 .p-1\.5{
   padding: 0.375rem;
 }
 .p-1{
   padding: 0.25rem;
+}
+.p-0{
+  padding: 0px;
 }
 .py-4{
   padding-top: 1rem;
@@ -1076,21 +1072,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgb(226 232 240 / 0));
   --tw-gradient-stops: var(--tw-gradient-from), #f1f5f9, var(--tw-gradient-to, rgb(241 245 249 / 0));
   --tw-gradient-to: #e2e8f0;
-}
-
-@media (min-width: 768px){
-
-  #auth-page{
-    background-image: url('/img/invoice-bg.webp');
-  }
-
-  #auth-page{
-    background-size: cover;
-  }
-
-  #auth-page{
-    background-repeat: no-repeat;
-  }
 }
 
 #auth-page header{
@@ -1669,6 +1650,10 @@ nav .nav-link.active::after{
     width: max-content;
   }
 
+  .md\:w-full{
+    width: 100%;
+  }
+
   .md\:max-w-7xl{
     max-width: 80rem;
   }
@@ -1691,6 +1676,10 @@ nav .nav-link.active::after{
 
   .md\:justify-center{
     justify-content: center;
+  }
+
+  .md\:justify-between{
+    justify-content: space-between;
   }
 
   .md\:rounded-b-md{
@@ -1734,6 +1723,18 @@ nav .nav-link.active::after{
     padding-left: 1.25rem;
   }
 
+  .md\:pl-12{
+    padding-left: 3rem;
+  }
+
+  .md\:pl-\[50\%\]{
+    padding-left: 50%;
+  }
+
+  .md\:\!pl-\[50\%\]{
+    padding-left: 50% !important;
+  }
+
   .md\:text-lg{
     font-size: 1.125rem;
     line-height: 1.75rem;
@@ -1772,10 +1773,6 @@ nav .nav-link.active::after{
 
   .lg\:w-\[50vw\]{
     width: 50vw;
-  }
-
-  .lg\:w-96{
-    width: 24rem;
   }
 
   .lg\:bg-center{

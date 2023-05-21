@@ -1,6 +1,6 @@
 
 #auth-page{
-    @apply bg-auth bg-cover bg-no-repeat flex flex-col h-screen;
+    @apply flex flex-col h-screen;
 }
 
 #auth-page header{
@@ -15,7 +15,7 @@
     @apply w-full h-screen flex  justify-center  items-center md:justify-end md:items-end font-body;
 }
 #auth-page main #app{
-    @apply flex md:mr-12 md:mb-12 p-0 w-min bg-transparent;
+    @apply flex md:mr-12 md:mb-12  w-min bg-transparent;
 }
 
 #auth-page footer{
