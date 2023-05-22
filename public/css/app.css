@@ -586,6 +586,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .aspect-video{
   aspect-ratio: 16 / 9;
 }
+.aspect-square{
+  aspect-ratio: 1 / 1;
+}
 .h-0{
   height: 0px;
 }
@@ -941,6 +944,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .pt-\[41vh\]{
   padding-top: 41vh;
+}
+.pt-\[43vh\]{
+  padding-top: 43vh;
 }
 .text-left{
   text-align: left;
@@ -1563,6 +1569,10 @@ nav .nav-link.active::after{
 }
 @media (min-width: 640px){
 
+  .sm\:aspect-video{
+    aspect-ratio: 16 / 9;
+  }
+
   .sm\:w-full{
     width: 100%;
   }
@@ -1581,6 +1591,10 @@ nav .nav-link.active::after{
 
   .sm\:pt-\[51vh\]{
     padding-top: 51vh;
+  }
+
+  .sm\:pt-\[54vh\]{
+    padding-top: 54vh;
   }
 }
 @media (min-width: 768px){
