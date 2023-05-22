@@ -36,11 +36,11 @@
     <x-title.h1 class="text-4xl text-blue-900"> Invoice - Demo</x-title.h1>
     <header class="overflow-hidden flex p-6 flex-col md:flex-row-reverse relative border-2 bg-slate-100 border-blue-800 text-blue-800 rounded-lg">
         {{--        <article class="w-full md:w-1/2 border border-2 border-blue-600 rounded-lg shadow-lg shadow-blue-300">--}}
-        <figure class="bg-hero-mobile md:bg-hero-md  bg-center lg:bg-center w-10/12 sm:w-full md:w-[45vw] lg:w-[50vw] lg:w-96 aspect-video lg:aspect-video md:aspect-square absolute  top:0 m-auto left-0 right-4 md:left-auto md:right-6 md:top-50 bg-no-repeat bg-cover lg:bg-content z-0"></figure>
+        <figure class=" bg-hero-mobile md:bg-hero-md  bg-center lg:bg-center w-full sm:w-full md:w-[45vw] lg:w-[50vw]  aspect-video lg:aspect-video md:aspect-square absolute  top:0 m-auto left-0 right-4 md:left-auto md:right-6 md:top-50 bg-no-repeat bg-cover lg:bg-content z-0"></figure>
         {{--        </article>--}}
 
         <article
-                class="w-full pt-[35vh] sm:pt-[65vh] md:pt-0 md:pb-12  md:pr-[38vw] lg:pr-[50vw] z-20 flex flex-col-reverse md:flex-col bg-slate-100/50">
+                class="w-full pt-[41vh] sm:pt-[51vh] md:pt-0 md:pb-12  md:pr-[38vw] lg:pr-[50vw] z-20 flex flex-col-reverse md:flex-col bg-slate-100/50">
             <div>
                 <x-title.h2> Gestion des factures et des clients</x-title.h2>
                 <p class="text-lg">

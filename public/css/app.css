@@ -930,6 +930,18 @@ Ensure the default browser behavior of the `hidden` attribute.
 .pt-6{
   padding-top: 1.5rem;
 }
+.pt-\[30vh\]{
+  padding-top: 30vh;
+}
+.pt-\[32vh\]{
+  padding-top: 32vh;
+}
+.pt-\[36vh\]{
+  padding-top: 36vh;
+}
+.pt-\[41vh\]{
+  padding-top: 41vh;
+}
 .text-left{
   text-align: left;
 }
@@ -1557,6 +1569,18 @@ nav .nav-link.active::after{
 
   .sm\:pt-\[65vh\]{
     padding-top: 65vh;
+  }
+
+  .sm\:pt-\[47vh\]{
+    padding-top: 47vh;
+  }
+
+  .sm\:pt-\[49vh\]{
+    padding-top: 49vh;
+  }
+
+  .sm\:pt-\[51vh\]{
+    padding-top: 51vh;
   }
 }
 @media (min-width: 768px){
