@@ -141,13 +141,13 @@
                             @enderror
                         </div>
                         <div class="form-row">
-                            <label for="tva">{{ __('auth.Vat') }}</label>
-                            <input id="tva" type="text"
+                            <label for="vat">{{ __('auth.Vat') }}</label>
+                            <input id="vat" type="text"
                                    class="form-control @error('tva') is-invalid @enderror"
-                                   name="tva" value="{{ old('tva') }}" required autocomplete="vat"
+                                   name="vat" value="{{ old('vat') }}" required autocomplete="vat"
                                    autofocus>
 
-                            @error('tva')
+                            @error('vat')
                             <span class="text-red-700 font-bold " role="alert">
                                 {{__('errors.'.$message) }}
                             </span>
