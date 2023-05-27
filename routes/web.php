@@ -12,9 +12,11 @@
 */
 
 
+use Illuminate\Support\Facades\Auth;
+
 Route::get('/', function () {
     return view('welcome');
-})->name('welcome');
+})->middleware('guest')->name('welcome');
 
 Auth::routes();
 
