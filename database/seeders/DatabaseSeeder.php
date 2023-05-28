@@ -22,8 +22,8 @@ class DatabaseSeeder extends Seeder
         User::factory(10)->create();
         Client::factory(1000)->create();
         $this->call(VatTableSeeder::class);
-        Item::factory(10000)->create();
-        Invoice::factory(5000)
+        Item::factory(1000)->create();
+        Invoice::factory(100)
             ->create()
             ->each(function (Invoice $invoice) {
                 $invoice->items()

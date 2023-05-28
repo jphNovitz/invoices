@@ -11,7 +11,7 @@
                         <ul class="text-lg ">
                             <li>{{__('auth.Company')}}: <strong>{{$user->company}}</strong></li>
                             <li>{{__('auth.Name')}}: <strong>{{$user->name}}</strong></li>
-                            <li>{{__('auth.Vat')}}: <strong>{{$user->tva}}</strong></li>
+                            <li>{{__('auth.Vat')}}: <strong>{{$user->vat}}</strong></li>
                             <li>{{__('auth.Lastname')}}: <strong>{{$user->lastname}}</strong></li>
                             <li>{{__('auth.Firstname')}} : <strong>{{$user->firstname}}</strong></li>
                             <li>{{__('auth.Street')}}: <strong>{{$user->street}} {{$user->nr}}</strong></li>

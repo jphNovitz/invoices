@@ -131,7 +131,7 @@ $cities = \App\Models\City::all();
                         <label for="vat">{{ __('auth.Vat') }}</label>
                         <input id="vat" type="text"
                                class="form-control @error('vat') is-invalid @enderror"
-                               name="vat" value="{{ $user->tva }}" required autocomplete="vat"
+                               name="vat" value="{{ $user->vat }}" required autocomplete="vat"
                                autofocus>
 
                         @error('vat')

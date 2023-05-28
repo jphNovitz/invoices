@@ -57,7 +57,7 @@ $vat_all = \App\Models\Vat::all();
                             <li> {{$user->city}} </li>
                             <li>Email: {{$user->email}} </li>
                             <li>Téléphone: {{$user->phone}}</li>
-                            <li>TVA N°: {{$user->tva}}</li>
+                            <li>TVA N°: {{$user->vat}}</li>
 
                         </ul>
                     </div>
