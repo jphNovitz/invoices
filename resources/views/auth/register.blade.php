@@ -143,7 +143,7 @@
                         <div class="form-row">
                             <label for="vat">{{ __('auth.Vat') }}</label>
                             <input id="vat" type="text"
-                                   class="form-control @error('tva') is-invalid @enderror"
+                                   class="form-control @error('vat') is-invalid @enderror"
                                    name="vat" value="{{ old('vat') }}" required autocomplete="vat"
                                    autofocus>
 

@@ -128,12 +128,16 @@ $cities = \App\Models\City::all();
                     </div>
 
                     <div class="form-row">
-                        <label for="vat">{{__('auth.Vat')}}</label>
-                        <input type="text" name="vat" id="vat" value="{{$user->tva}}"/>
+                        <label for="vat">{{ __('auth.Vat') }}</label>
+                        <input id="vat" type="text"
+                               class="form-control @error('vat') is-invalid @enderror"
+                               name="vat" value="{{ $user->tva }}" required autocomplete="vat"
+                               autofocus>
+
                         @error('vat')
-                        <span class="text-red-800 before:content-['*']" role="alert">
-                            <strong>{{ $vat }}</strong>
-                        </span>
+                        <span class="text-red-700 font-bold " role="alert">
+                                {{__('errors.'.$message) }}
+                            </span>
                         @enderror
                     </div>
 

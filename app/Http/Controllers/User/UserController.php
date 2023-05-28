@@ -52,7 +52,7 @@ class UserController extends Controller
         $user->street = $data['street'];
         $user->nr = $data['nr'];
         $user->city_id = $data['city_id'];
-        $user->vat = $data['vat'];
+        $user->tva = $data['vat'];
         $user->phone = $data['phone'];
 
         if ($user->save()) {
