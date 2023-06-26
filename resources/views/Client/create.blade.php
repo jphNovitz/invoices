@@ -1,6 +1,5 @@
-@include('Client.form', [
-    'route' => 'client_store',
-    'form_title' => 'Ajouter un client',
-    'method' => 'post',
-    'submit' => 'Créer'
-    ])
+<x-client.form
+        route="client_store"
+        form_title="Client create"
+        method="poste"
+        submit="Créer" />
