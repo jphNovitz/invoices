@@ -21,6 +21,13 @@ class DatabaseSeeder extends Seeder
         City::factory(100)->create();
         User::factory(10)->create();
         Client::factory(1000)->create();
+
+        $users = User::all();
+        Client::all()->each(function ($client) use ($users) {
+            $client->users()->attach(
+                $users->random(rand(1, 3))->pluck('id')->toArray()
+            );
+        });
         $this->call(VatTableSeeder::class);
         Item::factory(10000)->create();
         Invoice::factory(80)
