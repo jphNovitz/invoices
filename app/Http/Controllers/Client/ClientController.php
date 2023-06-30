@@ -98,8 +98,8 @@ class ClientController extends Controller
 
     public function update(Request $request)
     {
-        $client = client::find($request->input('id'));
         $validatedData = $request->validate([
+            'id' => ['required'],
             'company' => ['required', 'max:255'],
             'firstname' => ['required', 'max:255'],
             'lastname' => ['required', 'max:255'],
@@ -110,15 +110,9 @@ class ClientController extends Controller
             'email' => ['required', 'max:255'],
         ]);
 
-        $client->company = $request->input('company');
-        $client->firstname = $request->input('firstname');
-        $client->lastname = $request->input('lastname');
-        $client->vat = $request->input('vat');
-        $client->street = $request->input('street');
-        $client->nr = $request->input('nr');
-        $client->phone = $request->input('phone');
-        $client->email = $request->input('email');
-        $client->save();
+        $client = client::find($validatedData['id']);
+
+        $client->update($validatedData);
 
         return redirect(route('clients_list'));
     }
