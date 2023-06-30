@@ -38,7 +38,7 @@ Route::prefix('client')->group(function () {
     Route::get('/add/{id}', 'Client\ClientController@add')->name('client_add'); /*Add found client with id*/
     Route::get('/create', 'Client\ClientController@create')->name('client_create');
     Route::post('/store', 'Client\ClientController@store')->name('client_store');
-    Route::get('/update/{client}', 'Client\ClientController@edit')->name('client_update');
+    Route::get('/update/{client?}', 'Client\ClientController@edit')->name('client_update');
     Route::put('/save', 'Client\ClientController@update')->name('client_save');
     Route::get('/delete/{client}', function (\App\Models\Client $client) {
         return view('Client.client-delete', ['client' => $client]);

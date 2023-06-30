@@ -87,10 +87,10 @@ class ClientController extends Controller
         return redirect(route('clients_list'));
     }
 
-    public function edit(Client $client )
+    public function edit(Client $client = null )
     {
         if (!$client) {
-            return redirect()->route('client_home')->with('alert-danger', 'Client inconnu !');
+            return redirect()->back()->withErrors('Client inconnu !');
         }
         return view('Client.client-update', ['client' => $client]);
     }
