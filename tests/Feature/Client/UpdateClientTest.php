@@ -58,14 +58,14 @@ test('Client update action gets error if fied is missing when submit form', func
         ->put(route('client_save', [
             'client' => $client->id,
             "firstname" => "",
-            "lastname" => "Last Ipsum",
-            "company" => "Fake Company",
-            "vat" => "123456789",
-            "street" => "Street Lorem",
-            "nr" => "1",
-            "phone" => "55534343",
-            "email" => "fake@email.com",
-            "city_id" => "1"
+            "lastname" => $client->lastname,
+            "company" => $client->company,
+            "vat" => $client->vat,
+            "street" => $client->street,
+            "nr" => $client->nr,
+            "phone" => $client->phone,
+            "email" => $client->email,
+            "city_id" => 1
         ]));
 
     $response->assertStatus(302);
@@ -73,25 +73,25 @@ test('Client update action gets error if fied is missing when submit form', func
 
 });
 
-test('Client is updated if all field is given in submit form', function () {
+test('Client is updated if all fields are given in submit form', function () {
     $this->seed(TestSeeder::class);
     $user = User::all()->random();
     $client = $user->clients->first();
 
-    $client->firstname = "";
+    $client->firstname = "My new name";
 
     $response = $this->actingAs($user)
         ->put(route('client_save', [
             'id' => $client->id,
-            "firstname" => "My new name",
-            "lastname" => "Last Ipsum",
-            "company" => "Fake Company",
-            "vat" => "123456789",
-            "street" => "Street Lorem",
-            "nr" => "1",
-            "phone" => "55534343",
-            "email" => "fake@email.com",
-            "city_id" => "1"
+            "firstname" => $client->firstname,
+            "lastname" => $client->lastname,
+            "company" => $client->company,
+            "vat" => $client->vat,
+            "street" => $client->street,
+            "nr" => $client->nr,
+            "phone" => $client->phone,
+            "email" => $client->email,
+            "city_id" => 1
         ]));
 
     $response->assertRedirect(route('clients_list'));
