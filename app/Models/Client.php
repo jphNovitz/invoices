@@ -28,6 +28,7 @@ class Client extends Model
         return $this->hasOne('App\Models\City', 'id', 'city_id');
     }
 
+
     public function Invoices(){
         $id = \Auth::user()->id;
         return $this->hasMany('App\Models\Invoice')->where('user_id', $id);

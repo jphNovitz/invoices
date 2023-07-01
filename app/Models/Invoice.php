@@ -32,7 +32,7 @@ class Invoice extends Model
 
     public function items()
     {
-        return $this->belongsToMany('App\Models\item');
+        return $this->belongsToMany('App\Models\Item');
     }
 
 
