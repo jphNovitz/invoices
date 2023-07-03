@@ -40,10 +40,11 @@ Route::prefix('client')->group(function () {
     Route::post('/store', 'Client\ClientController@store')->name('client_store');
     Route::get('/update/{client?}', 'Client\ClientController@edit')->name('client_update');
     Route::put('/save', 'Client\ClientController@update')->name('client_save');
-    Route::get('/delete/{client}', function (\App\Models\Client $client) {
-        return view('Client.client-delete', ['client' => $client]);
-    })->name('client_delete');
-    Route::delete('/delete/{client}', 'Client\ClientController@delete')->name('client_remove');
+//    Route::get('/delete/{client}', function (\App\Models\Client $client) {
+//        return view('Client.client-delete', ['client' => $client]);
+//    })->name('client_delete');
+    Route::get('/delete/{client?}', 'Client\ClientController@delete')->name('client_delete');
+    Route::delete('/remove/{client}', 'Client\ClientController@remove')->name('client_remove');
     Route::get('/{client}', 'Client\ClientController@show')->name('client_show');
 
     Route::get('/api/client/{client}', 'Client\ApiClientController@show')->name('api_client_infos');/* Invoices */;

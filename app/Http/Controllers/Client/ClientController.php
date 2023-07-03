@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
 use App\Models\Client;
+use App\Models\Invoice;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ClientController extends Controller
 {
@@ -87,7 +90,7 @@ class ClientController extends Controller
         return redirect(route('clients_list'));
     }
 
-    public function edit(Client $client = null )
+    public function edit(Client $client = null)
     {
         if (!$client) {
             return redirect()->back()->withErrors('Client inconnu !');
@@ -117,21 +120,30 @@ class ClientController extends Controller
         return redirect(route('clients_list'));
     }
 
-    public function delete(Request $request, Client $client)
+    public function delete(Request $request, Client $client = null)
     {
-//        REMOVED BECAUSE I CAN'T REMOVE A CLIENT => multiple users can have the client
+        if (!$client) return redirect()->back()->withErrors('Client not found');
+        if (DB::table('invoice')->where('client_id', $client->id)->exists())
+            return redirect()->back()->withErrors('errors.Invoices_exists');
+        if (count($client->users) > 1)
+            return redirect()->back()->withErrors('errors.Users_exists');
+        return view('Client.client-delete', ['client' => $client]);
+    }
 
-       /* if ($request->_decline || !$client) return redirect(route('invoices_list'))->with('message', 'annulé');
+    public function remove(Request $request, Client $client)
+    {
+
+        if ($request->_decline || !$client) return redirect(route('invoices_list'))->with('message', 'annulé');
 
         try {
             $client->delete();
-            $message = 'Client Supprimé';
+            $message = 'app.Client_deleted';
         } catch (\Exception $e) {
-            $message = 'Erreur dans la suppression';
+            $message = 'errors.Error_delete';
         }
-        return redirect()->route('home')->with('message', $message);*/
+        return redirect()->route('clients_list')->with('message', $message);
 
-        return redirect()->route('home')->with('alert-success', 'demo ');
+//        return redirect()->route('home')->with('alert-success', 'demo ');
     }
 
 }
