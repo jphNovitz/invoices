@@ -76,6 +76,11 @@
                     {{ session()->get('alert-danger') }}
                 </div>
             @endif
+                @foreach ($errors->all() as $message)
+                <div class="bg-red-300 text-red-900 border border-red-800 px-6 py-3 my-2 ">
+                    {{ __($message) }}
+                </div>
+                @endforeach
         </aside>
         @yield('content')
     </main>

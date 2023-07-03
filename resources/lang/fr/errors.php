@@ -8,5 +8,5 @@ return [
   "Phone field is required."=>"Le téléphone est obligatoire",
   "Password field is required."=>"Le mot de passe est obligatoire",
   "Address field is required."=>"L'adresse est obligatoire",
-  ""=>"",
+  "Invoices_exists"=>"Ne peux pas être supprimé car des factures existent avec ce client",
 ];
