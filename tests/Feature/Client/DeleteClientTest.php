@@ -59,3 +59,75 @@ test('client delete screen  fails if client has multiple users', function () {
     $response->assertSessionHasErrors();
 });
 
+test('client delete screen  fails if client  already has invoices', function () {
+    $this->seed(TestSeeder::class);
+    $user = User::all()->random();
+    $client = Client::all()->random();
+
+    $response = $this->actingAs($user)
+        ->get(route('client_delete', [
+            'client' => $client->id
+        ]));
+
+    $response->assertStatus(302);
+    $response->assertSessionHasErrors();
+});
+
+test('client is accessible  if only one user and no invoices', function () {
+    $this->seed(TestSeeder::class);
+    $user = User::all()->random();
+    Client::factory(1)->create();
+    $client = Client::all()->last();
+    $client->users()->attach($user->id);
+
+//    $this->actingAs($user); dd($client->id);
+
+    $response = $this->actingAs($user)
+        ->get(route('client_delete', [
+            'client' => $client->id
+        ]));
+
+    $response->assertStatus(200);
+    $response->assertSessionHasNoErrors();
+
+});
+
+test('client remove action works  if only one user and no invoices', function () {
+    $this->seed(TestSeeder::class);
+    $user = User::all()->random();
+    Client::factory(1)->create();
+    $client = Client::all()->last();
+    $client->users()->attach($user->id);
+
+    $response = $this->actingAs($user)
+        ->delete(route('client_remove', [
+            'client' => $client->id
+        ]));
+
+    $response->assertStatus(302);
+    $response->assertRedirect(route('clients_list'));
+    $response->assertSessionHasNoErrors();
+
+});
+
+test('client remove action fails if client already deleted', function () {
+    $this->seed(TestSeeder::class);
+    $user = User::all()->random();
+    Client::factory(1)->create();
+    $client = Client::all()->last();
+    $client->users()->attach($user->id);
+
+    $this->actingAs($user)
+        ->delete(route('client_remove', [
+            'client' => $client->id
+        ]));
+
+    $response = $this->actingAs($user)
+        ->delete(route('client_remove', [
+            'client' => $client->id
+        ]));
+//dd($response);
+    $response->assertStatus(404);
+
+});
+
