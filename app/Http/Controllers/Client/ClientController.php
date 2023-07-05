@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Client;
 use App\Http\Controllers\Controller;
 use App\Models\Client;
 use App\Models\Invoice;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -35,7 +36,7 @@ class ClientController extends Controller
         return view('Client.index', ['clients' => $clients]);
     }
 
-    public function show(client $client = null)
+    public function show(client $client)
     {
         return view('Client.card', ['client' => $client]);
     }
@@ -49,22 +50,20 @@ class ClientController extends Controller
 
     public function add($id = null)
     {
-        if (!$id) return;
-
-        $client = Client::find($id);
         try {
+            $client = Client::findOrFail($id);
             \Auth::user()->clients()->attach($client);
             $message = 'Client_Added';
             $alert = 'alert-success';
-        } catch (\Exception $e) {
-            $message = 'Error';
-            $alert = 'alert-danger';
+        }
+        catch (\Exception $e) {
+            return redirect()->back()->withErrors('errors.Error encountered');
         }
 
         return redirect(route('clients_list'))->with('message', $message);
     }
 
-    public function create($id = null)
+    public function create()
     {
         return view('Client.create', ['client' => new \App\Models\Client()]);
     }
@@ -80,11 +79,10 @@ class ClientController extends Controller
             'nr' => ['required', 'max:255'],
             'phone' => ['required', 'max:255'],
             'email' => ['required', 'max:255'],
+            'city_id' => ['required', 'integer', 'max:255'],
         ]);
 
-        $client = $request->all();
-        $result = Client::create($client);
-        $client = client::find($result->id);
+        $client = Client::create($validatedData);
         $user = auth()->user();
         $client->users()->attach($user);
         return redirect(route('clients_list'));
@@ -92,9 +90,9 @@ class ClientController extends Controller
 
     public function edit(Client $client = null)
     {
-        if (!$client) {
-            return redirect()->back()->withErrors('Client inconnu !');
-        }
+        if (!$client)
+            return redirect()->back()->withErrors('errors.Missing parameter');
+
         return view('Client.client-update', ['client' => $client]);
     }
 
@@ -111,10 +109,10 @@ class ClientController extends Controller
             'nr' => ['required', 'max:255'],
             'phone' => ['required', 'max:255'],
             'email' => ['required', 'max:255'],
+            'city_id' => ['required', 'integer', 'max:255'],
         ]);
 
         $client = client::find($validatedData['id']);
-
         $client->update($validatedData);
 
         return redirect(route('clients_list'));
@@ -123,27 +121,24 @@ class ClientController extends Controller
     public function delete(Request $request, Client $client = null)
     {
         if (!$client) return redirect()->back()->withErrors('Client not found');
+
         if (DB::table('invoice')->where('client_id', $client->id)->exists())
             return redirect()->back()->withErrors('errors.Invoices_exists');
+
         if (count($client->users) > 1)
             return redirect()->back()->withErrors('errors.Users_exists');
+
         return view('Client.client-delete', ['client' => $client]);
     }
 
     public function remove(Request $request, Client $client)
     {
-
         if ($request->_decline || !$client) return redirect(route('invoices_list'))->with('message', 'annulé');
 
-        try {
             $client->delete();
             $message = 'app.Client_deleted';
-        } catch (\Exception $e) {
-            $message = 'errors.Error_delete';
-        }
-        return redirect()->route('clients_list')->with('message', $message);
 
-//        return redirect()->route('home')->with('alert-success', 'demo ');
+        return redirect()->route('clients_list')->with('message', $message);
     }
 
 }
