@@ -21,7 +21,7 @@
                                 <i class="fas fa-chevron-down"></i>
                                </span>
                                     <span class="button info p-3 mx-1 ">
-                                    <a href="{{route('invoice_show', ["id"=>$invoice->id])}}">
+                                    <a href="{{route('invoice_show', ["invoice"=>$invoice->id])}}">
                                         <i class="fas fa-search-plus"></i>
                                     </a>
                                 </span>

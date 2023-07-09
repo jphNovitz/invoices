@@ -35,7 +35,7 @@ Route::delete('user/delete}', 'User\UserController@remove')->name('user_remove')
 Route::prefix('client')->group(function () {
     Route::get('/', 'Client\ClientController@index')->name('clients_list');
     Route::get('/findadd', 'Client\ClientController@findClientToAdd')->name('clients_search_create'); /*Find Client to add*/
-    Route::get('/add/{id}', 'Client\ClientController@add')->name('client_add'); /*Add found client with id*/
+    Route::get('/add/{id?}', 'Client\ClientController@add')->name('client_add'); /*Add found client with id*/
     Route::get('/create', 'Client\ClientController@create')->name('client_create');
     Route::post('/store', 'Client\ClientController@store')->name('client_store');
     Route::get('/update/{client?}', 'Client\ClientController@edit')->name('client_update');
@@ -53,10 +53,10 @@ Route::prefix('client')->group(function () {
 /* Users's invoices */
 Route::prefix('invoice')->group(function () {
     Route::get('/', 'Invoice\InvoiceController@index')->name('invoices_list');
-    Route::get('/show/{id}', 'Invoice\InvoiceController@show')->name('invoice_show')->middleware('owned_invoice');
+    Route::get('/show/{invoice}', 'Invoice\InvoiceController@show')->name('invoice_show')->middleware('owned_invoice');
     Route::get('/add/{id?}', 'Invoice\InvoiceController@create')->name('invoice_create');
     Route::post('/store', 'Invoice\InvoiceController@store')->name('invoice_store');
-    Route::get('/edit/{id}', 'Invoice\InvoiceController@edit')->name('invoice_edit')->middleware('owned_invoice');
+    Route::get('/edit/{invoice}', 'Invoice\InvoiceController@edit')->name('invoice_edit')->middleware('owned_invoice');
     Route::put('/update', 'Invoice\InvoiceController@update')->name('invoice_update');
     Route::get('/delete/{id}', 'Invoice\InvoiceController@delete')->name('invoice_delete')->middleware('owned_invoice');
     Route::delete('/remove', 'Invoice\InvoiceController@remove')->name('invoice_remove');

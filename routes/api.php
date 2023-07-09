@@ -13,10 +13,10 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
-Route::get('/client/{id}', function ($id) {
-    if ($id)
-      return  response()->json(\App\Models\Client::where('id', $id)->first());
-});
+//Route::middleware('auth:api')->get('/user', function (Request $request) {
+//    return $request->user();
+//});
+//Route::get('/client/{id}', function ($id) {
+//    if ($id)
+//      return  response()->json(\App\Models\Client::where('id', $id)->first());
+//});

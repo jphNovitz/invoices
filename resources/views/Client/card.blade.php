@@ -41,12 +41,12 @@
                                 {{$invoice->total}}
                             </td>
                             <td class="flex flex-row justify-around  w-32">
-                                <a href="{{route('invoice_show', ['id'=>$invoice->id])}}"
+                                <a href="{{route('invoice_show', ['invoice'=>$invoice->id])}}"
                                    class="button info">
                                     <i class="fas fa-search-plus"></i>
                                 </a>
 
-                                <a href="{{route('invoice_edit', ['id'=>$invoice->id])}}"
+                                <a href="{{route('invoice_edit', ['invoice'=>$invoice->id])}}"
                                    class="button success">
                                     <i class="fas fa-edit"></i>
                                 </a>

@@ -36,7 +36,7 @@
                                    </span>
                                </span>
                                 <div class="button-text">
-                                    <a href="{{route('invoice_show', ["id"=>$invoice->id])}}">
+                                    <a href="{{route('invoice_show', ["invoice"=>$invoice->id])}}">
                                         <span class="icon info ">
                                             <i class="fas fa-search-plus"></i>
                                         </span>
@@ -44,7 +44,7 @@
                                     </a>
                                 </div>
                                 <span class="button-text p-3">
-                                    <a href="{{route('invoice_edit', ["id"=>$invoice->id])}}">
+                                    <a href="{{route('invoice_edit', ["invoice"=>$invoice->id])}}">
                                         <span class="icon success">
                                              <i class="fas fa-edit"></i>
                                         </span>

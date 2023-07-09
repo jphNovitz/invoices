@@ -148,7 +148,7 @@ $cities = \App\Models\City::all();
                             </span>
                         @enderror
                     </div>
-                    <input type="submit" class="bg-blue-600 text-blue-50 rounded-lg my-3 px-6"
+                    <input type="submit" class="bg-blue-600 text-blue-50 rounded-lg my-3 py-1.5 px-6"
                            value="{{__('btn.Submit')}}">
 
                 </form>
