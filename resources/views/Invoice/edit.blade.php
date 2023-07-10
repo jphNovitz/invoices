@@ -65,9 +65,9 @@ $date = Carbon::now('Europe/Zurich')
                     </div>
                 </div>
 
-                <form action="{{route('invoice_update')}}">
-                    @method('PUT')
+                <form action="{{route('invoice_update', ['invoice' => $invoice->id])}}" method="POST">
                     @csrf
+                    @method('PUT')
                     <input type="hidden" name="id" value="{{$invoice->id}}"/>
                     <?php $id_loop = 0 ?>
                     <div id="items" class="flex flex-col  w-full ">

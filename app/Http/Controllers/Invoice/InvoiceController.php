@@ -30,37 +30,38 @@ class InvoiceController extends Controller
         ]);
     }
 
-    public function show($id)
+    public function show(Invoice $invoice)
     {
-        $invoice = invoice::with('Client')
-            ->where('id', $id)
-            ->first();
-
         return view('Invoice.show', ['invoice' => $invoice]);
     }
 
-    public function edit($id)
+    public function edit(Invoice $invoice)
     {
-        $invoice = invoice::with('Client')
-            ->where('id', $id)
-            ->first();
-
-        return view('Invoice.update', ['invoice' => $invoice]);
+        return view('Invoice.edit', ['invoice' => $invoice]);
     }
 
-    public function update(Request $request)
+    public function update(Request $request, Invoice $invoice = null)
     {
-        $invoice = Invoice::where('id', $request->id)->first();
-
+        $validatedData = $request->validate([
+            'items.*.id' => ['required'],
+            "items.*.description" => ['required', 'max:255'],
+            "items.*.price" => ['required', 'numeric'],
+            "items.*.qty" => ['required', 'numeric'],
+            "items.*.vat_id"=> ['required', 'integer'],
+            "items.*.discount"  => ['required', 'numeric'],
+        ]);
+//        dump($request->all());
+//dd($validatedData);
         // The items
         $htva = 0;
         $tva = 0;
         $total = 0;
 
         $items_ids = $invoice->items()->pluck('item_id')->toArray();
+
         $form_items_ids = array_map(function ($item) {
             if (isset($item['id'])) return $item['id'];
-        }, $request->all()['items']);
+        }, $validatedData['items']);
 
         $to_remove = array_diff($items_ids, $form_items_ids);
 
@@ -68,7 +69,7 @@ class InvoiceController extends Controller
             $invoice->items()->detach($remove);
         }
 
-        foreach ($request->all()['items'] as $item) {
+        foreach ($validatedData['items'] as $item) {
 
             // update the related item
             if (isset($item['id'])) {
