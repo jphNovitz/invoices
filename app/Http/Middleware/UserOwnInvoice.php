@@ -16,11 +16,12 @@ class UserOwnInvoice
      */
     public function handle($request, Closure $next)
     {
+//      dd($id = filter_var($request->getRequestUri(), FILTER_SANITIZE_NUMBER_INT));
         if (
             (null === $id = filter_var($request->getRequestUri(), FILTER_SANITIZE_NUMBER_INT)) ||
-            (null === $invoice = Invoice::where('id', $id)->first()) ||
-            ($invoice->user->id !== auth()->user()->id)
-        ) return redirect()->route('invoice_create')->with("message", "Création d'une facture");
+            (Invoice::where('id', $id)->first() === null ) ||
+            (Invoice::where('id', $id)->first()->user->id !== auth()->user()->id)
+        ) return redirect()->back()->withErrors('errors.Error with invoice');
 
         return $next($request);
     }
