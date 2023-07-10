@@ -53,9 +53,9 @@ class User extends Authenticatable
         return $this->hasOne('App\Models\City', 'id', 'city_id');
     }
 
-    public function Invoice(){
-        return $this->hasMany('App\Models\Invoice','id', 'invoice_id');
-    }
+//    public function Invoice(){
+//        return $this->hasMany('App\Models\Invoice','id', 'invoice_id');
+//    }
     public function Invoices(){
         return $this->hasMany('App\Models\Invoice','id', 'invoice_id');
     }
