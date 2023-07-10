@@ -36,6 +36,8 @@ class ClientFactory extends Factory
             'email' => $this->faker->unique()->safeEmail,
             'vat' => $this->faker->vat,
             'city_id' => City::all()->random()
+
+
         ];
     }
 }

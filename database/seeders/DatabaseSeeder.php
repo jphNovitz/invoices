@@ -19,23 +19,26 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         City::factory(100)->create();
-        User::factory(10)->create();
-        Client::factory(1000)->create();
+        Client::factory(10)->create();
+//        User::factory(10)->create();
 
         $users = User::all();
         Client::all()->each(function ($client) use ($users) {
             $client->users()->attach(
-                $users->random(rand(1, 3))->pluck('id')->toArray()
+                User::factory(10)->create()
+//                $users->random(rand(1, 3))->pluck('id')->toArray()
+
             );
         });
         $this->call(VatTableSeeder::class);
-        Item::factory(10000)->create();
-        Invoice::factory(80)
+        Item::factory(4000)->create();
+        Invoice::factory(500)
             ->create()
             ->each(function (Invoice $invoice) {
                 $invoice->items()
                     ->attach(
-                        Item::all()->random()->id
+                        Item::factory(3)->create()
+//                        Item::all()->random()->id
                     );
             });
     }
