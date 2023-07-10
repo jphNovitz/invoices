@@ -23,3 +23,4 @@ test('dashboard screen is if authenticated', function () {
     $response->assertStatus(200);
 
 });
+
