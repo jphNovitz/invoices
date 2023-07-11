@@ -43,15 +43,14 @@ class InvoiceController extends Controller
     public function update(Request $request, Invoice $invoice = null)
     {
         $validatedData = $request->validate([
-            'items.*.id' => ['required'],
+            "items.*.id" => ['max:255'],
             "items.*.description" => ['required', 'max:255'],
             "items.*.price" => ['required', 'numeric'],
             "items.*.qty" => ['required', 'numeric'],
             "items.*.vat_id"=> ['required', 'integer'],
             "items.*.discount"  => ['required', 'numeric'],
         ]);
-//        dump($request->all());
-//dd($validatedData);
+
         // The items
         $htva = 0;
         $tva = 0;
@@ -72,8 +71,7 @@ class InvoiceController extends Controller
         foreach ($validatedData['items'] as $item) {
 
             // update the related item
-            if (isset($item['id'])) {
-                $item_tmp = Item::where('id', $item['id'])->first();
+            if (isset($item['id']) && $item_tmp = Item::where('id', $item['id'])->first()) {
                 $item_tmp->fill($item);
                 $item_tmp->update();
             } else {
@@ -96,21 +94,15 @@ class InvoiceController extends Controller
         $invoice_datas['exvat'] = $htva;
         $invoice_datas['total'] = $total;
 
-        try {
-//            dd($invoice_datas);
-            $invoice->update($invoice_datas);
+           $invoice->update($invoice_datas);
             return redirect(route('invoices_list'))->with('alert-success', 'invoice updated');
-        } catch (QueryException $queryException) {
-            return redirect()->back()->with('message', 'Erreur');
-        }
     }
 
 
-    public function create($id = null)
+    public function create()
     {
         return view('Invoice.create', [
-            'clients' => \Auth::user()->clients->unique(),
-            'client_id' => $id
+            'clients' => \Auth::user()->clients->unique()
         ]);
     }
 

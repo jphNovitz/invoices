@@ -54,7 +54,7 @@ Route::prefix('client')->group(function () {
 Route::prefix('invoice')->group(function () {
     Route::get('/', 'Invoice\InvoiceController@index')->name('invoices_list');
     Route::get('/show/{invoice}', 'Invoice\InvoiceController@show')->name('invoice_show')->middleware('owned_invoice');
-    Route::get('/add/{id?}', 'Invoice\InvoiceController@create')->name('invoice_create');
+    Route::get('/add/', 'Invoice\InvoiceController@create')->name('invoice_create');
     Route::post('/store', 'Invoice\InvoiceController@store')->name('invoice_store');
     Route::get('/edit/{invoice}', 'Invoice\InvoiceController@edit')->name('invoice_edit')->middleware('owned_invoice');
     Route::put('/update/{invoice}', 'Invoice\InvoiceController@update')->name('invoice_update')->middleware('owned_invoice');

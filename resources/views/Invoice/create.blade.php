@@ -5,7 +5,6 @@
 
 use Carbon\Carbon;
 
-$new_client = \App\Models\Client::where('id', $client_id)->first();
 $user = auth()->user();
 $date = Carbon::now('Europe/Zurich');
 $vat_all = \App\Models\Vat::all();
@@ -21,11 +20,7 @@ $vat_all = \App\Models\Vat::all();
             <div class="flex flex-row justify-start w-full">
                  <span class="button-text ">
                         <a id="showClient" href="
-                        @if(isset($client))
-                        {{route('client_show', ['client'=>$new_client->id])}}
-                        @else{{route('client_show', ['client'=>$user->clients[0]])}}
-                        @endif
-                                ">
+                        {{route('client_show', ['client'=>$user->clients[0]])}} ">
 
                         <span class="icon primary">
                         <i class="fas fa-user"></i>
@@ -64,14 +59,11 @@ $vat_all = \App\Models\Vat::all();
                     <div class="md:w-1/2 p-12 m-12 border border-slate-200">
                         <div class="form-row">
                             <label for="select-client">Client</label>
-                            <select class="form-control" id="select-client" name="client_id">
-                                @if($new_client)
-                                    <option value="{{$new_client->id}}" selected="selected">{{$new_client->vat}}
-                                        - {{$new_client->company}}</option>
-                                @endif
+                            <select class="form-control p-3 rounded-md" id="select-client" name="client_id">
                                 @foreach($clients as $client)
                                     <option value="{{$client->id}}">{{$client->vat}}
-                                        - {{$client->company}}</option>
+                                        - {{$client->company}}
+                                    </option>
                                 @endforeach
                             </select>
                             <div id="show-client-infos">
