@@ -112,6 +112,7 @@ class InvoiceController extends Controller
         // get the user
         $user = auth()->user();
         $clients = Client::all();
+
         $client = $clients->find($request->client_id);
 
         if (null === $user->clients()->find($client->id)) $user->clients()->attach($client);
@@ -150,7 +151,6 @@ class InvoiceController extends Controller
         $invoice = new invoice();
         $last_added = $invoice->create($invoice_datas);
         $last_id = $last_added->id;
-
 
         $last_added->items()->createMany($items_to_add);
 
