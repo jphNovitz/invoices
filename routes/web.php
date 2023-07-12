@@ -58,7 +58,7 @@ Route::prefix('invoice')->group(function () {
     Route::post('/store', 'Invoice\InvoiceController@store')->name('invoice_store');
     Route::get('/edit/{invoice}', 'Invoice\InvoiceController@edit')->name('invoice_edit')->middleware('owned_invoice');
     Route::put('/update/{invoice}', 'Invoice\InvoiceController@update')->name('invoice_update')->middleware('owned_invoice');
-    Route::get('/delete/{id}', 'Invoice\InvoiceController@delete')->name('invoice_delete')->middleware('owned_invoice');
+    Route::get('/delete/{invoice}', 'Invoice\InvoiceController@delete')->name('invoice_delete')->middleware('owned_invoice');
     Route::delete('/remove', 'Invoice\InvoiceController@remove')->name('invoice_remove');
     Route::get('/generate-pdf/{id}', 'Invoice\PDFController@generatePDF')->name('invoice_generate_pdf');
     Route::get('/send-pdf/{id}','Invoice\PDFController@sendPDF')->name('invoice_send_pdf');

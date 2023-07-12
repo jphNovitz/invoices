@@ -82,10 +82,12 @@ class InvoiceController extends Controller
             // update the invoice totals
             $htva_temp = $item['price'] * $item['qty'] - $item['discount'];
             $vat_rate = Vat::where('id', $item['vat_id'])->first()->rate;
-            $tva_temp = $item['price'] * $vat_rate;
+            $tva_temp = $htva_temp * $vat_rate;
+//            $tva_temp = $item['price'] * $vat_rate;
             $htva += $htva_temp;
             $tva += $tva_temp;
             $total += ($htva_temp + $tva_temp);
+
         }
 
         // The invoice
@@ -126,22 +128,19 @@ class InvoiceController extends Controller
             $items_to_add[] = $item;
             $htva_temp = $item['price'] * $item['qty'] - $item['discount'];
             $vat_rate = Vat::where('id', $item['vat_id'])->first()->rate;
-            $tva_temp = $item['price'] * $vat_rate;
+            $tva_temp = $htva_temp * $vat_rate;
+//            $tva_temp = $item['price'] * $vat_rate;
             $htva += $htva_temp;
             $tva += $tva_temp;
             $total = $total + ($htva_temp + $tva_temp);
+
         }
 
         // The invoice
-        $last_invoice = Invoice::where('user_id', $user->id)->orderBy('id', 'desc')->first();
-        if (empty($last_invoice)){
-            $reference_parts[0] = $user->prefix;
-            $reference_parts[1] = --$user->first_id;
-        } else {
-            $reference_parts = explode('-', $last_invoice->reference);
-        }
+        $lastInvoice = Invoice::latest()->first() ;
 
-        $invoice_datas['reference'] = $reference_parts[0] . '-' . ++$reference_parts[1];
+        $refNumber = ($lastInvoice !== null) ? explode('-', $lastInvoice->reference)[1] : 1;
+        $invoice_datas['reference'] = $user->prefix . '-' . ++$refNumber;
         $invoice_datas['client_id'] = $client->id;
         $invoice_datas['user_id'] = $user->id;
         $invoice_datas['vat'] = $tva;
@@ -158,12 +157,10 @@ class InvoiceController extends Controller
     }
 
 
-    public function delete($id = null)
+    public function delete(Invoice $invoice = null)
     {
-        if (!$id) return;
-
         return view('Invoice.delete', [
-            'invoice' => invoice::where('id', $id)->first()
+            'invoice' => $invoice
         ]);
     }
 
