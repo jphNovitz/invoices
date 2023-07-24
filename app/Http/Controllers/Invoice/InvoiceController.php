@@ -9,6 +9,7 @@ use App\Models\Item;
 use App\Models\Vat;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class InvoiceController extends Controller
 {
@@ -47,8 +48,8 @@ class InvoiceController extends Controller
             "items.*.description" => ['required', 'max:255'],
             "items.*.price" => ['required', 'numeric'],
             "items.*.qty" => ['required', 'numeric'],
-            "items.*.vat_id"=> ['required', 'integer'],
-            "items.*.discount"  => ['required', 'numeric'],
+            "items.*.vat_id" => ['required', 'integer'],
+            "items.*.discount" => ['required', 'numeric'],
         ]);
 
         // The items
@@ -96,8 +97,8 @@ class InvoiceController extends Controller
         $invoice_datas['exvat'] = $htva;
         $invoice_datas['total'] = $total;
 
-           $invoice->update($invoice_datas);
-            return redirect(route('invoices_list'))->with('alert-success', 'invoice updated');
+        $invoice->update($invoice_datas);
+        return redirect(route('invoices_list'))->with('alert-success', 'invoice updated');
     }
 
 
@@ -137,7 +138,7 @@ class InvoiceController extends Controller
         }
 
         // The invoice
-        $lastInvoice = Invoice::latest()->first() ;
+        $lastInvoice = Invoice::latest()->first();
 
         $refNumber = ($lastInvoice !== null) ? explode('-', $lastInvoice->reference)[1] : 1;
         $invoice_datas['reference'] = $user->prefix . '-' . ++$refNumber;
@@ -164,18 +165,12 @@ class InvoiceController extends Controller
         ]);
     }
 
-    public function remove(Request $request)
+    public function remove(Request $request, Invoice $invoice)
     {
         if ($request->_decline) return redirect(route('invoices_list'))->with('alert-info', 'annulé');
-        $invoice = invoice::where('id', $request->_id)->first();
-        try {
-            $invoice->delete();
-            $message = 'Facture supprimée';
-            $alert = 'alert-success';
-        } catch (\Exception $e) {
-            $message = 'Erreur dans la suppression';
-            $alert = 'alert-danger';
-        }
-        return redirect()->route('invoices_list')->with($alert, $message);
+
+        $invoice->delete();
+
+        return redirect(route('invoices_list'))->with('alert-success', 'Facture supprimée');
     }
 }
