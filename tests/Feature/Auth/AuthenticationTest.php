@@ -38,3 +38,23 @@ test('users can not authenticate with invalid password', function () {
 
     $this->assertGuest();
 });
+
+
+test('users can logout', function () {
+    $this->seed(TestSeeder::class);
+    $user = User::all()->random();
+
+
+    $response = $this->post('/login', [
+        'email' => $user->email,
+        'password' => 'password',
+    ]);
+    $this->assertAuthenticated();
+
+    $response = $this->get('/logout');
+    $this->assertNull(auth()->user());
+    $this->assertGuest();
+//die;
+//    $this->assertAuthenticated();
+//    $response->assertRedirect(route('home'));
+});

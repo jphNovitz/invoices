@@ -73,7 +73,7 @@ test('client delete screen  fails if client  already has invoices', function () 
     $response->assertSessionHasErrors();
 });
 
-test('client is accessible  if only one user and no invoices', function () {
+test('client delete screen is accessible  if only one user and no invoices', function () {
     $this->seed(TestSeeder::class);
     $user = User::all()->random();
     Client::factory(1)->create();

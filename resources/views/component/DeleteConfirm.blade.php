@@ -14,6 +14,7 @@
                    class="success py-2 px-5 rounded-lg w-1/3  "/>
             <input type="submit" name="_decline" value="{{__('No')}}"
                    class="danger py-2 px-5 rounded-lg w-1/3"/>
+
         </div>
 <!--        <aside class="font-black mt-5">
             <h3>Attention, la facture n'apparaîtra plus mais sera conservée en base de données</h3>

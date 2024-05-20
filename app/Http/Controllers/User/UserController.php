@@ -62,27 +62,18 @@ class UserController extends Controller
 
     public function delete()
     {
-        $user = auth()->user();
-        return view('User.user-delete', ['user' => $user]);
+        return view('User.user-delete', ['user' => auth()->user()]);
     }
 
-    public function remove(Request $request)
+    public function remove(User $user, Request $request)
     {
-        $user = \Auth::user();
-        if (!$user) {
-            return redirect()->route('user')->with('error', 'Connectez vous !');
-        }
+        if ($user != auth()->user()) return redirect()->back()->withErrors('wrong user');
 
         if ($request->_decline) return redirect(route('user_home'))->with('message', 'annulé');
 
-
-        try {
             $user->delete();
-            $message = 'Compte supprimée';
-        } catch (\Exception $e) {
-            $message = 'Erreur dans la suppression';
-        }
-        return redirect()->route('user_home')->with('message', $message);
+
+        return redirect()->route('welcome')->with('message','Compte supprimée');
     }
 
 }

@@ -28,7 +28,7 @@ Route::get('/profile', 'User\UserController@index')->name('user_home');
 Route::get('/profile/update', 'User\UserController@update')->name('user_update');
 Route::put('/profile/store', 'User\UserController@store')->name('user_store');
 Route::get('/profile/delete', 'User\UserController@delete')->name('user_delete');
-Route::delete('user/delete}', 'User\UserController@remove')->name('user_remove');
+Route::delete('profile/delete/{user}', 'User\UserController@remove')->name('user_remove');
 
 /* Clients */
 
@@ -59,7 +59,7 @@ Route::prefix('invoice')->group(function () {
     Route::get('/edit/{invoice}', 'Invoice\InvoiceController@edit')->name('invoice_edit')->middleware('owned_invoice');
     Route::put('/update/{invoice}', 'Invoice\InvoiceController@update')->name('invoice_update')->middleware('owned_invoice');
     Route::get('/delete/{invoice}', 'Invoice\InvoiceController@delete')->name('invoice_delete')->middleware('owned_invoice');
-    Route::delete('/remove', 'Invoice\InvoiceController@remove')->name('invoice_remove');
+    Route::delete('/remove/{invoice}', 'Invoice\InvoiceController@remove')->name('invoice_remove');
     Route::get('/generate-pdf/{id}', 'Invoice\PDFController@generatePDF')->name('invoice_generate_pdf');
     Route::get('/send-pdf/{id}','Invoice\PDFController@sendPDF')->name('invoice_send_pdf');
 

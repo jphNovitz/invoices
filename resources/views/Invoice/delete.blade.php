@@ -97,7 +97,7 @@ $user = auth()->user();
                                 {{$item->discount}}
                             </div>
                             <div class="w-12 md:mx-3 before:block before:content-['Total'] before:font-bold md:before:content-[''] ">
-                                    <?php echo $item->qty * ($item->price + ($item->price * $vat->rate) - $item->discount) ?>
+                                    <?php echo ($item->qty * $item->price - $item->discount) * (1 + $vat->rate) ?>
                             </div>
                         </article>
                     @endforeach

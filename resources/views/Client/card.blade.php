@@ -51,7 +51,7 @@
                                     <i class="fas fa-edit"></i>
                                 </a>
 
-                                <a href="{{route('invoice_delete', ['id'=>$invoice->id])}}"
+                                <a href="{{route('invoice_delete', ['invoice'=>$invoice->id])}}"
                                    class="button danger">
                                     <i class="fas fa-minus"></i>
                                 </a>
